@@ -26,7 +26,7 @@
   "homepage": "https://github.com/Mitica/concept-extractor-js",
   "dependencies": {
     "atonic": "^1.0.3",
-    "concept-data": "^0.0.1"
+    "concept-data": "^0.0.2"
   },
   "devDependencies": {
     "mocha": "^2.3.2"
