@@ -20,7 +20,7 @@ describe('parser', function() {
 		concepts.forEach(function(concept) {
 			var list = concept.split();
 			if (list.length > 0) {
-				// console.log('splited concepts', list);
+				// console.log('splited concepts', list, concept);
 			}
 		});
 	});
