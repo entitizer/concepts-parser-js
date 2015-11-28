@@ -1,6 +1,6 @@
 {
   "name": "concepts-parser",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/Mitica/concepts-parser-js",
   "dependencies": {
     "atonic": "^1.0.3",
-    "concept-data": "^0.0.3"
+    "concepts-data": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.3.2"
