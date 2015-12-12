@@ -1,6 +1,6 @@
 {
   "name": "concepts-parser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mitica/concepts-parser-js.git"
+    "url": "https://github.com/entitizer/concepts-parser-js.git"
   },
   "keywords": [
     "concept",
@@ -22,9 +22,9 @@
   "author": "Dumitru Cantea",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mitica/concepts-parser-js/issues"
+    "url": "https://github.com/entitizer/concepts-parser-js/issues"
   },
-  "homepage": "https://github.com/Mitica/concepts-parser-js",
+  "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
     "atonic": "^1.0.3",
     "concepts-data": "^0.1.0"
