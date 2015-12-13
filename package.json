@@ -2,7 +2,7 @@
   "name": "concepts-parser",
   "version": "0.1.2",
   "description": "Concepts Extracting from text",
-  "main": "./lib/index.js",
+  "main": "./lib/parser.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },

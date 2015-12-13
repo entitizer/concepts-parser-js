@@ -8,7 +8,26 @@ var parser = require('concepts-parser');
 var concepts = parser.parse({text: 'Some text', lang: 'ru', country: 'ru'});
 ```
 
+## API
+
+### parse(context, options)
+
+Finds concepts in a context.
+
+- `context` (Object) **required** - Context
+  + `text` (String) **required** - Text to find concepts;
+  + `lang` (String) **required** - Text language, 2 chars code: `en`, `ru`;
+  + `country` (String) **required** - Context country: `ru`, `it`;
+- `options` (Object) **optional**:
+  + `mode` (String) - Can be: `identify` or `collect`. Default: `identify`;
+  + `normalizeText` (Boolean) - Remove extra white spaces, etc. Default: `true`;
+
 ## Changelog
+
+#### v0.1.2 - December 13, 2015
+
+- added param `options`;
+- moved to `entitizer` org;
 
 #### v0.1.1 - November 28, 2015
 
