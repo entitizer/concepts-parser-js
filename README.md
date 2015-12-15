@@ -24,6 +24,11 @@ Finds concepts in a context.
 
 ## Changelog
 
+#### v0.1.3 - December 15, 2015
+
+- upgraded `concepts-data`;
+- added tests;
+
 #### v0.1.2 - December 13, 2015
 
 - added param `options`;
