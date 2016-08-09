@@ -15,7 +15,7 @@ describe('parser', function() {
 		});
 		assert.equal(20, concepts.length);
 		assert.equal('Republica Moldova', concepts[0].name);
-		// console.log('concepts', concepts);
+		console.log('concepts', concepts);
 	});
 	it('concepts split', function() {
 		concepts.forEach(function(concept) {

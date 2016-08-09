@@ -6,6 +6,9 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/entitizer/concepts-parser-js.git"
@@ -26,10 +29,9 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "atonic": "^1.0.3",
-    "concepts-data": "^0.1.2"
+    "atonic": "1.x.x"
   },
   "devDependencies": {
-    "mocha": "^2.3.2"
+    "mocha": "3.x.x"
   }
 }

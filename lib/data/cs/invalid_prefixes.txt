@@ -1,0 +1,21 @@
+Bikerka
+Čtyři
+Jak
+Jedna
+Kdo
+Kvůli
+Ministr
+Na
+Nic
+O
+Obec
+Prezident
+Pro
+Rok( \d+)?
+Srážka
+Také
+Takové
+Třetí
+Území
+V
+Z
