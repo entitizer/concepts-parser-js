@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "atonic": "1.x.x"
+    "atonic": "1.x.x",
+    "standard-text": "0.1.x"
   },
   "devDependencies": {
     "mocha": "3.x.x"
