@@ -30,6 +30,7 @@
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
     "atonic": "1.x.x",
+    "concepts-data": "0.2.x",
     "standard-text": "0.1.x"
   },
   "devDependencies": {

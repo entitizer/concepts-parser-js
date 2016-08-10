@@ -1,4 +1,0 @@
-Moldov(a|ei)                        Republica Moldova
-Partidul\w* Liberal Democrat       Partidul Liberal Democrat din Moldova
-Partidul\w* Democrat                Partidul Democrat din Moldova
-Partidul\w* Comunist\w*            Partidul Comuniștilor din Republica Moldova
