@@ -24,6 +24,11 @@ Finds concepts in a context.
 
 ## Changelog
 
+#### v0.2.0 - August 11, 2016
+
+- engine >= node4
+- es6 syntax
+
 #### v0.1.3 - December 15, 2015
 
 - upgraded `concepts-data`;
