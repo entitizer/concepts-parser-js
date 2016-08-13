@@ -1,8 +1,2 @@
-
-node_modules
-test
-
-.gitignore
-.editorconfig
-.eslintrc
-.travis.yml
+*
+!lib/**
