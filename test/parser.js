@@ -15,6 +15,22 @@ function doParse() {
 }
 
 describe('parser', function() {
+
+	it('simple concepts', function() {
+		concepts = parser.parse({
+			text: `Europa este un continent. R. Moldova este parte din Europa.`,
+			lang: 'ro',
+			country: 'md'
+		});
+		// console.log(concepts);
+		// assert.equal(3, concepts.length);
+		assert.equal('Europa', concepts[0].value);
+		assert.equal('R. Moldova', concepts[1].value);
+		assert.equal('Europa', concepts[2].value);
+	});
+
+	return;
+
 	it('parse', function() {
 		concepts = parser.parse({
 			text: text,
@@ -52,6 +68,7 @@ describe('parser', function() {
 			normalizeText: false
 		});
 		assert.equal(21, concepts.length);
+		// console.log('2', concepts);
 	});
 	it('remove prefixes', function() {
 		concepts = parser.parse({
