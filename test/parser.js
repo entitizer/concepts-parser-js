@@ -58,17 +58,17 @@ describe('parser', function() {
 			}
 		});
 	});
-	it('collect MODE', function() {
-		concepts = parser.parse({
-			text: text,
-			lang: 'ro',
-			country: 'md'
-		}, {
-			mode: 'collect'
-		});
-		// console.log('mode', concepts);
-		assert.equal(14, concepts.length);
-	});
+	// it('collect MODE', function() {
+	// 	concepts = parser.parse({
+	// 		text: text,
+	// 		lang: 'ro',
+	// 		country: 'md'
+	// 	}, {
+	// 		mode: 'collect'
+	// 	});
+	// 	// console.log('mode', concepts);
+	// 	assert.equal(14, concepts.length);
+	// });
 	it('no normalizeText', function() {
 		concepts = parser.parse({
 			text: text,
