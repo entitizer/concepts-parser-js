@@ -3,13 +3,10 @@
 let parser = require('../lib/parser');
 let assert = require('assert');
 
-let concepts;
-let text = 'fsg fgsdfg Moldova cum Partidul \tDemocrat dfsdfgd sfd hd hd\nPartidul Socialiștilor din R. Moldova (PSRM) îndeamnă cetățenii să organizeze proteste pașnice împotriva actualei guvernări. Anunțul a fost făcut astăzi, în cadrul unei conferințe de presă, de către liderul PSRM, Igor Dodon.\nDupă cum informează TRIBUNA, Igor Dodon a declarat că, R. Moldova se află într-o situație foarte dificilă.\n”Vin cu mesaj către cetățenii: haideți să nu tăcem, să nu temem, să protestăm împreună. Noi, socialiștii susținem orice protest împotriva guvernării, dar fără ideologii. Trebuie să luptăm cu actuala guvernare, trebuie să protestăm în continuarea, deoarece ei se tem de proteste”, a precizat el.\nTotodată, Dodon a menționat că, socialiștii insistă în continuare pentru a fi demiși: Guvernatorul, Dorin Drăguțanu, Procurorul General, Corneliu Gurin, dar și șeful Centrului Național Anticorupție (CNA), Viorel Chetraru.\nÎn același context, liderul PSRM a venit și cu un mesaj către cetățeni , ca în alegerile din 14 iunie curent, să nu voteze pentru candidații înaintați de partidele de la guvernare.\n”Pe data de 14 iunie nici un vot oligarhilor, așa ne va fi mai ușor să îi dăm jos de la guvernare. Trebuie să ne pregătim de alegeri anticipate, aceasta e unica soluție Corneliu Gurin”, a mai spus Dodon. Eurovision 2016.';
-
 describe('parser', function() {
 
 	it('simple concepts', function() {
-		concepts = parser.parse({
+		const concepts = parser.parse({
 			text: `Europa este un continent. R. Moldova este parte din Europa.`,
 			lang: 'ro'
 		});
@@ -21,7 +18,7 @@ describe('parser', function() {
 	});
 
 	it('connect words: Bosnia and Herzegovina', function() {
-		concepts = parser.parse({
+		const concepts = parser.parse({
 			text: 'sometimes called Bosnia-Herzegovina or Bosnia & Herzegovina, abbreviated BiH or B&H, and, in short, often known informally as Bosnia, is a country in Southeastern Europe located on the Balkan Peninsula',
 			lang: 'en'
 		});
@@ -30,7 +27,7 @@ describe('parser', function() {
 	});
 
 	it('connect with number: Eurovision 2016', function() {
-		concepts = parser.parse({
+		const concepts = parser.parse({
 			text: 'La Eurovision 2016 vor concura 10 participanti.',
 			lang: 'ro'
 		});
@@ -40,7 +37,7 @@ describe('parser', function() {
 	});
 
 	it('invalid connect with 2 numbers: Eurovision 2016 18', function() {
-		concepts = parser.parse({
+		const concepts = parser.parse({
 			text: 'La Eurovision 2016 18 vor concura 10 participanti.',
 			lang: 'ro'
 		});
@@ -49,24 +46,33 @@ describe('parser', function() {
 		assert.equal('Eurovision 2016', concepts[0].value);
 	});
 
-	it('parse', function() {
-		concepts = parser.parse({
-			text: text,
-			lang: 'ro',
-			country: 'md'
+	it('name abbr: B. Obama', function() {
+		const concepts = parser.parse({
+			text: 'V. Filat a fost retinut.',
+			lang: 'ro'
 		});
-		// console.log('concepts', concepts);
-		assert.equal(21, concepts.length);
-		assert.equal('Republica Moldova', concepts[0].name);
+		assert.equal(1, concepts.length);
+		assert.equal('V. Filat', concepts[0].value);
 	});
 
-	it('remove prefixes', function() {
-		concepts = parser.parse({
-			text: 'UNIMEDIA amintește că PLDM respinge acuzațiile că liberal-democrații ar avea înțelegeri cu șeful statului, Nicolae Timofti, cu privire la candidatul la funcția de prim-ministru.\nPreședintele Nicolae Timofti nu a comentat deocamdată situația.',
-			lang: 'ro',
-			country: 'md'
+	it('name abbr: V. V. Putin', function() {
+		const concepts = parser.parse({
+			text: 'V. V. Putin este presedintele Rusiei.',
+			lang: 'ro'
 		});
-		assert.equal('Nicolae Timofti', concepts[concepts.length - 1].atonic);
+		assert.equal(2, concepts.length);
+		assert.equal('V. V. Putin', concepts[0].value);
+		assert.equal('Rusiei', concepts[1].value);
+	});
+
+	it('name abbr: VV Putin', function() {
+		const concepts = parser.parse({
+			text: 'VV Putin este presedintele Rusiei.',
+			lang: 'ro'
+		});
+		assert.equal(2, concepts.length);
+		assert.equal('VV Putin', concepts[0].value);
+		assert.equal('Rusiei', concepts[1].value);
 	});
 
 	it('parse 100 times', function() {
