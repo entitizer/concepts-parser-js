@@ -17,6 +17,29 @@ describe('parser', function() {
 		assert.equal('Europa', concepts[2].value);
 	});
 
+	it('text end concept', function() {
+		const concepts = parser.parse({
+			text: `R. Moldova este parte din UE`,
+			lang: 'ro'
+		});
+		// console.log(concepts);
+		assert.equal(2, concepts.length);
+		assert.equal('R. Moldova', concepts[0].value);
+		assert.equal('UE', concepts[1].value);
+	});
+
+	it('word spaces', function() {
+		const concepts = parser.parse({
+			text: `sometimes called Bosnia  Herzegovina or Bosnia & Herzegovina`,
+			lang: 'en'
+		});
+		// console.log(concepts);
+		assert.equal(3, concepts.length);
+		assert.equal('Bosnia', concepts[0].value);
+		assert.equal('Herzegovina', concepts[1].value);
+		assert.equal('Bosnia & Herzegovina', concepts[2].value);
+	});
+
 	it('connect words: Bosnia and Herzegovina', function() {
 		const concepts = parser.parse({
 			text: 'sometimes called Bosnia-Herzegovina or Bosnia & Herzegovina, abbreviated BiH or B&H, and, in short, often known informally as Bosnia, is a country in Southeastern Europe located on the Balkan Peninsula',
@@ -92,7 +115,16 @@ describe('parser', function() {
 		});
 		assert.equal(2, concepts.length);
 		assert.equal('Putin V.', concepts[0].value);
-		console.log(concepts[0]);
+	});
+
+	it('name abbr: World War II', function() {
+		const concepts = parser.parse({
+			text: 'World War II mistakes and Atom War I',
+			lang: 'en'
+		});
+		assert.equal(2, concepts.length);
+		assert.equal('World War II', concepts[0].value);
+		assert.equal('Atom War I', concepts[1].value);
 	});
 
 	it('parse 100 times', function() {
