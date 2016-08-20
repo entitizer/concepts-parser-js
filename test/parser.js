@@ -46,6 +46,17 @@ describe('parser', function() {
 		assert.equal('Eurovision 2016', concepts[0].value);
 	});
 
+	it('invalid connect with numbers: 2016 Eurovision', function() {
+		const concepts = parser.parse({
+			text: '2016 Eurovision 2016 18 vor concura 10 participanti. 200 Eurovision',
+			lang: 'ro'
+		});
+		// console.log(concepts);
+		assert.equal(2, concepts.length);
+		assert.equal('Eurovision 2016', concepts[0].value);
+		assert.equal('Eurovision', concepts[1].value);
+	});
+
 	it('name abbr: B. Obama', function() {
 		const concepts = parser.parse({
 			text: 'V. Filat a fost retinut.',
@@ -72,7 +83,16 @@ describe('parser', function() {
 		});
 		assert.equal(2, concepts.length);
 		assert.equal('VV Putin', concepts[0].value);
-		assert.equal('Rusiei', concepts[1].value);
+	});
+
+	it('name abbr: Putin V.', function() {
+		const concepts = parser.parse({
+			text: 'Putin V. este presedintele Rusiei.',
+			lang: 'ro'
+		});
+		assert.equal(2, concepts.length);
+		assert.equal('Putin V.', concepts[0].value);
+		console.log(concepts[0]);
 	});
 
 	it('parse 100 times', function() {
