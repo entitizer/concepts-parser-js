@@ -127,6 +127,31 @@ describe('parser', function() {
 		assert.equal('Atom War I', concepts[1].value);
 	});
 
+	it('quotes on word', function() {
+		const concepts = parser.parse({
+			text: 'I know "Someone"',
+			lang: 'en'
+		});
+		assert.equal(1, concepts.length);
+		assert.equal('"Someone"', concepts[0].value);
+	});
+	it('quotes some words', function() {
+		const concepts = parser.parse({
+			text: 'I know "Someone Big"',
+			lang: 'en'
+		});
+		assert.equal(1, concepts.length);
+		assert.equal('"Someone Big"', concepts[0].value);
+	});
+	it('first quotes some words', function() {
+		const concepts = parser.parse({
+			text: 'I know "Someone big"',
+			lang: 'en'
+		});
+		assert.equal(1, concepts.length);
+		assert.equal('Someone', concepts[0].value);
+	});
+// return;
 	it('parse 100 times', function() {
 		this.timeout(500);
 		for (let i = 0; i < 100; i++) {
