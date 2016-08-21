@@ -45,7 +45,7 @@ describe('filters', function() {
 		let concepts = parser.parse({
 			text: `New York city is New York`,
 			lang: 'en'
-		}, { excludedFilters: [] });
+		}, { mode: 'collect' });
 		// console.log(concepts);
 		assert.equal(1, concepts.length);
 		assert.equal('New York', concepts[0].value);
