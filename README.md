@@ -19,12 +19,32 @@ Finds concepts in a context.
 - `context` (Object) **required** - Context
   + `text` (String) **required** - Text to find concepts;
   + `lang` (String) **required** - Text language, 2 chars code: `en`, `ru`;
-  + `country` (String) **required** - Context country: `ru`, `it`;
+  + `country` (String) **optional** - Context country: `ru`, `it`;
 - `options` (Object) **optional**:
-  + `mode` (String) - Can be: `identify` or `collect`. Default: `identify`;
-  + `normalizeText` (Boolean) - Remove extra white spaces, etc. Default: `true`;
+  + `mode` (String) **optional** - Can be **identity** or **collect**. Default: **identity**. **identity** mode excludes filters: `start_word`, `duplicate` and `partial`;
+  + `filters` (String[]) **optional** - Ordered list of filters;
+
+#### Valid filters
+1. `invalid_prefix` - deletes invalid prefixes;
+2. `invalid` - exclude invalid concepts;
+3. `partial` - exclude partial concepts;
+4. `prefix` - add prefixes to concepts;
+5. `suffix` - add suffixes to concepts;
+6. `start_word` - exclude sentence start words;
+7. `rename` - set concept's valid name;
+8. `known` - finds known concepts;
+9. `duplicate` - exclude duplicates;
 
 ## Changelog
+
+#### v0.3.0 - August 20, 2016
+
+- new concepts exrtactor: word;
+- new filters structure;
+- updated api options:
+  - removed `normalizeText`;
+  - added `filters`;
+- new tests ~ 20;
 
 #### v0.2.0 - August 11, 2016
 
