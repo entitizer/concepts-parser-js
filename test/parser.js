@@ -133,7 +133,7 @@ describe('parser', function() {
 			lang: 'en'
 		});
 		assert.equal(1, concepts.length);
-		assert.equal('"Someone"', concepts[0].value);
+		assert.equal('Someone', concepts[0].value);
 	});
 	it('quotes some words', function() {
 		const concepts = parser.parse({
@@ -141,7 +141,7 @@ describe('parser', function() {
 			lang: 'en'
 		});
 		assert.equal(1, concepts.length);
-		assert.equal('"Someone Big"', concepts[0].value);
+		assert.equal('Someone Big', concepts[0].value);
 	});
 	it('first quotes some words', function() {
 		const concepts = parser.parse({
@@ -151,7 +151,16 @@ describe('parser', function() {
 		assert.equal(1, concepts.length);
 		assert.equal('Someone', concepts[0].value);
 	});
-// return;
+	it('Russian quotes', function() {
+		const concepts = parser.parse({
+			text: `«Сегодня в пункте пропуска «Новые Яриловичи» во время прохождения пограничного контроля попросил политического убежища гражданин России. Он обратился к пограничникам Черниговского отряда с заявлением о получении статуса беженца на территории Украины в связи с политическим преследованием в России», — сообщила Погранслужба Украины.`,
+			lang: 'ru'
+		});
+		// console.log(concepts);
+		assert.equal(6, concepts.length);
+		assert.equal('Новые Яриловичи', concepts[0].value);
+	});
+
 	it('parse 100 times', function() {
 		this.timeout(500);
 		for (let i = 0; i < 100; i++) {
