@@ -35,6 +35,3 @@ Finds concepts in a context.
 7. `rename` - set concept's valid name;
 8. `known` - finds known concepts;
 9. `duplicate` - exclude duplicates;
-
-## [Changelog](changelog.md)
-

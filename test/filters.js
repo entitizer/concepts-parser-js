@@ -1,6 +1,6 @@
 'use strict';
 
-let parser = require('../lib/parser');
+let parser = require('../lib/index');
 let assert = require('assert');
 
 describe('filters', function() {
