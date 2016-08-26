@@ -1,7 +1,7 @@
 'use strict';
 
-let parser = require('../lib/index');
-let assert = require('assert');
+const parser = require('../lib/index');
+const assert = require('assert');
 
 describe('filters', function() {
 
