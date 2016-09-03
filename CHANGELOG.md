@@ -1,6 +1,6 @@
 # Changelog
 
-### v0.3.0 - September 3, 2016
+### v1.0.0 - September 3, 2016
 
 - new concepts exrtactor: word;
 - new filters structure;
