@@ -82,4 +82,15 @@ describe('filters', function() {
 		assert.equal('Unique Day', concepts[0].value);
 	});
 
+	it('abbr', function() {
+		let concepts = parser.parse({
+			text: `...prezentat colectivului Agenției de Intervenție și Plăți pentru Agricultură (AIPA), noul director.`,
+			lang: 'ro'
+		});
+		// console.log(concepts);
+		assert.equal(1, concepts.length);
+		assert.equal('AIPA', concepts[0].abbr);
+		assert.equal('Agenției de Intervenție și Plăți pentru Agricultură', concepts[0].value);
+	});
+
 });
