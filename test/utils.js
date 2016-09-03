@@ -1,7 +1,6 @@
-'use strict';
 
-var utils = require('../lib/utils');
-var assert = require('assert');
+const utils = require('../lib/utils');
+const assert = require('assert');
 
 describe('utils', function() {
 
