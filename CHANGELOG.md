@@ -1,9 +1,10 @@
 # Changelog
 
-### v0.3.0 - August 20, 2016
+### v0.3.0 - September 3, 2016
 
 - new concepts exrtactor: word;
 - new filters structure;
+- new `abbr` filter;
 - updated api options:
   - removed `normalizeText`;
   - added `filters`;
