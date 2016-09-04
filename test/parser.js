@@ -1,3 +1,4 @@
+'use strict';
 
 const parser = require('../lib/index');
 const assert = require('assert');
@@ -46,6 +47,7 @@ describe('parser', function() {
 		});
 		// console.log(concepts);
 		assert.equal(7, concepts.length);
+		assert.equal('Bosnia-Herzegovina', concepts[0].value);
 	});
 
 	it('connect with number: Eurovision 2016', function() {
@@ -71,6 +73,17 @@ describe('parser', function() {
 	it('invalid connect with numbers: 2016 Eurovision', function() {
 		const concepts = parser.parse({
 			text: '2016 Eurovision 2016 18 vor concura 10 participanti. 200 Eurovision',
+			lang: 'ro'
+		});
+		// console.log(concepts);
+		assert.equal(2, concepts.length);
+		assert.equal('Eurovision 2016', concepts[0].value);
+		assert.equal('Eurovision', concepts[1].value);
+	});
+
+	it('invalid concepts without letters', function() {
+		const concepts = parser.parse({
+			text: '2016. Eurovision 2016 18 vor concura 10.2 participanti. 200 Eurovision',
 			lang: 'ro'
 		});
 		// console.log(concepts);
@@ -134,6 +147,7 @@ describe('parser', function() {
 		assert.equal(1, concepts.length);
 		assert.equal('Someone', concepts[0].value);
 	});
+
 	it('quotes some words', function() {
 		const concepts = parser.parse({
 			text: 'I know "Someone Big"',
@@ -142,6 +156,7 @@ describe('parser', function() {
 		assert.equal(1, concepts.length);
 		assert.equal('Someone Big', concepts[0].value);
 	});
+
 	it('first quotes some words', function() {
 		const concepts = parser.parse({
 			text: 'I know "Someone big"',
@@ -150,6 +165,7 @@ describe('parser', function() {
 		assert.equal(1, concepts.length);
 		assert.equal('Someone', concepts[0].value);
 	});
+
 	it('Russian quotes', function() {
 		const concepts = parser.parse({
 			text: `«Сегодня в пункте пропуска «Новые Яриловичи» во время прохождения пограничного контроля попросил политического убежища гражданин России. Он обратился к пограничникам Черниговского отряда с заявлением о получении статуса беженца на территории Украины в связи с политическим преследованием в России», — сообщила Погранслужба Украины.`,

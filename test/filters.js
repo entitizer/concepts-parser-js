@@ -1,3 +1,4 @@
+'use strict';
 
 const parser = require('../lib/index');
 const assert = require('assert');

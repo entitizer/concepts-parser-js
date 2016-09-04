@@ -4,7 +4,7 @@
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --use_strict"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "engines": {
     "node": ">=4.0.0"
