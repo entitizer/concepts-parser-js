@@ -83,13 +83,14 @@ describe('parser', function() {
 
 	it('invalid concepts without letters', function() {
 		const concepts = parser.parse({
-			text: '2016. Eurovision 2016 18 vor concura 10.2 participanti. 200 Eurovision',
+			text: '2016. Eurovision 2016 18 vor concura 10.2 participanti Eu 200. Eurovision',
 			lang: 'ro'
 		});
 		// console.log(concepts);
-		assert.equal(2, concepts.length);
+		assert.equal(3, concepts.length);
 		assert.equal('Eurovision 2016', concepts[0].value);
-		assert.equal('Eurovision', concepts[1].value);
+		assert.equal('Eu 200', concepts[1].value);
+		assert.equal('Eurovision', concepts[2].value);
 	});
 
 	it('name abbr: B. Obama', function() {
