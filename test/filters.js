@@ -1,6 +1,7 @@
 'use strict';
 
 const parser = require('../lib/index');
+// const filters = require('../lib/filters');
 const assert = require('assert');
 
 describe('filters', function() {
@@ -91,6 +92,17 @@ describe('filters', function() {
 		assert.equal(1, concepts.length);
 		assert.equal('AIPA', concepts[0].abbr);
 		assert.equal('Agenției de Intervenție și Plăți pentru Agricultură', concepts[0].value);
+	});
+
+	it('detect text by Abbr ru', function() {
+		let concepts = parser.parse({
+			text: `Крымские татары, согласно опросу, не хотят переезжать на Украину, заявил глава Федерального агентства по делам национальностей (ФАДН) Игорь Баринов в интервью «Известиям».`,
+			lang: 'ru'
+		});
+		// console.log(concepts);
+		assert.equal(5, concepts.length);
+		assert.equal('ФАДН', concepts[2].abbr);
+		assert.equal('Федерального агентства по делам национальностей', concepts[2].value);
 	});
 
 });
