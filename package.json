@@ -3,8 +3,15 @@
   "version": "1.0.2",
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
+  "types": "./types/index.d.ts",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "pretest": "npm run tsc",
+    "test": "mocha",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "prepublish": "npm run tsc"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -33,7 +40,9 @@
     "concepts-data": "0.2.x"
   },
   "devDependencies": {
+    "@types/node": "^7.0.5",
     "debug": "^2.2.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.2.0",
+    "typescript": "^2.1.5"
   }
 }
