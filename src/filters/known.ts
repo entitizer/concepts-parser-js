@@ -1,35 +1,36 @@
 'use strict';
 
 const conceptsData = require('concepts-data');
-const Concept = require('../concept');
+import { Concept } from '../concept';
+import { Context } from '../context';
 
 /**
  * Find known concepts
  */
-module.exports = function known(concepts, context) {
-	let sources = conceptsData.getKnownConcepts(context.lang);
+export function filter(concepts: Concept[], context: Context): Concept[] {
+	let sources: any = conceptsData.getKnownConcepts(context.lang);
 
-	let newconcepts = [];
+	let newconcepts: any[] = [];
 
-	sources.forEach(function(source) {
-		let result;
+	sources.forEach(function (source: any) {
+		let result:RegExpExecArray;
 
 		while ((result = source.reg.exec(context.text)) !== null) {
 			let match = result[0];
 			let value = context.text.substr(result.index + 1, match.length - 1);
 
-			let concept = new Concept(value, result.index + 1, context);
+			let concept = new Concept({ value: value, index: result.index + 1, context: context });
 
 			if (concept.isValid()) {
-				concept.setAttr('isKnown', true);
+				concept.set('isKnown', true);
 				newconcepts.push(concept);
 			}
 		}
 	});
 
 	if (newconcepts.length > 0) {
-		concepts = concepts.filter(function(concept) {
-			return !newconcepts.some(function(c) {
+		concepts = concepts.filter(function (concept) {
+			return !newconcepts.some(function (c) {
 				return concept.index >= c.index && concept.index + concept.value.length <= c.index + c.value.length;
 			});
 		});

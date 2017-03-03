@@ -1,16 +1,16 @@
 'use strict';
 
 const conceptsData = require('concepts-data');
-const utils = require('./utils');
-const isLower = utils.isLower;
-const Concept = require('./concept');
+import { isLower } from './utils';
+import { Concept } from './concept';
+import { Context } from './context';
 
 /**
  * Determines if a splited concept is valid
  * @param  {Object}  concept Splited concept
  * @return {Boolean}         Is valid or not
  */
-function isValid(concept) {
+function isValid(concept: Concept): boolean {
 	let parts = concept.value.split(/ /g);
 	if (isLower(parts[0]) || parts.length > 0 && isLower(parts[parts.length - 1])) {
 		return false;
@@ -25,8 +25,8 @@ function isValid(concept) {
  * @param  {Object} context  Concept context
  * @return {Object}          Created concept
  */
-function createConcept(value, index, context) {
-	return new Concept(value, index, context);
+function createConcept(value: string, index: number, context: Context): Concept {
+	return new Concept({ value: value, index: index, context: context });
 }
 
 /**
@@ -34,9 +34,9 @@ function createConcept(value, index, context) {
  * @param  {Object} concept The concept
  * @return {Boolean} Can be splited or not
  */
-function canSplit(concept) {
+function canSplit(concept: Concept): boolean {
 	// a connect has a known name
-	if (concept.getAttr('isKnown')) {
+	if (concept.get('isKnown')) {
 		return false;
 	}
 	return concept.value.length > 4 && concept.value.indexOf(' ') > 2;
@@ -50,8 +50,8 @@ function canSplit(concept) {
  * @param  {Number} index     Separator index
  * @return {Array}            Concepts container
  */
-function createConcepts(concept, separator, index) {
-	const list = [];
+function createConcepts(concept: Concept, separator: string, index: number): Concept[] {
+	const list: Concept[] = [];
 	let c = createConcept(concept.value.substr(0, index), concept.index, concept.context);
 	if (isValid(c)) {
 		list.push(c);
@@ -67,13 +67,12 @@ function createConcepts(concept, separator, index) {
 /**
  * Splits a concept by words
  * @param  {Object} concept Concept to be splited
- * @param  {String} lang    2 letters language code
  * @param  {Array}  words   A list of words to split concept
  * @return {Array}          A splited array of concepts
  */
-function splitByWords(concept, lang, words) {
-	let index;
-	let word;
+export function splitByWords(concept: Concept, words: string[]): Concept[] {
+	let index: number;
+	let word: string;
 
 	for (let i = 0; i < words.length; i++) {
 		word = ' ' + words[i] + ' ';
@@ -91,8 +90,8 @@ function splitByWords(concept, lang, words) {
  * @param  {Object} concept Concept to split
  * @return {Array}         	A splited array of concepts
  */
-function simpleSplit(concept) {
-	let list = [];
+export function simpleSplit(concept: Concept): Concept[] {
+	let list: Concept[] = [];
 	const space = ' ';
 	let index = concept.value.indexOf(space);
 	if (index > 0) {
@@ -112,8 +111,8 @@ function simpleSplit(concept) {
  * @param  {String} lang    Language
  * @return {Array}          A splited array of concepts
  */
-function split(concept, lang) {
-	let list = [];
+export function split(concept: Concept, lang?: string): Concept[] {
+	let list: Concept[] = [];
 	if (!canSplit(concept)) {
 		return list;
 	}
@@ -122,16 +121,16 @@ function split(concept, lang) {
 
 	const splitWords = conceptsData.getSplitWords(lang);
 
-	list = splitByWords(concept, lang, splitWords);
+	list = splitByWords(concept, splitWords);
 
 	if (list.length === 0) {
 		list = list.concat(simpleSplit(concept));
 	}
 
-	let keys = {},
-		key;
+	let keys: any = {};
+	let key: string;
 
-	list = list.filter(function(item) {
+	list = list.filter(function (item) {
 		key = item.index + item.value;
 		if (!keys[key]) {
 			keys[key] = true;
@@ -142,9 +141,3 @@ function split(concept, lang) {
 
 	return list;
 }
-
-// exports ===========================================
-
-exports.split = split;
-exports.splitByWords = splitByWords;
-exports.simpleSplit = simpleSplit;

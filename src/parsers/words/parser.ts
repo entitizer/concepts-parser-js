@@ -1,23 +1,25 @@
 'use strict';
 
-const BaseParser = require('../base');
-const utils = require('../../utils');
-const Words = require('./words');
+import { BaseParser, ParserOptions } from '../base';
+import * as utils from '../../utils';
+import { Words } from './words';
+import { Context } from '../../context';
+import { Concepts } from '../../concepts';
 
 const P_START = 0;
 const P_WORD = 1;
 const P_PUNCT = 2;
 
-module.exports = class Parser extends BaseParser {
+export class Parser extends BaseParser {
 
-	parse(context) {
+	parse(context: Context): Concepts {
 		const input = context.text;
 		let start = 0;
 		let p = P_START;
 		let isConcept = false;
 		const words = new Words(this.options, context);
 
-		function addWord(i) {
+		function addWord(i: number) {
 			if (isConcept) {
 				let text = input.substr(start, i - start);
 				// console.log('text `' + text + '`');

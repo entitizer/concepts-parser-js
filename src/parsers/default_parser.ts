@@ -1,15 +1,17 @@
 'use strict';
 
-const BaseParser = require('./base');
-const utils = require('../utils');
-const Concepts = require('../concepts');
+import { BaseParser } from './base';
+import * as utils from '../utils';
+import { Context } from '../context';
+import { Concept } from '../concept';
+
+import { Concepts } from '../concepts';
 
 const POINT = '.';
 const SPACE = ' ';
 
-module.exports = class Parser extends BaseParser {
-
-	parse(context) {
+export class Parser extends BaseParser {
+	parse(context: Context): Concepts {
 		const input = context.text;
 		let p = 0;
 		let pivot = 0;
@@ -17,8 +19,8 @@ module.exports = class Parser extends BaseParser {
 		let start = 0;
 		const concepts = new Concepts(context);
 
-		function addConcept() {
-			let concept = self.formatConcept.apply(self, arguments);
+		function addConcept(input: String, i: number, start: number) {
+			let concept = self.formatConcept(context, input, i, start);
 			p = 0;
 			start = 0;
 			concepts.add(concept);
@@ -38,7 +40,7 @@ module.exports = class Parser extends BaseParser {
 					pivot = 0;
 					break;
 
-					// start with upper case
+				// start with upper case
 				case 1:
 					if (c === POINT) {
 						p = 21;
@@ -52,13 +54,13 @@ module.exports = class Parser extends BaseParser {
 						if (i - start < 3) {
 							p = 0;
 						} else {
-							addConcept(context, input, i + 1, start, p);
+							addConcept(input, i + 1, start);
 						}
 					}
 					break;
 				case 2:
 					if (i === input.length - 1) {
-						addConcept(context, input, i + 2, start, p);
+						addConcept(input, i + 2, start);
 					} else if (utils.isLetterOrDigit(c)) {
 						p = 2;
 					} else if (self.isInConnectChars(c)) {
@@ -69,7 +71,7 @@ module.exports = class Parser extends BaseParser {
 						if (i - start < 3) {
 							p = 0;
 						} else {
-							addConcept(context, input, i + 1, start, p);
+							addConcept(input, i + 1, start);
 						}
 					}
 					break;
@@ -80,7 +82,7 @@ module.exports = class Parser extends BaseParser {
 						let prefix = input.substr(start, i - start);
 						//console.log('prefix', prefix);
 						if (!self.isInPrefixes(prefix.toLowerCase())) {
-							addConcept(context, input, i, start, p);
+							addConcept(input, i, start);
 						}
 					}
 					break;
@@ -102,7 +104,7 @@ module.exports = class Parser extends BaseParser {
 						p = 51;
 						pivot = i;
 					} else {
-						addConcept(context, input, i, start, p);
+						addConcept(input, i, start);
 					}
 					break;
 				case 4:
@@ -115,7 +117,7 @@ module.exports = class Parser extends BaseParser {
 					}
 
 					if (p === 4) {
-						addConcept(context, input, pivot, start, p);
+						addConcept(input, pivot, start);
 						pivot = 0;
 					}
 					break;
@@ -123,12 +125,12 @@ module.exports = class Parser extends BaseParser {
 					if (utils.isUpper(c)) {
 						p = 1;
 					} else {
-						addConcept(context, input, pivot, start, p);
+						addConcept(input, pivot, start);
 						pivot = 0;
 					}
 					//concept starts with lower
 					break;
-					// in lower case word
+				// in lower case word
 				case 11:
 					if (utils.isLower(c) || self.isInConnectChars(c)) {
 						p = 11;
@@ -156,7 +158,7 @@ module.exports = class Parser extends BaseParser {
 					}
 					//spacial names: abbreviations, etc.
 					break;
-					// in word upper case
+				// in word upper case
 				case 31:
 					if (c === SPACE) {
 						p = 32;
@@ -165,7 +167,7 @@ module.exports = class Parser extends BaseParser {
 					} else if (self.isInConnectChars(c)) {
 						p = -31;
 					} else {
-						addConcept(context, input, i + 1, start, p);
+						addConcept(input, i + 1, start);
 					}
 					break;
 				case -31:
@@ -173,7 +175,7 @@ module.exports = class Parser extends BaseParser {
 						p = 31;
 					} else {
 						//start = p = 0;
-						addConcept(context, input, i, start, p);
+						addConcept(input, i, start);
 					}
 					break;
 				case 32:
@@ -181,11 +183,11 @@ module.exports = class Parser extends BaseParser {
 						p = 1;
 					} else if (utils.isDigit(c)) {
 						p = 41;
-					} else if (self.isInStartQuotes(c) /* && !_inCharts*/ ) {
+					} else if (self.isInStartQuotes(c) /* && !_inCharts*/) {
 						p = 51;
 						pivot = i;
 					} else {
-						addConcept(context, input, i, start, p);
+						addConcept(input, i, start);
 					}
 					//number
 					break;
@@ -194,12 +196,12 @@ module.exports = class Parser extends BaseParser {
 						if (['-', ':'].indexOf(c) >= 0) {
 							let spacei = input.substr(start, i - start).lastIndexOf(' ');
 							if (spacei > 1) {
-								addConcept(context, input, spacei + start + 1, start, p);
+								addConcept(input, spacei + start + 1, start);
 							} else {
 								start = p = 0;
 							}
 						} else {
-							addConcept(context, input, i + 1, start, p);
+							addConcept(input, i + 1, start);
 						}
 					}
 					//quotes
@@ -208,7 +210,7 @@ module.exports = class Parser extends BaseParser {
 					if (utils.isUpper(c)) {
 						p = 52;
 					} else {
-						addConcept(context, input, pivot, start, p);
+						addConcept(input, pivot, start);
 					}
 					break;
 				case 52:
@@ -217,16 +219,16 @@ module.exports = class Parser extends BaseParser {
 					} else if (utils.isLetterOrDigit(c) || self.isInConnectChars(c)) {
 						p = 52;
 					} else if (self.isInEndQuotes(c)) {
-						addConcept(context, input, i + 2, start, p);
+						addConcept(input, i + 2, start);
 					} else {
-						addConcept(context, input, pivot, start, p);
+						addConcept(input, pivot, start);
 					}
 					break;
 				case 53:
 					if (utils.isUpper(c)) {
 						p = 52;
 					} else {
-						addConcept(context, input, pivot, start, p);
+						addConcept(input, pivot, start);
 					}
 					break;
 			}
