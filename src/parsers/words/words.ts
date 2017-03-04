@@ -2,22 +2,28 @@
 
 const debug = require('debug')('concepts:words');
 
-const Word = require('./word');
-const Concepts = require('../../concepts');
-const Concept = require('../../concept');
+import { Word } from './word';
+import { Context } from '../../context';
+import { Concept } from '../../concept';
+import { Concepts } from '../../concepts';
+import { ParserOptions } from '../base';
 
-module.exports = class Words {
-	constructor(options, context) {
+export class Words {
+	private options: ParserOptions;
+	private context: Context;
+	private list: Word[];
+
+	constructor(options: ParserOptions, context: Context) {
 		this.options = options;
 		this.context = context;
 		this.list = [];
 	}
 
-	all() {
+	all(): Word[] {
 		return this.list;
 	}
 
-	add(word) {
+	add(word: Word) {
 		// debug('adding new word', word.value);
 		if (!word.isValid()) {
 			// debug('invalid word', word.value);
@@ -44,7 +50,7 @@ module.exports = class Words {
 		return true;
 	}
 
-	concepts() {
+	concepts(): Concepts {
 		debug('generating concepts');
 		const concepts = new Concepts(this.context);
 
@@ -68,7 +74,7 @@ module.exports = class Words {
 			} else {
 				const text = this.context.text.substring(index, word.index + word.value.length);
 				// debug('added concept', text, word.rightText, index, word.value);
-				const concept = new Concept(text, index, this.context);
+				const concept = new Concept({ value: text, index, context: this.context });
 				concepts.add(concept);
 				firstWord = true;
 			}
@@ -80,7 +86,7 @@ module.exports = class Words {
 		return concepts;
 	}
 
-	static create(text, index, context) {
+	static create(text: string, index: number, context: Context): Word {
 		return new Word(text, index, context);
 	}
 

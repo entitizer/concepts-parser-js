@@ -1,5 +1,11 @@
 # Changelog
 
+### v1.1.0 - March 4, 2017
+
+- TypeScript code
+- using [entitizer.core](https://github.com/entitizer/core-js)
+- some fixes
+
 ### v1.0.0 - September 3, 2016
 
 - new concepts exrtactor: word;

@@ -1,12 +1,15 @@
 'use strict';
 
+import { Concept } from '../concept';
+import { Context } from '../context';
+
 const quoteReg = /["“”„«»]/;
 
 /**
  * Filter invalid concepts
  */
-module.exports = function quote(concepts) {
-	return concepts.filter(function(concept) {
+export function filter(concepts: Concept[]): Concept[] {
+	return concepts.filter(function (concept) {
 		// start with quote
 		if (quoteReg.test(concept.value[0])) {
 			// ends with quote

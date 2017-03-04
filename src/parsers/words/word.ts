@@ -1,21 +1,28 @@
 'use strict';
 
-const utils = require('../../utils');
+import * as utils from '../../utils';
+import { Context } from '../../context';
 
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
 
-module.exports = class Word {
-	constructor(value, index, context) {
+export class Word {
+	private context?: Context;
+	index?: number;
+	value?: string;
+	isAbbr?: boolean;
+	isNumber?: boolean;
+	endsWithDot?: boolean;
+	rightText?: string;
+
+	constructor(value: string, index: number, context?: Context) {
 		this.reset(value, index);
+
 		if (context) {
-			this.context = {
-				country: context.country,
-				lang: context.lang
-			};
+			this.context = context;
 		}
 	}
 
-	reset(value, index) {
+	reset(value: string, index: number) {
 		if (typeof index === 'number' && index > -1) {
 			this.index = index;
 		} else {
@@ -41,7 +48,7 @@ module.exports = class Word {
 		this.value = value;
 	}
 
-	isValid() {
+	isValid(): boolean {
 		if (!this.value) {
 			return false;
 		}

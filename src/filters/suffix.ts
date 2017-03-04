@@ -2,13 +2,16 @@
 
 const conceptsData = require('concepts-data');
 
+import { Concept } from '../concept';
+import { Context } from '../context';
+
 /**
  * Find concept suffix
  */
-module.exports = function suffix(concepts, context) {
-	const sources = conceptsData.getValidSuffixes(context.lang);
+export function filter(concepts: Concept[], context: Context): Concept[] {
+	const sources: any = conceptsData.getValidSuffixes(context.lang);
 
-	return concepts.filter(function(concept) {
+	return concepts.filter(function (concept) {
 		let text = context.text.substr(concept.index + concept.value.length);
 
 		for (let i = sources.length - 1; i >= 0; i--) {

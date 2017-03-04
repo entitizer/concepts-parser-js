@@ -1,12 +1,14 @@
 'use strict';
 
 const debug = require('debug')('concepts:filter');
+import { Context } from '../context';
+import { Concept } from '../concept';
 
-function isAbbrOf(text, abbr) {
-	const words = text.split(/[ ]+/g);
-	let position = 0;
+function isAbbrOf(text: string, abbr: string): boolean {
+	const words: string[] = text.split(/[ ]+/g);
+	let position: number = 0;
 
-	for (let i = 0; i < abbr.length; i++, position++) {
+	for (let i = 0; i < abbr.length; i++ , position++) {
 		if (position === words.length) {
 			return false;
 		}
@@ -27,25 +29,25 @@ function isAbbrOf(text, abbr) {
 	return true;
 }
 
-function isInParentheses(concept, context) {
+function isInParentheses(concept: Concept, context: Context): boolean {
 	var i = concept.index;
 	var j = concept.endIndex;
 	var sp = context.text[i - 1];
 	var ep = context.text[j];
-	// console.log(concept.value, i, j, sp, ep);
+	// debug(concept.value, i, j, sp, ep);
 	return i > 0 && j < context.text.length && sp === '(' && ep === ')';
 }
 
 /**
  * Filter abbreviations
  */
-module.exports = function find(concepts, context) {
-	let prev;
-	return concepts.filter(function(concept) {
-		if (prev && concept.getAttr('isAbbr') && prev.endIndex < concept.index && isInParentheses(concept, context)) {
+export function filter(concepts: Concept[], context: Context): Concept[] {
+	let prev: Concept;
+	return concepts.filter(function (concept) {
+		if (prev && concept.isAbbr && prev.endIndex < concept.index && isInParentheses(concept, context)) {
 			const text = context.text.substring(prev.index, concept.index - 2);
 			if (isAbbrOf(text, concept.value)) {
-				prev.setAbbr(concept.value);
+				prev.abbr = concept.value;
 				prev.reset(text);
 				return false;
 			}

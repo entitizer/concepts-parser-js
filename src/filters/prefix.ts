@@ -1,14 +1,16 @@
 'use strict';
 
 const conceptsData = require('concepts-data');
+import { Concept } from '../concept';
+import { Context } from '../context';
 
 /**
  * Find concept prefix
  */
-module.exports = function prefix(concepts, context) {
-	const sources = conceptsData.getValidPrefixes(context.lang);
+export function filter(concepts: Concept[], context: Context): Concept[] {
+	const sources: any = conceptsData.getValidPrefixes(context.lang);
 
-	return concepts.filter(function(concept) {
+	return concepts.filter(function (concept) {
 		let text = context.text.substr(0, concept.index);
 
 		for (let i = sources.length - 1; i >= 0; i--) {

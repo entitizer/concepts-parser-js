@@ -2,17 +2,20 @@
 
 const conceptsData = require('concepts-data');
 
+import { Concept } from '../concept';
+import { Context } from '../context';
+
 /**
  * Find concept prefix
  */
-module.exports = function invalidPrefix(concepts, context) {
-	const sources = conceptsData.getInvalidPrefixes(context.lang);
+export function filter(concepts: Concept[], context: Context): Concept[] {
+	const sources: any = conceptsData.getInvalidPrefixes(context.lang);
 
-	return concepts.filter(function(concept) {
+	return concepts.filter(function (concept) {
 		for (let i = sources.length - 1; i >= 0; i--) {
-			let regex = sources[i];
+			let regex: RegExp = sources[i];
 
-			let result = regex.exec(concept.atonic);
+			let result = regex.exec(concept.atonicValue);
 
 			if (result) {
 				let match = result[0];
