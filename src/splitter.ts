@@ -26,7 +26,7 @@ function isValid(concept: Concept): boolean {
  * @return {Object}          Created concept
  */
 function createConcept(value: string, index: number, context: Context): Concept {
-	return new Concept({ value: value, index: index, context: context });
+	return new Concept({ value: value, index: index, context: { lang: context.lang, country: context.country } });
 }
 
 /**
@@ -52,12 +52,13 @@ function canSplit(concept: Concept): boolean {
  */
 function createConcepts(concept: Concept, separator: string, index: number): Concept[] {
 	const list: Concept[] = [];
-	let c = createConcept(concept.value.substr(0, index), concept.index, concept.context);
+	const context: any = { lang: concept.context.lang, text: concept.context.text, country: concept.context.country };
+	let c = createConcept(concept.value.substr(0, index), concept.index, context);
 	if (isValid(c)) {
 		list.push(c);
 	}
 	index += separator.length;
-	c = createConcept(concept.value.substr(index), concept.index + index, concept.context);
+	c = createConcept(concept.value.substr(index), concept.index + index, context);
 	if (isValid(c)) {
 		list.push(c);
 	}

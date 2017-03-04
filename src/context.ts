@@ -1,7 +1,7 @@
 'use strict';
 
-import { models } from 'entitizer.core';
-
-export class Context extends models.Context {
-
+export type Context = {
+    lang: string;
+    text: string;
+    country?: string;
 }

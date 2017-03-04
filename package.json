@@ -1,6 +1,6 @@
 {
-  "name": "entitizer.concepts-parser",
-  "version": "0.1.0",
+  "name": "concepts-parser",
+  "version": "1.1.0",
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "atonic": "1.x.x",
-    "concepts-data": "0.2.x"
+    "concepts-data": "0.2.x",
+    "entitizer.core": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
