@@ -36,13 +36,13 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "concepts-data": "0.2.x",
-    "entitizer.core": "^0.1.0"
+    "atonic": "^1.0.4",
+    "concepts-data": "^0.2.x"
   },
   "devDependencies": {
     "@types/node": "^7.0.5",
     "debug": "^2.2.0",
     "mocha": "^3.2.0",
-    "typescript": "^2.1.5"
+    "typescript": "^2.2.2"
   }
 }
