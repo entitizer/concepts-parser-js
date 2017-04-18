@@ -1,5 +1,11 @@
 # Changelog
 
+### v1.1.1 - April 19, 2017
+
+- removed entity.context
+- removed entitizer.core dependency
+- some code sanitize
+
 ### v1.1.0 - March 4, 2017
 
 - TypeScript code
