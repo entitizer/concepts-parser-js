@@ -1,8 +1,7 @@
-'use strict';
 
 const conceptsData = require('concepts-data');
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 
 /**
  * Find known concepts
@@ -13,13 +12,13 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 	let newconcepts: any[] = [];
 
 	sources.forEach(function (source: any) {
-		let result:RegExpExecArray;
+		let result: RegExpExecArray;
 
 		while ((result = source.reg.exec(context.text)) !== null) {
 			let match = result[0];
 			let value = context.text.substr(result.index + 1, match.length - 1);
 
-			let concept = new Concept({ value: value, index: result.index + 1, context: context });
+			let concept = new Concept({ value: value, index: result.index + 1 });
 
 			if (concept.isValid()) {
 				concept.set('isKnown', true);

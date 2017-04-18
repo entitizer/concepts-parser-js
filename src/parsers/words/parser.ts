@@ -1,9 +1,8 @@
-'use strict';
 
 import { BaseParser, ParserOptions } from '../base';
 import * as utils from '../../utils';
 import { Words } from './words';
-import { Context } from '../../context';
+import { Context } from '../../types';
 import { Concepts } from '../../concepts';
 
 const P_START = 0;

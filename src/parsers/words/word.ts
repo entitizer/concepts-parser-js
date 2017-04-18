@@ -1,7 +1,6 @@
-'use strict';
 
 import * as utils from '../../utils';
-import { Context } from '../../context';
+import { Context } from '../../types';
 
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
 

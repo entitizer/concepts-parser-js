@@ -1,7 +1,6 @@
-'use strict';
 
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 
 const quoteReg = /["“”„«»]/;
 

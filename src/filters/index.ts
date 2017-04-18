@@ -1,9 +1,8 @@
-'use strict';
 
 const debug = require('debug')('concepts:filter');
 
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 
 const MODE_COLLECT = 'collect';
 const MODE_IDENTIFY = 'identify';

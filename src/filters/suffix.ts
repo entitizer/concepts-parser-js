@@ -1,9 +1,8 @@
-'use strict';
 
 const conceptsData = require('concepts-data');
 
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 
 /**
  * Find concept suffix

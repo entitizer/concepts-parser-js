@@ -1,7 +1,6 @@
-'use strict';
 
 import { filter, FilterOptions } from './filters';
-import { Context } from './context';
+import { Context } from './types';
 import { Concept } from './concept';
 
 export class Concepts {
@@ -25,4 +24,4 @@ export class Concepts {
 	filter(options?: FilterOptions): Concept[] {
 		return filter(this.all(), this.context, options);
 	}
-};
+}

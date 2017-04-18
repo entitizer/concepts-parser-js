@@ -1,8 +1,7 @@
-'use strict';
 
 import { BaseParser } from './base';
 import * as utils from '../utils';
-import { Context } from '../context';
+import { Context } from '../types';
 import { Concept } from '../concept';
 
 import { Concepts } from '../concepts';

@@ -1,10 +1,9 @@
-'use strict';
 
 const debug = require('debug')('concepts:parser');
 const conceptsData = require('concepts-data');
 import { Parser } from './parsers/words/parser';
 import { Concept } from './concept';
-import { Context } from './context';
+import { Context } from './types';
 import { FilterOptions } from './filters';
 
 export function parse(context: Context, options?: FilterOptions): Concept[] {

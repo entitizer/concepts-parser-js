@@ -1,9 +1,7 @@
-'use strict';
 
 const conceptsData = require('concepts-data');
 import { isLower } from './utils';
 import { Concept } from './concept';
-import { Context } from './context';
 
 /**
  * Determines if a splited concept is valid
@@ -25,8 +23,8 @@ function isValid(concept: Concept): boolean {
  * @param  {Object} context  Concept context
  * @return {Object}          Created concept
  */
-function createConcept(value: string, index: number, context: Context): Concept {
-	return new Concept({ value: value, index: index, context: { lang: context.lang, country: context.country } });
+function createConcept(value: string, index: number): Concept {
+	return new Concept({ value: value, index: index });
 }
 
 /**
@@ -52,13 +50,13 @@ function canSplit(concept: Concept): boolean {
  */
 function createConcepts(concept: Concept, separator: string, index: number): Concept[] {
 	const list: Concept[] = [];
-	const context: any = { lang: concept.context.lang, text: concept.context.text, country: concept.context.country };
-	let c = createConcept(concept.value.substr(0, index), concept.index, context);
+
+	let c = createConcept(concept.value.substr(0, index), concept.index);
 	if (isValid(c)) {
 		list.push(c);
 	}
 	index += separator.length;
-	c = createConcept(concept.value.substr(index), concept.index + index, context);
+	c = createConcept(concept.value.substr(index), concept.index + index);
 	if (isValid(c)) {
 		list.push(c);
 	}
@@ -112,13 +110,11 @@ export function simpleSplit(concept: Concept): Concept[] {
  * @param  {String} lang    Language
  * @return {Array}          A splited array of concepts
  */
-export function split(concept: Concept, lang?: string): Concept[] {
+export function split(concept: Concept, lang: string): Concept[] {
 	let list: Concept[] = [];
 	if (!canSplit(concept)) {
 		return list;
 	}
-
-	lang = lang || concept.context.lang;
 
 	const splitWords = conceptsData.getSplitWords(lang);
 

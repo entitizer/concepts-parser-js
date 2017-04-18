@@ -1,7 +1,6 @@
-'use strict';
 
 const debug = require('debug')('concepts:filter');
-import { Context } from '../context';
+import { Context } from '../types';
 import { Concept } from '../concept';
 
 function isAbbrOf(text: string, abbr: string): boolean {

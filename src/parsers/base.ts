@@ -1,8 +1,7 @@
-'use strict';
 
 import * as utils from '../utils';
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 import { Concepts } from '../concepts';
 
 export type ParserOptions = {
@@ -78,7 +77,7 @@ export abstract class BaseParser {
 	formatConcept(context: Context, input: String, i: number, start: number): Concept {
 		let text: string = input.substr(start, i - start - 1);
 
-		return new Concept({ value: text, index: start, context });
+		return new Concept({ value: text, index: start });
 	}
 
 	isValidWordChar(c: string): boolean {

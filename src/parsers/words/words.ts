@@ -1,9 +1,8 @@
-'use strict';
 
 const debug = require('debug')('concepts:words');
 
 import { Word } from './word';
-import { Context } from '../../context';
+import { Context } from '../../types';
 import { Concept } from '../../concept';
 import { Concepts } from '../../concepts';
 import { ParserOptions } from '../base';
@@ -74,7 +73,7 @@ export class Words {
 			} else {
 				const text = this.context.text.substring(index, word.index + word.value.length);
 				// debug('added concept', text, word.rightText, index, word.value);
-				const concept = new Concept({ value: text, index, context: this.context });
+				const concept = new Concept({ value: text, index });
 				concepts.add(concept);
 				firstWord = true;
 			}

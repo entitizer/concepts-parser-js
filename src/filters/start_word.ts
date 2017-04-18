@@ -1,8 +1,7 @@
-'use strict';
 
 import * as utils from '../utils';
 import { Concept } from '../concept';
-import { Context } from '../context';
+import { Context } from '../types';
 
 /**
  * Filter concept by start word
