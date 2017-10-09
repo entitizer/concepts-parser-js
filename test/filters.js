@@ -89,9 +89,10 @@ describe('filters', function() {
 			lang: 'ro'
 		});
 		// console.log(concepts);
-		assert.equal(1, concepts.length);
+		assert.equal(2, concepts.length);
 		assert.equal('AIPA', concepts[0].abbr);
 		assert.equal('Agenției de Intervenție și Plăți pentru Agricultură', concepts[0].value);
+		assert.equal('AIPA', concepts[1].value);
 	});
 
 	it('detect text by Abbr ru', function() {
@@ -100,7 +101,7 @@ describe('filters', function() {
 			lang: 'ru'
 		});
 		// console.log(concepts);
-		assert.equal(5, concepts.length);
+		assert.equal(6, concepts.length);
 		assert.equal('ФАДН', concepts[2].abbr);
 		assert.equal('Федерального агентства по делам национальностей', concepts[2].value);
 	});

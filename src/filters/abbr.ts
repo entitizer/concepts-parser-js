@@ -48,7 +48,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 			if (isAbbrOf(text, concept.value)) {
 				prev.abbr = concept.value;
 				prev.reset(text);
-				return false;
+				// return false;
 			}
 		}
 		prev = concept;
