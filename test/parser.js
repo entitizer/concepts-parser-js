@@ -142,11 +142,11 @@ describe('parser', function() {
 
 	it('quotes on word', function() {
 		const concepts = parser.parse({
-			text: 'I know "Someone"',
+			text: 'I know "SomeoneNew"',
 			lang: 'en'
 		});
 		assert.equal(1, concepts.length);
-		assert.equal('Someone', concepts[0].value);
+		assert.equal('SomeoneNew', concepts[0].value);
 	});
 
 	it('quotes some words', function() {
@@ -160,11 +160,11 @@ describe('parser', function() {
 
 	it('first quotes some words', function() {
 		const concepts = parser.parse({
-			text: 'I know "Someone big"',
+			text: 'I know "SomeoneNew big"',
 			lang: 'en'
 		});
 		assert.equal(1, concepts.length);
-		assert.equal('Someone', concepts[0].value);
+		assert.equal('SomeoneNew', concepts[0].value);
 	});
 
 	it('Russian quotes', function() {

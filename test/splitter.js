@@ -8,7 +8,7 @@ describe('splitter', function() {
 
 	it('no split 1 word concept', function() {
 		const concept = parser.parse({
-			text: 'US is a country',
+			text: 'USA is a country',
 			lang: 'en'
 		})[0];
 		let concepts = splitter.simpleSplit(concept);
