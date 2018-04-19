@@ -1,5 +1,5 @@
 
-const conceptsData = require('concepts-data');
+import * as conceptsData from 'concepts-data';
 import { Concept } from '../concept';
 import { Context } from '../types';
 
@@ -7,14 +7,14 @@ import { Context } from '../types';
  * Find known concepts
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	let sources: any = conceptsData.getKnownConcepts(context.lang);
+	const sources = conceptsData.getKnownConcepts(context.lang);
 
-	let newconcepts: any[] = [];
+	const newconcepts: Concept[] = [];
 
-	sources.forEach(function (source: any) {
+	sources.forEach(source => {
 		let result: RegExpExecArray;
 
-		while ((result = source.reg.exec(context.text)) !== null) {
+		while ((result = source.exec(context.text)) !== null) {
 			let match = result[0];
 			let value = context.text.substr(result.index + 1, match.length - 1);
 

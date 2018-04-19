@@ -12,7 +12,6 @@ export class Concepts {
 
 	add(concept: Concept) {
 		if (concept.isValid()) {
-			concept.normalize();
 			this.list.push(concept);
 		}
 	}

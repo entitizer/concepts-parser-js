@@ -9,7 +9,7 @@ export interface IConcept extends IModel {
 	value: string;
 	abbr: string;
 	isAbbr: boolean;
-	name: string;
+	// name: string;
 	index: number;
 	endIndex: number;
 	endsWithDot: boolean;
@@ -57,13 +57,6 @@ export class Concept extends Model implements IConcept {
 		}
 	}
 
-	normalize() {
-		let value = this.value.replace(/’/g, '\'').replace(/“/g, '"').replace(/”/g, '"').replace(/„/g, '"');
-		if (value !== this.value) {
-			this.name = value;
-		}
-	}
-
 	isValid(): boolean {
 		let value = this.value;
 		if (!value || value.length < 2 || value.length > MAX_LENGTH || utils.isDigit(value)) {
@@ -105,12 +98,12 @@ export class Concept extends Model implements IConcept {
 		this.set('isAbbr', value);
 	}
 
-	get name(): string {
-		return this.get<string>('name');
-	}
-	set name(value: string) {
-		this.set('name', value);
-	}
+	// get name(): string {
+	// 	return this.get<string>('name');
+	// }
+	// set name(value: string) {
+	// 	this.set('name', value);
+	// }
 
 	get index(): number {
 		return this.get<number>('index');
