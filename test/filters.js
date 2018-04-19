@@ -106,4 +106,13 @@ describe('filters', function() {
 		assert.equal('Федерального агентства по делам национальностей', concepts[2].value);
 	});
 
+	it('quotes', function(){
+		const concepts = parser.parse({
+			text: 'Azi mergem la Teatrul Național "Mihai Eminescu". Este alaturi de Teatrul Național de Operă și Balet „Maria Bieșu”',
+			lang: 'ro'
+		})
+		assert.equal(concepts[0].value, 'Teatrul Național "Mihai Eminescu"');
+		assert.equal(concepts[1].value, 'Teatrul Național de Operă și Balet „Maria Bieșu”');
+	})
+
 });
