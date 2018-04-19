@@ -33,6 +33,6 @@ Finds concepts in a context.
 5. `suffix` - add suffixes to concepts;
 6. `start_word` - exclude sentence start words;
 7. `abbr` - finds concepts abbreviations;
-8. `rename` - set concept's valid name;
-9. `known` - finds known concepts;
-10. `duplicate` - exclude duplicates;
+8. `known` - finds known concepts;
+9. `duplicate` - exclude duplicates;
+10. `quote` - concats concepts in quotes: `Teatrul Național "Mihai Eminescu"`;

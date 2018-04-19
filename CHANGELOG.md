@@ -1,5 +1,12 @@
 # Changelog
 
+### v1.2.0 - April 19, 2018
+
+- removed concept.name
+- deleted `rename` filter
+- upgraded `concepts-data`
+- new filter: `quote`
+
 ### v1.1.1 - April 19, 2017
 
 - removed entity.context
