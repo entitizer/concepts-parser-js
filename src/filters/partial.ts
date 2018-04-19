@@ -1,5 +1,5 @@
 
-const conceptsData = require('concepts-data');
+import * as conceptsData from 'concepts-data';
 import { Concept } from '../concept';
 import { Context } from '../types';
 

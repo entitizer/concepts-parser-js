@@ -1,5 +1,5 @@
 
-const debug = require('debug')('concepts:words');
+const debug = require('debug')('concepts-parser:words');
 
 import { Word } from './word';
 import { Context } from '../../types';

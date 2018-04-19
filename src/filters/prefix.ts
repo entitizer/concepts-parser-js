@@ -1,5 +1,5 @@
 
-const conceptsData = require('concepts-data');
+import * as conceptsData from 'concepts-data';
 import { Concept } from '../concept';
 import { Context } from '../types';
 
@@ -7,7 +7,7 @@ import { Context } from '../types';
  * Find concept prefix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const sources: any = conceptsData.getValidPrefixes(context.lang);
+	const sources = conceptsData.getValidPrefixes(context.lang);
 
 	return concepts.filter(function (concept) {
 		let text = context.text.substr(0, concept.index);

@@ -6,7 +6,7 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "pretest": "npm run tsc",
-    "test": "mocha",
+    "test": "mocha -t 8000",
     "tsc": "tsc",
     "tscw": "tsc -w",
     "preversion": "npm run tsc",
@@ -36,13 +36,13 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "atonic": "^1.0.4",
-    "concepts-data": "^0.3.x"
+    "atonic": "^1.x.x",
+    "concepts-data": "^0.4.x"
   },
   "devDependencies": {
-    "@types/node": "^7.0.5",
+    "@types/node": "latest",
     "debug": "^2.2.0",
     "mocha": "^3.2.0",
-    "typescript": "^2.2.2"
+    "typescript": "latest"
   }
 }

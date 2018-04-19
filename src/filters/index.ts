@@ -1,5 +1,5 @@
 
-const debug = require('debug')('concepts:filter');
+// const debug = require('debug')('concepts:filter');
 
 import { Concept } from '../concept';
 import { Context } from '../types';
@@ -16,8 +16,8 @@ const FILTERS_BY_MODE = {
 		'prefix',
 		'suffix',
 		'start_word',
-		'rename',
 		'known',
+		'quote',
 		'duplicate'
 	],
 	identify: [
@@ -28,8 +28,8 @@ const FILTERS_BY_MODE = {
 		'prefix',
 		'suffix',
 		//'start_word',
-		'rename',
-		'known'
+		'known',
+		'quote',
 		//'duplicate'
 	]
 };
@@ -48,7 +48,7 @@ export type FilterOptions = {
 };
 
 export function filter(concepts: Concept[], context: Context, options: FilterOptions = { mode: MODE_IDENTIFY }): Concept[] {
-	debug('start filter');
+	// debug('start filter');
 
 	let filters: string[] = [];
 
@@ -74,6 +74,6 @@ export function filter(concepts: Concept[], context: Context, options: FilterOpt
 		concepts = getFilter(filters[i]).filter(concepts, context);
 	}
 
-	debug('end filter');
+	// debug('end filter');
 	return concepts;
 };

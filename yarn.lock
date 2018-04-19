@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@types/node@^7.0.5":
-  version "7.0.57"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.57.tgz#eed149b2c75cdbd7b9823c3fd64ecddbdc68ed9c"
+"@types/node@latest":
+  version "9.6.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
-atonic@^1.0.4:
+atonic@^1.x.x:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/atonic/-/atonic-1.0.4.tgz#7db3f216070abb68660f18122a380903e09d27c7"
 
@@ -35,9 +35,9 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concepts-data@^0.3.x:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/concepts-data/-/concepts-data-0.3.2.tgz#f2cdbcd33c8b9a7b10c4777ef934a7e81b4502f7"
+concepts-data@^0.4.x:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/concepts-data/-/concepts-data-0.4.0.tgz#edff746110673178c247cd8b4e24b92082494a56"
 
 debug@2.6.8:
   version "2.6.8"
@@ -205,9 +205,9 @@ supports-color@3.1.2:
   dependencies:
     has-flag "^1.0.0"
 
-typescript@^2.2.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
+typescript@latest:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 
 wrappy@1:
   version "1.0.2"

@@ -1,5 +1,5 @@
 
-const conceptsData = require('concepts-data');
+import * as conceptsData from 'concepts-data';
 import { isLower } from './utils';
 import { Concept } from './concept';
 

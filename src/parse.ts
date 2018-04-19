@@ -1,6 +1,6 @@
 
-const debug = require('debug')('concepts:parser');
-const conceptsData = require('concepts-data');
+const debug = require('debug')('concepts-parser');
+import * as conceptsData from 'concepts-data';
 import { Parser } from './parsers/words/parser';
 import { Concept } from './concept';
 import { Context } from './types';
