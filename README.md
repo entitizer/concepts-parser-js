@@ -36,3 +36,4 @@ Finds concepts in a context.
 8. `known` - finds known concepts;
 9. `duplicate` - exclude duplicates;
 10. `quote` - concats concepts in quotes: `Teatrul Național "Mihai Eminescu"`;
+11. `split_type` - split concepts by type: `John Brown & Facebook` => `John Brown`, `Facebook`;

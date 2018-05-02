@@ -18,6 +18,7 @@ const FILTERS_BY_MODE = {
 		'start_word',
 		'known',
 		'quote',
+		// 'split_type',
 		'duplicate'
 	],
 	identify: [
@@ -30,6 +31,7 @@ const FILTERS_BY_MODE = {
 		//'start_word',
 		'known',
 		'quote',
+		'split_type',
 		//'duplicate'
 	]
 };

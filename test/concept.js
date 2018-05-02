@@ -19,7 +19,6 @@ describe('Concept', function () {
             lang: 'ro'
         });
         assert.equal(2, concepts.length);
-        console.log(concepts)
         assert.equal('Vlad Filat', concepts[0].value);
         assert.equal('ro', concepts[0].lang);
         assert.equal('PERSON', concepts[0].type);
@@ -32,8 +31,7 @@ describe('Concept', function () {
             text: `Vlad Filat și Iurie Rosca vor merge la răcoare`,
             lang: 'ro'
         });
-        assert.equal(1, concepts.length);
-        concepts = concepts[0].split();
+
         assert.equal(2, concepts.length);
 
         assert.equal('Vlad Filat', concepts[0].value);

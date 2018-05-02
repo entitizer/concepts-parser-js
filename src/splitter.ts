@@ -69,9 +69,13 @@ function createConcepts(concept: Concept, separator: string, index: number): Con
  * @param  {Array}  words   A list of words to split concept
  * @return {Array}          A splited array of concepts
  */
-export function splitByWords(concept: Concept, words: string[]): Concept[] {
+export function splitByWords(concept: Concept, words?: string[]): Concept[] {
 	let index: number;
 	let word: string;
+
+	if (!words) {
+		words = conceptsData.getSplitWords(concept.lang);
+	}
 
 	for (let i = 0; i < words.length; i++) {
 		word = ' ' + words[i] + ' ';
@@ -116,11 +120,7 @@ export function split(concept: Concept): Concept[] {
 		return list;
 	}
 
-	const lang = concept.lang;
-
-	const splitWords = conceptsData.getSplitWords(lang);
-
-	list = splitByWords(concept, splitWords);
+	list = splitByWords(concept);
 
 	if (list.length === 0) {
 		list = list.concat(simpleSplit(concept));
