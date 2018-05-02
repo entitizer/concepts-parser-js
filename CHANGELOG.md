@@ -1,5 +1,12 @@
 # Changelog
 
+### v1.3.0 - May 2, 2018
+
+- added concept.lang
+- identify concepts's type(PERSON) by popular first names
+- new filter: `split_type`
+- upgraded `concepts-data`
+
 ### v1.2.0 - April 19, 2018
 
 - removed concept.name
