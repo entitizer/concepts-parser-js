@@ -23,7 +23,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 				let match = result[0];
 				let value = text.substr(0, match.length);
 
-				concept.reset(concept.value + value);
+				concept.reset(concept.value + value, concept.index, concept.lang);
 
 				return concept.isValid();
 			}

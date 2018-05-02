@@ -18,7 +18,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 			let match = result[0];
 			let value = context.text.substr(result.index + 1, match.length - 1);
 
-			let concept = new Concept({ value: value, index: result.index + 1 });
+			let concept = new Concept({ value: value, index: result.index + 1, lang: context.lang });
 
 			if (concept.isValid()) {
 				concept.set('isKnown', true);

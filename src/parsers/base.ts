@@ -77,7 +77,7 @@ export abstract class BaseParser {
 	formatConcept(context: Context, input: String, i: number, start: number): Concept {
 		let text: string = input.substr(start, i - start - 1);
 
-		return new Concept({ value: text, index: start });
+		return new Concept({ value: text, index: start, lang: context.lang });
 	}
 
 	isValidWordChar(c: string): boolean {

@@ -5,13 +5,16 @@
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
-    "pretest": "npm run tsc",
+    "pretest": "npm run clean && npm run tsc",
     "test": "mocha -t 8000",
+    "posttest": "npm run clean-test-code",
     "tsc": "tsc",
     "tscw": "tsc -w",
     "preversion": "npm run tsc",
     "postversion": "git push --follow-tags",
-    "prepublish": "npm run tsc"
+    "prepublishOnly": "npm run tsc && npm run clean-test-code",
+    "clean": "rimraf ./lib && rimraf ./types",
+    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./types/**/*.test.d.ts"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -37,12 +40,13 @@
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
     "atonic": "^1.x.x",
-    "concepts-data": "^0.4.x"
+    "concepts-data": "^0.4.1"
   },
   "devDependencies": {
     "@types/node": "latest",
     "debug": "^2.2.0",
     "mocha": "^3.2.0",
+    "rimraf": "^2.6.2",
     "typescript": "latest"
   }
 }

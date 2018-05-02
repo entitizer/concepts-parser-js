@@ -1,11 +1,9 @@
 
 import * as utils from '../../utils';
-import { Context } from '../../types';
 
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
 
 export class Word {
-	private context?: Context;
 	index?: number;
 	value?: string;
 	isAbbr?: boolean;
@@ -13,12 +11,8 @@ export class Word {
 	endsWithDot?: boolean;
 	rightText?: string;
 
-	constructor(value: string, index: number, context?: Context) {
+	constructor(value: string, index: number) {
 		this.reset(value, index);
-
-		if (context) {
-			this.context = context;
-		}
 	}
 
 	reset(value: string, index: number) {
@@ -68,4 +62,4 @@ export class Word {
 		return true;
 	}
 
-};
+}

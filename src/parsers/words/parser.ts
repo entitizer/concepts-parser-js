@@ -1,5 +1,5 @@
 
-import { BaseParser, ParserOptions } from '../base';
+import { BaseParser } from '../base';
 import * as utils from '../../utils';
 import { Words } from './words';
 import { Context } from '../../types';
@@ -22,7 +22,7 @@ export class Parser extends BaseParser {
 			if (isConcept) {
 				let text = input.substr(start, i - start);
 				// console.log('text `' + text + '`');
-				words.add(Words.create(text, start, context));
+				words.add(Words.create(text, start));
 			}
 			p = P_START;
 			isConcept = false;
@@ -63,4 +63,4 @@ export class Parser extends BaseParser {
 
 		return words.concepts();
 	}
-};
+}

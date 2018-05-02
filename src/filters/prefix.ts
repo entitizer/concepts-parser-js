@@ -21,7 +21,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 
 				let value = text.substr(result.index + 1);
 
-				concept.reset(value + concept.value, result.index + 1);
+				concept.reset(value + concept.value, result.index + 1, context.lang);
 
 				return concept.isValid();
 			}

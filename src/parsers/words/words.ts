@@ -73,7 +73,7 @@ export class Words {
 			} else {
 				const text = this.context.text.substring(index, word.index + word.value.length);
 				// debug('added concept', text, word.rightText, index, word.value);
-				const concept = new Concept({ value: text, index });
+				const concept = new Concept({ value: text, index, lang: this.context.lang });
 				concepts.add(concept);
 				firstWord = true;
 			}
@@ -85,8 +85,7 @@ export class Words {
 		return concepts;
 	}
 
-	static create(text: string, index: number, context: Context): Word {
-		return new Word(text, index, context);
+	static create(text: string, index: number): Word {
+		return new Word(text, index);
 	}
-
-};
+}

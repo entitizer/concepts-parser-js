@@ -24,7 +24,7 @@ describe('splitter', function() {
 		})[0];
 		let concepts = splitter.simpleSplit(concept);
 		assert.equal(2, concepts.length);
-		concepts = concept.split('ro');
+		concepts = concept.split();
 		assert.equal(2, concepts.length);
 		assert.equal('Nicolae', concepts[0].value);
 		assert.equal('Timofti', concepts[1].value);
@@ -47,7 +47,7 @@ describe('splitter', function() {
 		let concepts = splitter.simpleSplit(concept);
 		// console.log(concepts);
 		assert.equal(4, concepts.length);
-		concepts = concept.split('en');
+		concepts = concept.split();
 		assert.equal(4, concepts.length);
 		assert.equal('Chill', concepts[0].value);
 		assert.equal('About Proxima Centauri', concepts[1].value);
@@ -60,7 +60,7 @@ describe('splitter', function() {
 		})[0];
 		let concepts = splitter.simpleSplit(concept);
 		assert.equal(2, concepts.length);
-		concepts = concept.split('en');
+		concepts = concept.split();
 		assert.equal(2, concepts.length);
 		assert.equal('Facebook', concepts[0].value);
 		assert.equal('Microsoft', concepts[1].value);

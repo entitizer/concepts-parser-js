@@ -1,14 +1,21 @@
 
+import { getFirstnames } from 'concepts-data';
 import { IModel, Model } from './types';
 import * as utils from './utils';
+import { split } from './splitter';
 
 const MAX_LENGTH: number = 100;
 
+export enum ConceptType {
+	PERSON = 'PERSON'
+}
+
 export interface IConcept extends IModel {
-	reset(value: string, index?: number): void;
+	reset(value: string, index: number, lang: string): void;
 	value: string;
 	abbr: string;
 	isAbbr: boolean;
+	lang: string
 	// name: string;
 	index: number;
 	endIndex: number;
@@ -16,25 +23,32 @@ export interface IConcept extends IModel {
 	endsWithNumber: boolean;
 	countWords: number;
 	atonicValue: string;
+	type: ConceptType
 	isValid(): boolean;
-	split(lang: string): Concept[];
+	split(): Concept[];
 }
 
 /**
  * Concept class
  */
 export class Concept extends Model implements IConcept {
-	constructor(args: { value: string, index: number }) {
+	constructor(args: { value: string, index: number, lang: string }) {
 		super(args);
 
-		this.reset(this.value, this.index);
+		this.reset(this.value, this.index, this.lang);
 	}
 
-	reset(value: string, index?: number): void {
+	reset(value: string, index: number, lang: string): void {
 		if (typeof value !== 'string') {
 			throw new Error('Invalid field `value`');
 		}
 		this.set('value', value);
+
+		if (typeof lang !== 'string' || lang.trim().length !== 2) {
+			throw new Error('Invalid field `lang`');
+		}
+		this.set('lang', lang.trim().toLowerCase());
+
 		if (typeof index === 'number' && index > -1) {
 			this.set('index', index);
 		} else {
@@ -54,6 +68,21 @@ export class Concept extends Model implements IConcept {
 		}
 		if (value[value.length - 1] === '.') {
 			this.set('endsWithDot', true);
+		}
+
+		this.setType();
+	}
+
+	private setType() {
+		const sources = getFirstnames(this.lang);
+		if (!sources || !sources.length) {
+			return
+		}
+		for (let regex of sources) {
+			if (regex.test(this.atonicValue)) {
+				this.type = ConceptType.PERSON;
+				return
+			}
 		}
 	}
 
@@ -75,13 +104,15 @@ export class Concept extends Model implements IConcept {
 		return true;
 	}
 
-	split(lang: string): Concept[] {
-		let splitter = require('./splitter');
-		return splitter.split(this, lang);
+	split(): Concept[] {
+		return split(this);
 	}
 
 	get value(): string {
 		return this.get<string>('value');
+	}
+	get lang(): string {
+		return this.get<string>('lang');
 	}
 
 	get abbr(): string {
@@ -98,12 +129,12 @@ export class Concept extends Model implements IConcept {
 		this.set('isAbbr', value);
 	}
 
-	// get name(): string {
-	// 	return this.get<string>('name');
-	// }
-	// set name(value: string) {
-	// 	this.set('name', value);
-	// }
+	get type(): ConceptType {
+		return this.get<ConceptType>('type');
+	}
+	set type(value: ConceptType) {
+		this.set('type', value);
+	}
 
 	get index(): number {
 		return this.get<number>('index');

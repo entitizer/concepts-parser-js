@@ -20,7 +20,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 				let match = result[0];
 				let value = concept.value.substr(match.length);
 
-				concept.reset(value, concept.index + match.length);
+				concept.reset(value, concept.index + match.length, context.lang);
 
 				return concept.isValid();
 			}

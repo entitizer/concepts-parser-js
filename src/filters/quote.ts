@@ -10,7 +10,7 @@ const QuotationMarks = [
 	['‘', '’'],
 ];
 
-const QuotationMarksReg = QuotationMarks.map(list => list.map(item => new RegExp(`[${item}]`)));
+// const QuotationMarksReg = QuotationMarks.map(list => list.map(item => new RegExp(`[${item}]`)));
 
 const StartQuotationMark = QuotationMarks.reduce<string>((str, item) => str += item[0], '');
 const StartQuotationMarkReg = new RegExp(`[${StartQuotationMark}]`);
@@ -24,7 +24,6 @@ const EndQuotationMarkReg = new RegExp(`[${EndQuotationMark}]`);
 export function filter(concepts: Concept[], context: Context): Concept[] {
 	const newConcepts: Concept[] = [];
 	const text = context.text;
-	const textLength = context.text.length;
 
 	concepts.forEach((concept, index) => {
 		if (index === 0) {
@@ -48,7 +47,8 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 					if (text[concept.index - 2] === ' ') {
 						const newConcept = new Concept({
 							value: text.substring(prevConcept.index, conceptEndIndex + 1),
-							index: prevConcept.index
+							index: prevConcept.index,
+							lang: context.lang,
 						});
 						if (newConcept.isValid()) {
 							newConcepts.splice(newConcepts.length - 1, 1);

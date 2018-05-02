@@ -47,7 +47,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 			const text = context.text.substring(prev.index, concept.index - 2);
 			if (isAbbrOf(text, concept.value)) {
 				prev.abbr = concept.value;
-				prev.reset(text);
+				prev.reset(text, 0, context.lang);
 				// return false;
 			}
 		}
