@@ -7,21 +7,23 @@ import { Context } from '../types';
  * Find concept prefix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const sources = conceptsData.getValidPrefixes(context.lang);
+	const regexes = conceptsData.getValidPrefixes(context.lang);
 
 	return concepts.filter(function (concept) {
 		let text = context.text.substr(0, concept.index);
 
-		for (let i = sources.length - 1; i >= 0; i--) {
-			let regex = sources[i];
-
+		for (let regex of regexes) {
 			let result = regex.exec(text);
 
 			if (result) {
+				let value = text.substr(result.index);
+				let indexSpace = 0;
+				if (/^\s/.test(value)) {
+					indexSpace = 1;
+					value = value.substr(1);
+				}
 
-				let value = text.substr(result.index + 1);
-
-				concept.reset(value + concept.value, result.index + 1, context.lang);
+				concept.reset(value + concept.value, result.index + indexSpace, context.lang);
 
 				return concept.isValid();
 			}

@@ -72,8 +72,9 @@ export function filter(concepts: Concept[], context: Context, options: FilterOpt
 		}
 	}
 
-	for (let i = 0; i < filters.length; i++) {
-		concepts = getFilter(filters[i]).filter(concepts, context);
+	for (let name of filters) {
+		// console.log('filter ' + name + ', ' + filters.length);
+		concepts = getFilter(name).filter(concepts, context);
 	}
 
 	// debug('end filter');

@@ -74,6 +74,7 @@ export class Concept extends Model implements IConcept {
 	}
 
 	private setType() {
+		this.type = undefined;
 		const sources = getFirstnames(this.lang);
 		if (!sources || !sources.length) {
 			return

@@ -3,9 +3,9 @@
 const parser = require('../lib/index');
 const assert = require('assert');
 
-describe('parser', function() {
+describe('parser', function () {
 
-	it('simple concepts', function() {
+	it('simple concepts', function () {
 		const concepts = parser.parse({
 			text: `Europa este un continent. R. Moldova este parte din Europa.`,
 			lang: 'ro'
@@ -17,7 +17,7 @@ describe('parser', function() {
 		assert.equal('Europa', concepts[2].value);
 	});
 
-	it('text end concept', function() {
+	it('text end concept', function () {
 		const concepts = parser.parse({
 			text: `R. Moldova este parte din UE`,
 			lang: 'ro'
@@ -28,7 +28,7 @@ describe('parser', function() {
 		assert.equal('UE', concepts[1].value);
 	});
 
-	it('word spaces', function() {
+	it('word spaces', function () {
 		const concepts = parser.parse({
 			text: `sometimes called Bosnia  Herzegovina or Bosnia & Herzegovina`,
 			lang: 'en'
@@ -40,7 +40,7 @@ describe('parser', function() {
 		assert.equal('Bosnia & Herzegovina', concepts[2].value);
 	});
 
-	it('connect words: Bosnia and Herzegovina', function() {
+	it('connect words: Bosnia and Herzegovina', function () {
 		const concepts = parser.parse({
 			text: 'sometimes called Bosnia-Herzegovina or Bosnia & Herzegovina, abbreviated BiH or B&H, and, in short, often known informally as Bosnia, is a country in Southeastern Europe located on the Balkan Peninsula',
 			lang: 'en'
@@ -50,7 +50,7 @@ describe('parser', function() {
 		assert.equal('Bosnia-Herzegovina', concepts[0].value);
 	});
 
-	it('connect with number: Eurovision 2016', function() {
+	it('connect with number: Eurovision 2016', function () {
 		const concepts = parser.parse({
 			text: 'La Eurovision 2016 vor concura 10 participanti.',
 			lang: 'ro'
@@ -60,7 +60,7 @@ describe('parser', function() {
 		assert.equal('Eurovision 2016', concepts[0].value);
 	});
 
-	it('invalid connect with 2 numbers: Eurovision 2016 18', function() {
+	it('invalid connect with 2 numbers: Eurovision 2016 18', function () {
 		const concepts = parser.parse({
 			text: 'La Eurovision 2016 18 vor concura 10 participanti.',
 			lang: 'ro'
@@ -70,7 +70,7 @@ describe('parser', function() {
 		assert.equal('Eurovision 2016', concepts[0].value);
 	});
 
-	it('invalid connect with numbers: 2016 Eurovision', function() {
+	it('invalid connect with numbers: 2016 Eurovision', function () {
 		const concepts = parser.parse({
 			text: '2016 Eurovision 2016 18 vor concura 10 participanti. 200 Eurovision',
 			lang: 'ro'
@@ -81,7 +81,7 @@ describe('parser', function() {
 		assert.equal('Eurovision', concepts[1].value);
 	});
 
-	it('invalid concepts without letters', function() {
+	it('invalid concepts without letters', function () {
 		const concepts = parser.parse({
 			text: '2016. Eurovision 2016 18 vor concura 10.2 participanti Eu 200. Eurovision',
 			lang: 'ro'
@@ -93,7 +93,7 @@ describe('parser', function() {
 		assert.equal('Eurovision', concepts[2].value);
 	});
 
-	it('name abbr: B. Obama', function() {
+	it('name abbr: B. Obama', function () {
 		const concepts = parser.parse({
 			text: 'V. Filat a fost retinut.',
 			lang: 'ro'
@@ -102,7 +102,7 @@ describe('parser', function() {
 		assert.equal('V. Filat', concepts[0].value);
 	});
 
-	it('name abbr: V. V. Putin', function() {
+	it('name abbr: V. V. Putin', function () {
 		const concepts = parser.parse({
 			text: 'V. V. Putin este presedintele Rusiei.',
 			lang: 'ro'
@@ -112,7 +112,7 @@ describe('parser', function() {
 		assert.equal('Rusiei', concepts[1].value);
 	});
 
-	it('name abbr: VV Putin', function() {
+	it('name abbr: VV Putin', function () {
 		const concepts = parser.parse({
 			text: 'VV Putin este presedintele Rusiei.',
 			lang: 'ro'
@@ -121,7 +121,7 @@ describe('parser', function() {
 		assert.equal('VV Putin', concepts[0].value);
 	});
 
-	it('name abbr: Putin V.', function() {
+	it('name abbr: Putin V.', function () {
 		const concepts = parser.parse({
 			text: 'Putin V. este presedintele Rusiei.',
 			lang: 'ro'
@@ -130,7 +130,7 @@ describe('parser', function() {
 		assert.equal('Putin V.', concepts[0].value);
 	});
 
-	it('name abbr: World War II', function() {
+	it('name abbr: World War II', function () {
 		const concepts = parser.parse({
 			text: 'World War II mistakes and Atom War I',
 			lang: 'en'
@@ -140,7 +140,7 @@ describe('parser', function() {
 		assert.equal('Atom War I', concepts[1].value);
 	});
 
-	it('quotes on word', function() {
+	it('quotes on word', function () {
 		const concepts = parser.parse({
 			text: 'I know "SomeoneNew"',
 			lang: 'en'
@@ -149,7 +149,7 @@ describe('parser', function() {
 		assert.equal('SomeoneNew', concepts[0].value);
 	});
 
-	it('quotes some words', function() {
+	it('quotes some words', function () {
 		const concepts = parser.parse({
 			text: 'I know "Someone Big"',
 			lang: 'en'
@@ -158,7 +158,7 @@ describe('parser', function() {
 		assert.equal('Someone Big', concepts[0].value);
 	});
 
-	it('first quotes some words', function() {
+	it('first quotes some words', function () {
 		const concepts = parser.parse({
 			text: 'I know "SomeoneNew big"',
 			lang: 'en'
@@ -167,7 +167,7 @@ describe('parser', function() {
 		assert.equal('SomeoneNew', concepts[0].value);
 	});
 
-	it('Russian quotes', function() {
+	it('Russian quotes', function () {
 		const concepts = parser.parse({
 			text: `«Сегодня в пункте пропуска «Новые Яриловичи» во время прохождения пограничного контроля попросил политического убежища гражданин России. Он обратился к пограничникам Черниговского отряда с заявлением о получении статуса беженца на территории Украины в связи с политическим преследованием в России», — сообщила Погранслужба Украины.`,
 			lang: 'ru'
@@ -177,7 +177,7 @@ describe('parser', function() {
 		assert.equal('Новые Яриловичи', concepts[0].value);
 	});
 
-	it('parse 100 times', function() {
+	it('parse 100 times', function () {
 		this.timeout(500);
 		for (let i = 0; i < 100; i++) {
 			parser.parse({
@@ -186,5 +186,16 @@ describe('parser', function() {
 				country: 'md'
 			});
 		}
+	});
+
+	it('Place "Person Name"', function () {
+		const concepts = parser.parse({
+			text: 'Azi la liceul Ion Creanga va...',
+			lang: 'ro',
+			country: 'md'
+		});
+		assert.equal(concepts.length, 1);
+		assert.equal(concepts[0].value, 'liceul Ion Creanga');
+		assert.equal(concepts[0].type, undefined);
 	});
 });

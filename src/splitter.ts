@@ -9,8 +9,8 @@ import { Concept } from './concept';
  * @return {Boolean}         Is valid or not
  */
 function isValid(concept: Concept): boolean {
-	let parts = concept.value.split(/ /g);
-	if (isLower(parts[0]) || parts.length > 0 && isLower(parts[parts.length - 1])) {
+	// let parts = concept.value.split(/ /g);
+	if (isLower(concept.value)) {
 		return false;
 	}
 	return concept.isValid();
@@ -49,18 +49,35 @@ function canSplit(concept: Concept): boolean {
  * @return {Array}            Concepts container
  */
 function createConcepts(concept: Concept, separator: string, index: number): Concept[] {
-	const list: Concept[] = [];
+	let list: Concept[] = [];
 
 	let c = createConcept(concept.value.substr(0, index), concept.index, concept.lang);
 	if (isValid(c)) {
-		list.push(c);
+		if (c.countWords > 1 && endsWithLowercaseWord(c.value)) {
+			list = list.concat(createConcepts(c, ' ', c.value.lastIndexOf(' ')));
+		} else {
+			list.push(c);
+		}
 	}
 	index += separator.length;
 	c = createConcept(concept.value.substr(index), concept.index + index, concept.lang);
 	if (isValid(c)) {
-		list.push(c);
+		if (c.countWords > 1 && startsWithLowercaseWord(c.value)) {
+			list = list.concat(createConcepts(c, ' ', c.value.indexOf(' ')));
+		} else {
+			list.push(c);
+		}
 	}
 	return list;
+}
+
+function endsWithLowercaseWord(text: string) {
+	const words = text.split(/\s+/g);
+	return words[words.length - 1].toLowerCase() === words[words.length - 1];
+}
+function startsWithLowercaseWord(text: string) {
+	const words = text.split(/\s+/g);
+	return words[0].toLowerCase() === words[0];
 }
 
 /**
@@ -105,6 +122,8 @@ export function simpleSplit(concept: Concept): Concept[] {
 		}
 	}
 
+	list = uniqConcepts(list);
+
 	return list;
 }
 
@@ -126,6 +145,10 @@ export function split(concept: Concept): Concept[] {
 		list = list.concat(simpleSplit(concept));
 	}
 
+	return list;
+}
+
+function uniqConcepts(list: Concept[]) {
 	let keys: any = {};
 	let key: string;
 

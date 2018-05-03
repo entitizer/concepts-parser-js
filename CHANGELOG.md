@@ -1,5 +1,11 @@
 # Changelog
 
+### v1.3.1 - May 3, 2018
+
+- fix `prefix` filter
+- fix Concept reset `type`
+- added tests
+
 ### v1.3.0 - May 2, 2018
 
 - added concept.lang
