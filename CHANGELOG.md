@@ -5,6 +5,7 @@
 - fix `prefix` filter
 - fix Concept reset `type`
 - added tests
+- upgraded `concepts-data`@v0.4.2
 
 ### v1.3.0 - May 2, 2018
 

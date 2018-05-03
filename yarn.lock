@@ -35,9 +35,9 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concepts-data@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/concepts-data/-/concepts-data-0.4.1.tgz#8f06e6fa9bf47f48d93e706e9083e7bc62815546"
+concepts-data@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/concepts-data/-/concepts-data-0.4.2.tgz#599bbeaec65503a17cd5307cd1384c0cc3fe8c81"
 
 debug@2.6.8:
   version "2.6.8"
