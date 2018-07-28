@@ -5,9 +5,21 @@ Nodejs module for extracting concepts from text.
 A Concept is a part of a text that may be a [Named entity](https://en.wikipedia.org/wiki/Named_entity). We use Concepts for learning new named-entities, for searching known entities, for identifying entity names(synonyms, abbreviations), etc.
 
 ## Usage
+
+JavaScript:
+
+```js
+const parser = require('concepts-parser');
+
+const concepts = parser.parse({ text: 'Some text', lang: 'ru', country: 'ru' });
 ```
-var parser = require('concepts-parser');
-var concepts = parser.parse({text: 'Some text', lang: 'ru', country: 'ru'});
+
+TypeScript:
+
+```ts
+import { parse } from 'concepts-parser';
+
+const concepts = parse({ text: 'Some text', lang: 'ru', country: 'ru '});
 ```
 
 ## API
