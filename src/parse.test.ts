@@ -199,3 +199,13 @@ test('Place "Person Name"', t => {
 	t.is(concepts[0].value, 'liceul Ion Creanga');
 	t.is(concepts[0].type, undefined);
 });
+
+test('москва', t => {
+	const concepts = parse({
+		text: 'Москва согласовали три митинга против пенсионной реформы',
+		lang: 'ru',
+		country: 'ru'
+	});
+	t.is(concepts.length, 1);
+	t.is(concepts[0].value, 'Москва');
+});
