@@ -67,3 +67,7 @@ export function pick(obj: any, props: string[]): any {
 	}
 	return o;
 }
+
+export function uniq<T>(items: T[]) {
+    return items.filter((value, index, self) => self.indexOf(value) === index);
+}

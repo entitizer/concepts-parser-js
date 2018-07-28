@@ -1,0 +1,44 @@
+(\w*')?Isola di
+(\w*')?monti
+(\w+')?aeroporto di
+(\w+')?Università (di|degli|del)
+(\w+')?Università per tranieri (di|degli|del)
+(\w+')Istituto
+(\w+')uragano
+Accademia di belle arti( d\w+)?
+banda (della|di|delle|dal|del)
+basilica( (de|di))?
+cardinal
+cascate( d\w+)?
+Castello( (de|di))?
+cattedrale d\w+
+Cattedrale( (de|di))?
+chiesa( (de|di))?
+Cimitero( monumentale)?( (di|delle|de))?
+circuito di
+corte
+Corte costituzionale \w{2,5}
+fiume
+golfo
+isol(e|a)
+Isola
+isole
+mar(e)?
+monte
+ospedal(e|i)
+Palazzo
+papa
+Parco( nazionale)?
+piazza( d\w+)?
+policlinic\w+( \w+)?
+premio
+princip(e|ino)
+principessa
+provincia di
+regina
+sinagoga di
+sindrome( \w+)?
+stadio
+stazione( (di|delle|de))?
+università( d\w+)?
+val

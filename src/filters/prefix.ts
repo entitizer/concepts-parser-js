@@ -1,13 +1,13 @@
 
-import * as conceptsData from 'concepts-data';
 import { Concept } from '../concept';
 import { Context } from '../types';
+import { getValidPrefixes } from '../data';
 
 /**
  * Find concept prefix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const regexes = conceptsData.getValidPrefixes(context.lang);
+	const regexes = getValidPrefixes(context.lang);
 
 	return concepts.filter(function (concept) {
 		let text = context.text.substr(0, concept.index);

@@ -1,0 +1,70 @@
+
+[îi]nchiso(area|rii)
+aeroportul\w*
+aeroportul\w* de la
+aeroportul\w* din
+aren(a|ei)
+Arhiepiscop\w* de
+biseric(a|ii)
+cantonul(ui)?
+cartierul\w*
+cascada
+cascadei
+castelul
+Castelul\w* regal( de la)?
+Catedra\w+ mitropolitan\w+( din)?
+cimitirul\w*
+colegiul(ui)?
+contes[ăa] de
+contesa
+de[sș]ertul
+dinasti(a|ei)
+dosarul
+dosarul\w*
+duces[ăa] de
+ducesa
+f[aâ]nt[aâ]n(ii|a)
+Festivalul\w*( Interna[țt]ional| na[țt]ional|)?
+fluviul(ui)?
+Gazoductu\w*
+golful(ui)?
+hotelul
+insula
+insulei
+insulele
+insulelor
+jude[tț]ul\w*
+lacul
+liceul(ui)?
+m[aă]n[aă]stir(ea|ii)
+m[aă]n[aă]stir\w+
+mun[tț]ii
+muntele
+muntelui
+oceanul
+palatul
+papa
+papei
+parcul(ui)?
+partidul\w*
+pasajul\w*
+pia[tț]a
+podul
+podului
+prefectur(a|ii)
+premiil\w+
+premiu\w*
+prin[tț]es(a|ei)
+prin[tț]ul\w*
+Principel\w+
+principes(a|ei)
+provinci(a|ei)
+r[aâîi]ul\w*
+raionul\w*
+regiun(ea|ei|ii)
+Sectorul(ui)?
+spitalul
+stadionul\w*
+turnul(ui)?
+universitatea
+vulcanul\w*

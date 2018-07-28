@@ -1,0 +1,2 @@
+d'oro
+mondiale [\w'’]+

@@ -1,7 +1,7 @@
 
-import * as conceptsData from 'concepts-data';
 import { isLower } from './utils';
 import { Concept } from './concept';
+import { getSplitWords } from './data';
 
 /**
  * Determines if a splited concept is valid
@@ -91,7 +91,7 @@ export function splitByWords(concept: Concept, words?: string[]): Concept[] {
 	let word: string;
 
 	if (!words) {
-		words = conceptsData.getSplitWords(concept.lang);
+		words = getSplitWords(concept.lang);
 	}
 
 	for (let i = 0; i < words.length; i++) {

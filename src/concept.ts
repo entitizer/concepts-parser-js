@@ -1,8 +1,8 @@
 
-import { getFirstnames } from 'concepts-data';
 import { IModel, Model } from './types';
 import * as utils from './utils';
 import { split } from './splitter';
+import { getFirstnames } from './data';
 
 const MAX_LENGTH: number = 100;
 

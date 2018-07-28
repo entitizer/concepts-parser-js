@@ -1,0 +1,997 @@
+(august|septembrie|octombrie|noiembrie|decembrie)( \d+)?
+(autoritate(a)?|autoritatii)
+(campio\w+ moldovei)
+(ianuarie|februarie|martie|aprilie|mai|iunie|iulie)( \d+)?
+(sala|salii) sporturilor
+[ivx]+-a
+\d+ ani
+\d+g
+absolut
+academia
+academie
+academiei
+acces
+acces direct
+acea
+aceasta
+aceea
+acei
+aceia
+acel
+acela
+acele
+acelea
+acest
+acesta
+aceste
+acestea
+acesti
+acestia
+acolo
+acord
+acordul
+acordul\w* de asociere
+acordului
+acum
+adam
+adevar(ul)?
+adevarul live
+admitere liceu \d{4}
+adr
+adunare(a)?
+adunarea generala
+aeroport\w*
+afla
+afla aici
+agenda digitala
+agenti\w+
+agri
+ai
+aia
+aiba
+aici
+aida
+al
+ala
+alb
+ale
+alea
+ali
+alianta
+aliantei
+altceva
+altcineva
+am
+analiza
+anatomie
+anii \d+
+antena
+antene
+antenei
+antenele
+antenelor
+anul \d+
+aparar\w+
+ar
+are
+arena
+arhiepiscop\w*
+arie
+armat(a|ei)
+as
+asa
+asadar
+asemenea
+asta
+astazi
+astea
+astia
+asupra
+atac
+atentie
+ati
+atunci
+au
+audio
+aur
+auto
+autor(ul)?
+autostrada
+autostrazi
+avea
+avem
+aveti
+avocat(ul)
+azi
+balaci
+balet
+ban
+banc
+bani
+bar
+bataia maxima
+batali[ea]
+bell
+bere
+best
+beto
+biblioteca
+bilant
+bine
+biroul
+biroului
+blog
+boloni
+bomba
+boy
+brest
+brig
+brigada
+broasca
+brutarie
+bucur
+bucurie
+bulevard\w*
+buna
+bursa
+butoi
+c[ai]ntec
+ca
+cabinet\w*
+caci
+calea( \d+)?
+calitate
+camatar\w*
+camer[ae]
+camerei
+campania
+can
+cand
+cap
+capacitate
+capacitate \d{4}
+capital
+capitalei
+capitan
+capitol
+capricorn
+car
+care
+carei
+carla
+carnaval
+carne
+caror
+carte
+carui
+castel
+castiga( aici)?
+cat
+cate
+catedrala
+cati
+catre
+catva
+caut
+cavaler
+ce
+cel
+celsius
+cent
+centru
+centrul
+centrului
+ceo
+cer
+cercetar\w+
+ces
+cetate
+cetatea
+cetatean\w*
+cetatii
+ceva
+chanel
+chiar
+children
+chimie
+chiriches
+chis
+ciclop
+ciment
+cinci
+cind
+cine
+cineva
+circul
+ciresar
+cit
+cite
+citi
+citva
+city
+clima
+cod galben
+cod portocaliu
+cod rosu
+codru
+codul
+codul\w* electoral
+coeziune
+colegiul medicilor
+com
+comenteaza
+comert
+comis
+comisariatul
+comisariatului
+comisi\w+
+comitetul\w* executiv
+comunicare
+con
+concert(ul)?
+conclav
+conferinta
+congresul
+congresul\w* civic
+consiliu
+consiliu\w* de administratie
+consiliu\w* local
+consiliu\w* national
+consiliu\w+ judetean
+consiliul\w*
+consiliul\w* republican
+constantin
+constituti\w+
+consultanta
+contestatii(le)?
+contra
+control
+coroana
+corona
+corpul de control( al guvernului| al ministrului| al primului[ -]ministru)?
+cric
+criz[ea]
+cronica
+cu
+cuc
+cultura
+cum
+cumva
+cuptor
+curand
+curind
+curt\w+ de apel
+curtea
+cut
+cutremurato\w+
+cuvinte
+da
+daca
+dar
+data
+datorita
+dau
+de
+de necrezut
+deci
+deco
+deja
+denar
+deoarece
+departe
+deputat\w*
+desi
+design
+destin
+diamant
+dieter
+dimineata
+din
+din \d+\b
+dinaintea
+dinam
+dintr-
+dintre
+dip
+direcatia
+direct sport\.ro
+directia
+directiei
+directoratul\w*
+dn\d+
+doamna
+doc
+doi
+doilea
+dolea
+dom
+doua
+drept
+dst
+duminica
+dupa
+dupa \d+
+ea
+editi\w* special\w+
+educati\w+
+ei
+el
+elba
+ele
+energie
+eram
+erou
+est
+este
+esti
+eternitate
+eu
+euro
+euro \d
+evaluare
+eveniment\w*
+exclusiv
+exotic
+explozie
+extraordinar
+fabrica
+face
+facultate
+fara
+farmacie
+fata
+fecioara
+federati[ae]
+femei[ea]
+fericire
+festival
+fi
+fie
+fiecare
+fier
+fight cluj
+fii
+film(ul)?
+filme
+fim
+finala greilor
+finala pentru mondial
+finante
+fiti
+fiu
+fizica
+florea
+florii
+foc
+focus
+fondul(ui)?
+formula
+formulei
+forum radio
+foto
+foto hot
+fotografia zilei
+friends
+frontier[ae]
+frumoasa
+frumos
+fulger
+fundati(a|ei)
+gafa
+galerie
+galerie foto
+game
+gandul live
+gary
+gaz
+general
+gheara
+gheata
+ghiocel
+ghz
+gloria
+gmt
+gol
+golf
+gradina
+gradinita
+gratie
+grenoble
+grup
+grupa
+grupei
+guvernatorul\w*
+halba
+haos
+harta
+health reform
+heat
+hertz
+hexagon
+hotar[ai]re(a)? de guvern
+iar
+iarna
+icc
+icoana
+ics
+id
+ieri
+ii
+iii
+il
+ilie
+im
+imi
+impact
+impotriva
+in
+in direct
+in direct pro tv
+in direct protv si voyo\.ro
+ina
+inainte
+inaintea
+incat
+incepand
+incit
+incotro
+incredibil
+indurare
+inginerie
+inima
+inspectorat\w+ de politie
+inspectoratul scolar judetean
+institutul
+interviu\w*
+intr-o
+intr-un
+intra( aici)?
+intre
+intrucat
+intrucit
+iod
+isj
+istorie
+istres
+italia 1
+iti
+iv
+jet
+jocuri
+jocuri de putere
+joi
+joia
+joker
+jos
+jos \w+
+judecator\w*
+judecatoria
+judecatoriei
+judetean
+judiciar
+justiti(a|ei)
+kwh
+la
+langa
+le
+lege
+legea
+legi
+legii
+lei
+leni
+les guignols
+leu
+leul
+li
+libertat(ea|ii)
+liceu
+lider(ul)?
+liga
+ligea
+ligii
+limba
+limba si literatura romana
+linga
+litere
+live
+live aici
+live score
+live sport\.ro si voyo\.ro
+live text
+logica
+lombard
+lor
+loterie
+loto \d
+lotus
+low
+luciu
+lui
+lume
+lumea
+lumina
+luni
+m[ai]ine
+ma
+macar
+mai
+maine
+man
+maratonul
+maratonului
+mare
+mari
+marta
+marti
+martor
+mazare
+mea
+mecanica
+meci
+meci trasnet
+media
+mediafax talks
+medic(ul|i)?
+mediu
+mediu de afaceri
+mega
+mei
+mele
+meme
+mereu
+meu
+mhz
+mi
+mici
+mie
+miercuri
+miine
+min
+mine
+minister(ul\w*)?
+ministerul
+ministerului
+ministru\w*
+mintea
+minune
+miracol
+miscare(a)?
+misiune
+misiunea
+misiunii
+mit
+mmhg
+moarte
+mondial(e)?
+monitor
+morar
+morsi
+moser
+motoc
+mp\d
+mucenici
+mult
+multa
+multi
+multumesc
+munca
+national
+ne
+nebunie
+nemaipomenit
+neo
+nevoie
+news
+news alert
+news online
+next
+ni
+nicaieri
+nici
+nicolau
+nimeni
+nimeri
+nimic
+nino
+niste
+noapte(a)?
+noastra
+noastre
+noi
+nok
+nord
+norii
+noroc
+nostri
+nostru
+noua
+noul
+nu
+o
+oameni
+oamenii
+ocean
+oficial
+oglinda
+omul
+oncologie
+onesti
+opinie
+opt
+ora
+ora de prosport
+orasul
+orchestra
+ordinea
+orga
+organizati[ae]
+ori
+oricand
+oricare
+oricat
+orice
+oricind
+oricine
+oricit
+oricum
+oriunde
+orizont
+ortopedie
+pace
+padur[ei]
+padurea
+pana
+parcul
+parlament\w*
+parodie
+patra
+patrick
+patrimoniu
+patriot\w*
+patru
+patrulea
+pe
+peninsula
+pentru
+personalitat\w+
+pescuit
+pest[ei]
+peste
+peste \d+
+pesti(i)?
+petri
+ph
+piata
+pic
+pictura
+pilat
+pina
+piper
+piscicultura
+placinta
+plan
+planeta
+plop
+poate
+poezi[ea]
+pol
+poli
+politi\w+ local[ea]
+politica
+polo
+portocaliu
+posta
+pot
+poveste
+povesti
+power
+poze
+praf
+prea
+prefectur(a|ii)
+premier\w*
+presedinte\w*
+presedintele parlamentului
+presedinti\w+
+prim plan
+prim-ministru
+prim-ministrul\w* roman\w+
+prima
+primar
+primaria
+primarie(i)?
+primarul
+primarului
+primavara
+primul
+prin
+printr-
+printr-un
+pro
+problem[ea]
+procuror\w*
+profesionistii
+profesor
+prognoza meteo
+program
+programul
+prometeu
+puncte de reflectie
+putere
+puterea
+putin
+putina
+rac
+radacini
+radio
+rai
+raport
+rasarit
+rat
+razboi(ul)?
+realitate
+realul
+realului
+reci
+record
+regat(ul)?
+rege
+regie
+regulamentul\w* parlamentului
+related posts
+renastere
+renasterea
+renasterii
+repartizare(a)?
+replica
+reportaj
+republica
+resedint\w+ de stat
+resedinta
+retina
+revista
+richter
+rock
+rog
+romantic
+ron
+ronaldo
+rosie
+rostul zilei
+rosu
+rss
+ruby
+rus
+russi
+rutiera
+sa
+sai
+saki
+sala
+sale
+salon
+salon\w* auto
+salonul de carte
+salvare(a)?
+sambata
+san
+sana
+sanatat\w+
+saptam[ia]na
+sapte
+sara
+sarbatoare
+sase
+sau
+scandal
+sclavi
+scoala
+scoli
+scorpion
+se
+secret
+secretul
+sectia
+sectiei
+sectorul
+securitat(e|ea|ii)?
+sefa
+seful
+semifinalele cupei
+senat
+sera
+serie a
+serviciu\w*
+sfant
+sfanta treime
+show
+show total
+si
+sif
+simbata
+singuratate
+sint
+sintem
+sinteti
+sinteza
+sinteza zilei
+sisi
+sistematizarea
+slide
+sms
+soare
+soarelui
+soc
+soluti[ie]
+soseaua stefan cel mare
+spa
+spate
+spatiu
+special
+spedition
+spirit
+spital(ul)?
+spitalul judetean
+sport
+spre
+srl
+star
+stat
+statia
+statut\w*
+stelei
+stiri
+stiri \w+\.\w+
+stirile pro tv
+stiu
+stiuca
+stomatologie
+stop cadru
+strainul
+sub
+sud
+suflet
+sunt
+suntem
+sunteti
+supercupa
+suta
+ta
+tai
+tale
+talent
+tamerlan
+tara
+tata
+tatu
+tau
+taur
+te
+teatru
+tehnica
+tehnologic
+tei
+teixeira
+televiziun\w+
+teologie
+tesa
+the human body
+ti
+tie
+tigru
+timp
+tine
+tineret
+tineretului
+toata
+toate
+togo
+tomorrow
+top stiri
+top( \d+)?
+torje
+torres
+tot
+toti
+totodata
+totul
+totusi
+tragedi[a|e]
+tragedie
+transport
+tratat(ul)?
+tratatului
+trebuie
+trei
+treia
+treilea
+tribuna
+tribunal
+tribunalul
+tu
+turism
+tutun
+twh
+ultima
+ultima ora
+ultimul
+umbra
+un
+una
+unde
+undeva
+unei
+uneia
+unele
+uneori
+uni
+unii
+unirea
+united
+uniunea
+uniunii
+universitat\w+
+unor
+unora
+unu
+unui
+unuia
+unul
+ups
+urmareste incont\.ro
+utc
+va
+valea
+valea mare
+vara
+vei
+verde
+verdict
+verdictul
+vest
+veste(a)?
+vezi
+vezi aici
+vi
+viata
+vic
+victori[ea]
+video
+vii
+viitor
+viitorul
+vin
+vinci
+vinerea
+vineri
+vitamina \w
+voastra
+voastre
+voda
+voi
+voievod
+vom
+vostri
+vostru
+voua
+vreau
+vreme
+vremea
+vreo
+vreun
+vulcan
+west point
+xx
+xxx
+yes
+zece
+zero
+zi
+ziarul
+zice
+zile
+ziua
+ziua judecatii
+ziua portilor deschise
+zoe

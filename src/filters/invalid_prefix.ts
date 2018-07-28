@@ -1,14 +1,13 @@
 
-import * as conceptsData from 'concepts-data';
-
 import { Concept } from '../concept';
 import { Context } from '../types';
+import { getInvalidPrefixes } from '../data';
 
 /**
  * Find concept prefix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const sources = conceptsData.getInvalidPrefixes(context.lang);
+	const sources = getInvalidPrefixes(context.lang);
 
 	return concepts.filter(function (concept) {
 		for (let i = sources.length - 1; i >= 0; i--) {

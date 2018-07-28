@@ -1,13 +1,13 @@
 
-import * as conceptsData from 'concepts-data';
 import { Concept } from '../concept';
 import { Context } from '../types';
+import { getKnownConcepts } from '../data';
 
 /**
  * Find known concepts
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const sources = conceptsData.getKnownConcepts(context.lang);
+	const sources = getKnownConcepts(context.lang);
 
 	const newconcepts: Concept[] = [];
 

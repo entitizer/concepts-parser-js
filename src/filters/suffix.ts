@@ -1,14 +1,13 @@
 
-import * as conceptsData from 'concepts-data';
-
 import { Concept } from '../concept';
 import { Context } from '../types';
+import { getValidSuffixes } from '../data';
 
 /**
  * Find concept suffix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const sources = conceptsData.getValidSuffixes(context.lang);
+	const sources = getValidSuffixes(context.lang);
 
 	return concepts.filter(function (concept) {
 		let text = context.text.substr(concept.index + concept.value.length);
