@@ -20,7 +20,7 @@
     "build": "tsc && yarn build-invalid-concepts && yarn build-firstnames"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "repository": {
     "type": "git",
