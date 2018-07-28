@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.4.0 - July 28, 2018
+
+- removed `concepts-data` deppendency;
+- `ava` tests;
+
 ### v1.3.1 - May 3, 2018
 
 - fix `prefix` filter
