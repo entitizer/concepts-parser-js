@@ -1,7 +1,6 @@
 
 import { parse } from './parse';
 import test from 'ava';
-import { Concept } from './concept';
 
 
 test('invalid prefixes: President Barak Obama->Barak Obama', t => {
@@ -111,27 +110,4 @@ test('quotes', t => {
 	})
 	t.is(concepts[0].value, 'Teatrul Național "Mihai Eminescu"');
 	t.is(concepts[1].value, 'Teatrul Național de Operă și Balet „Maria Bieșu”');
-});
-
-test('split_type', t => {
-	const filter = require('../lib/filters/split_type').filter;
-	const concepts = [
-		new Concept({ value: 'Chisinau', index: 0, lang: 'ro' }),
-		new Concept({ value: 'Mihai Eminescu și Ion Creangă', index: 50, lang: 'ro' }),
-		new Concept({ value: 'Ipotesti', index: 100, lang: 'ro' }),
-		new Concept({ value: 'Adrian Ursu', index: 150, lang: 'ro' }),
-		new Concept({ value: 'Mihai Eminescu și Ion Creangă', index: 50, lang: 'ro' }),
-		new Concept({ value: 'Adrian Ursu', index: 150, lang: 'ro' }),
-	];
-
-	const filteredConcepts = filter(concepts);
-
-	t.is(filteredConcepts[0].value, 'Chisinau');
-	t.is(filteredConcepts[1].value, 'Mihai Eminescu');
-	t.is(filteredConcepts[2].value, 'Ion Creangă');
-	t.is(filteredConcepts[3].value, 'Ipotesti');
-	t.is(filteredConcepts[4].value, 'Adrian Ursu');
-	t.is(filteredConcepts[5].value, 'Mihai Eminescu');
-	t.is(filteredConcepts[6].value, 'Ion Creangă');
-	t.is(filteredConcepts[7].value, 'Adrian Ursu');
 });

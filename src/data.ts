@@ -143,9 +143,9 @@ export function getValidSuffixes(lang: string): RegExp[] {
 	return get<RegExp[]>('valid_suffixes', lang);
 }
 
-export function getFirstnames(lang: string): RegExp[] {
-	return get<RegExp[]>('firstnames', lang);
-}
+// export function getFirstnames(lang: string): RegExp[] {
+// 	return get<RegExp[]>('firstnames', lang);
+// }
 
 export function getLanguages(): string[] {
 	return LANGUAGES;

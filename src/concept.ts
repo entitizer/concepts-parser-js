@@ -2,30 +2,24 @@
 import { IModel, Model } from './types';
 import * as utils from './utils';
 import { split } from './splitter';
-import { getFirstnames } from './data';
 
 const MAX_LENGTH: number = 100;
 
-export enum ConceptType {
-	PERSON = 'PERSON'
-}
-
 export interface IConcept extends IModel {
-	reset(value: string, index: number, lang: string): void;
-	value: string;
-	abbr: string;
-	isAbbr: boolean;
+	reset(value: string, index: number, lang: string): void
+	value: string
+	abbr: string
+	isAbbr: boolean
 	lang: string
 	// name: string;
-	index: number;
-	endIndex: number;
-	endsWithDot: boolean;
-	endsWithNumber: boolean;
-	countWords: number;
-	atonicValue: string;
-	type: ConceptType
-	isValid(): boolean;
-	split(): Concept[];
+	index: number
+	endIndex: number
+	endsWithDot: boolean
+	endsWithNumber: boolean
+	countWords: number
+	atonicValue: string
+	isValid(): boolean
+	split(): Concept[]
 }
 
 /**
@@ -68,22 +62,6 @@ export class Concept extends Model implements IConcept {
 		}
 		if (value[value.length - 1] === '.') {
 			this.set('endsWithDot', true);
-		}
-
-		this.setType();
-	}
-
-	private setType() {
-		this.type = undefined;
-		const sources = getFirstnames(this.lang);
-		if (!sources || !sources.length) {
-			return
-		}
-		for (let regex of sources) {
-			if (regex.test(this.atonicValue)) {
-				this.type = ConceptType.PERSON;
-				return
-			}
 		}
 	}
 
@@ -128,13 +106,6 @@ export class Concept extends Model implements IConcept {
 	}
 	set isAbbr(value: boolean) {
 		this.set('isAbbr', value);
-	}
-
-	get type(): ConceptType {
-		return this.get<ConceptType>('type');
-	}
-	set type(value: ConceptType) {
-		this.set('type', value);
 	}
 
 	get index(): number {

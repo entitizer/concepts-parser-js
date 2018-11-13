@@ -197,7 +197,6 @@ test('Place "Person Name"', t => {
 	});
 	t.is(concepts.length, 1);
 	t.is(concepts[0].value, 'liceul Ion Creanga');
-	t.is(concepts[0].type, undefined);
 });
 
 test('москва', t => {
