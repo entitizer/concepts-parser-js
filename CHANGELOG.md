@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.5.0 - November 13, 2018
+
+- removed filter: `split_type`
+- A concept has no `type` property
+
 ### v1.4.0 - July 28, 2018
 
 - removed `concepts-data` deppendency;
