@@ -1,6 +1,22 @@
 
 import * as data from './data';
 import test from 'ava';
+import { isRegExp } from 'util';
+
+
+test('suffix complex items', t => {
+    const items = data.getValidSuffixes('ru');
+
+    t.true(items.length > 0);
+
+    t.true(isRegExp(items[0].prefix))
+})
+
+test('prefixes', t => {
+    const items = data.getValidPrefixes('ru');
+
+    t.true(items.length > 0);
+})
 
 const LANGUAGES = data.getLanguages();
 const NAMES = data.getNames();
@@ -32,7 +48,7 @@ LANGUAGES.forEach(function (lang) {
                                 foundWord = true;
                             }
                         } else {
-                            if (dataWord.test(testWord)) {
+                            if (isRegExp(dataWord) && dataWord.test(testWord)) {
                                 foundWord = true;
                             }
                         }

@@ -15,13 +15,18 @@ const NAMES: string[] = [
 	'firstnames',
 ];
 
-type DataType = RegExp[];
+type DataType = RegExp[] | SuffixDataItem[];
 
 interface IBuilder {
 	[index: string]: (items: string[]) => DataType
 }
 interface IData {
 	[index: string]: DataType | string[]
+}
+type SuffixDataItem = {
+	reg: RegExp
+	prefix?: RegExp
+	concat?: boolean
 }
 
 const DATA: IData = {};
@@ -42,10 +47,40 @@ const builders: IBuilder = {
 		return items.length > 0 ? [new RegExp(`^(${items.join('|')})$`, 'i')] : [];
 	},
 	valid_prefixes: function (items: string[]): RegExp[] {
-		return items.length > 0 ? [new RegExp(`(\\b|\\s)(${items.join('|')}) $`, 'i')] : [];
+		return items.length > 0 ? [new RegExp(`(^|\\b|\\s)(${items.join('|')}) $`, 'i')] : [];
 	},
-	valid_suffixes: function (items: string[]): RegExp[] {
-		return items.length > 0 ? [new RegExp(`^ (${items.join('|')})(\\b|\\s)`, 'i')] : [];
+	valid_suffixes: function (items: string[]): SuffixDataItem[] {
+		if (items.length === 0) {
+			return [];
+		}
+		const simpleList: string[] = []
+		const complexList: SuffixDataItem[] = []
+		items.forEach(item => {
+			item = item.trim();
+			const parts = item.split(/\s*\t\s*/g);
+			if (parts.length === 0) {
+				throw new Error(`Invalid suffix line`);
+			}
+			if (parts.length === 1) {
+				simpleList.push(item);
+			} else {
+				const concat = parts[1] === '1' || parts.length > 2 && parts[2] === '1' || undefined;
+				const prefix = parts[1].length > 1 ? new RegExp(`(^|\\b|\\s)(${parts[1]})$`, 'i') : undefined;
+				complexList.push({
+					reg: new RegExp(`^ (${parts[0]})`, 'i'),
+					concat,
+					prefix,
+				})
+			}
+		});
+
+		if (simpleList.length) {
+			complexList.push({
+				reg: new RegExp(`^ (${simpleList.join('|')})(\\b|\\s)`, 'i')
+			})
+		}
+
+		return complexList;
 	},
 	firstnames: function (items: string[]): RegExp[] {
 		return items.length > 0 ? [new RegExp(`^(${items.join('|')})[ -]`)] : [];
@@ -59,14 +94,16 @@ function getFileData(file: string): string[] {
 	} catch (e) {
 		return [];
 	}
-	content = content.trim();
-	content = content.replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n');
-	content = content.replace(/^##[^\n]*/g, '');
-	content = content.replace(/\n##[^\n]*/g, '\n');
-	content = content.trim();
-	content = content.replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n');
+	content = content.replace(/\r+/g, '').trim();
 
-	return content.trim().split(/\n+/g);
+
+	return content.split(/\n/g).filter(item => {
+		item = item.trim();
+		if (item.length < 1 || item[0] === '#') {
+			return false;
+		}
+		return true;
+	})
 }
 
 function load(name: string, lang: string, country?: string): string[] {
@@ -96,7 +133,7 @@ function build(name: string, lang: string, country?: string): DataType | string[
 	return data;
 }
 
-export function get<T extends string[] | RegExp[]>(name: string, lang: string): T {
+export function get<T extends string[] | RegExp[] | SuffixDataItem[]>(name: string, lang: string): T {
 	if (!name) {
 		throw new Error('param `name` is required');
 	}
@@ -139,8 +176,8 @@ export function getValidPrefixes(lang: string): RegExp[] {
 	return get<RegExp[]>('valid_prefixes', lang);
 }
 
-export function getValidSuffixes(lang: string): RegExp[] {
-	return get<RegExp[]>('valid_suffixes', lang);
+export function getValidSuffixes(lang: string) {
+	return get<SuffixDataItem[]>('valid_suffixes', lang);
 }
 
 // export function getFirstnames(lang: string): RegExp[] {

@@ -111,3 +111,25 @@ test('quotes', t => {
 	t.is(concepts[0].value, 'Teatrul Național "Mihai Eminescu"');
 	t.is(concepts[1].value, 'Teatrul Național de Operă și Balet „Maria Bieșu”');
 });
+
+test('conditional suffix & concat', t => {
+	let concepts = parse({
+		text: `Министерство внутренних дел Республики Молдова является одним из девяти министерств Правительства Республики Молдова`,
+		lang: 'ru'
+	});
+	// console.log(concepts);
+	t.is(2, concepts.length);
+	t.is('Министерство внутренних дел Республики Молдова', concepts[0].value);
+	t.is('Правительства Республики Молдова', concepts[1].value);
+});
+
+test('conditional suffix: Министерство молодёжи и спорта', t => {
+	let concepts = parse({
+		text: `Министерство молодёжи и спорта является одним из девяти министерств Правительства Республики Молдова`,
+		lang: 'ru'
+	});
+	// console.log(concepts);
+	t.is(2, concepts.length);
+	t.is('Министерство молодёжи и спорта', concepts[0].value);
+	t.is('Правительства Республики Молдова', concepts[1].value);
+});
