@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.5.2 - November 22, 2018
+
+- complex valid suffixes
+
 ### v1.5.1 - November 22, 2018
 
 - validate concepts alter splitting
