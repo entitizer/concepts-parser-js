@@ -1,7 +1,7 @@
 
 import { isLower } from './utils';
 import { Concept } from './concept';
-import { getSplitWords } from './data';
+import { getSplitWords, getInvalidConcepts } from './data';
 
 /**
  * Determines if a splited concept is valid
@@ -10,10 +10,22 @@ import { getSplitWords } from './data';
  */
 function isValid(concept: Concept): boolean {
 	// let parts = concept.value.split(/ /g);
-	if (isLower(concept.value)) {
+	const value = concept.value;
+	if (isLower(value)) {
 		return false;
 	}
-	return concept.isValid();
+	if (!concept.isValid()) {
+		return false;
+	}
+	const invalid = getInvalidConcepts(concept.lang);
+
+	for (let reg of invalid) {
+		if (reg.test(value)) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 /**
