@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.5.1 - November 22, 2018
+
+- validate concepts alter splitting
+- added valid_concepts for fixing stopwords module
+
 ### v1.5.0 - November 13, 2018
 
 - removed filter: `split_type`
