@@ -1,41 +1,41 @@
-([\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?bank[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-([\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?banka
-([\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?lig[ay]
-(demokratick[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?republi[ck][\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+
-(federativn[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?republi[ck][ayue]
+([\S]+ )?bank[\S]*
+([\S]+ )?banka
+([\S]+ )?lig[ay]
+(demokratick[\S]+ )?republi[ck][\S]+
+(federativn[\S]+ )?republi[ck][ayue]
 (hoře|hora)
-[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ organizace
-arabsk[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ emirát[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+
+[\S]+ organizace
+arabsk[\S]+ emirát[\S]+
 Arén[ay]
 armád[ay]
-bezpečnostní úřad[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-centráln[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ bank[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+bezpečnostní úřad[\S]*
+centráln[\S]+ bank[\S]*
 Divadl[oe]
 domů
-hydrometeorologick[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ ústav[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+hydrometeorologick[\S]+ ústav[\S]*
 kraj(i|e)?
 kras
-ledový oceán[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-měnový fond[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+ledový oceán[\S]*
+měnový fond[\S]*
 moř[ie]
-národn[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ kongres[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+národn[\S]+ kongres[\S]*
 národní kongres
-oceán[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+oceán[\S]*
 olympijské hry
-olympijský výbor[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-ostrov[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+olympijský výbor[\S]*
+ostrov[\S]*
 pohár
 potok
 proud
-průliv[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+průliv[\S]*
 ráj
 soud
 správní soud
 svaz
 uni[ei]
 univerzit[ay]
-Veřejn[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ ochránce práv
+Veřejn[\S]+ ochránce práv
 vodopád
 vrch[yů]
-vrchovin[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+
+vrchovin[\S]+
 záliv

@@ -1,17 +1,17 @@
-([\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ )?herceg(et)?
+([\S]+ )?herceg(et)?
 (hegység|hegy|hegyek|hegyei)
 (megye|megyében|megyei)
 (tér|téren|téri|térre)
-[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ herceg[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+ kir[aá]lyn[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]+
+[\S]+ herceg[\S]*
+[\S]+ kir[aá]lyn[\S]+
 autonóm megye
 béke tere
-Egyetem[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-Egyház[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+Egyetem[\S]*
+Egyház[\S]*
 folyó
 hurrikán
 kup[aá](n)?
-labdarúgó-bajnokság[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+labdarúgó-bajnokság[\S]*
 lánchíd
 múzeum
 óceán(nak)?
@@ -19,11 +19,11 @@ p[aá]pa
 parlament
 pátriárka
 repülőtér
-sivatag[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-sziget[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-színház[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
-temet[oő][\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+sivatag[\S]*
+sziget[\S]*
+színház[\S]*
+temet[oő][\S]*
 temető
-tenger[\u0080-\u00FF\u0100-\u017F\u0180-\u024F\w]*
+tenger[\S]*
 űrhajó
 vár(a)?

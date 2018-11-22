@@ -1,5 +1,6 @@
 (d\* )?ore
 (uno|due|tre|quattro|cinque|sei|sette|otto|nuovo|dieci)
+IE
 a
 abbastanza
 abbia

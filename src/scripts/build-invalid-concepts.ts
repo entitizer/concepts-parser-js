@@ -17,7 +17,7 @@ for (let lang of getLanguages()) {
 
 function normalizeConcepts(concepts: string[]) {
     concepts = concepts.filter(item => !!item && item.trim().length);
-    concepts = concepts.map(item => atonic.lowerCase(item.toLowerCase().trim()).replace(/\[\\s\]/, '[\\S]'));
+    concepts = concepts.map(item => atonic(item.trim()));
     // uniq
     concepts = uniq(concepts);
     concepts = concepts.sort();
