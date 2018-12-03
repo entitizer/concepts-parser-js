@@ -108,6 +108,8 @@ both
 brief
 brown
 bush
+business
+business news
 but
 by
 c
@@ -446,6 +448,7 @@ minister
 ministers
 ministry
 mishra
+modi
 more
 moreover
 most
@@ -464,6 +467,7 @@ n
 name
 namely
 national
+navy
 nd
 near
 nearly
@@ -544,7 +548,7 @@ president
 presidential
 presumably
 preview
-prime (minister|minister's|ministerial|ministers)
+prime minister\w*
 prithviraj
 priya
 probably
@@ -643,6 +647,7 @@ shouldn't
 silver
 since
 sindhu
+singh
 singla
 sinha
 sivaramakrishnan
