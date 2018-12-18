@@ -52,6 +52,22 @@ function canSplit(concept: Concept): boolean {
 	return concept.value.length > 4 && concept.value.indexOf(' ') > 2;
 }
 
+function trimLowecaseWords(concept: Concept): Concept {
+	if (concept.countWords > 1) {
+		const value = concept.value;
+		if (endsWithLowercaseWord(value)) {
+			concept.reset(value.substr(0, value.lastIndexOf(' ')), concept.index, concept.lang);
+			return trimLowecaseWords(concept);
+		} else if (startsWithLowercaseWord(value)) {
+			const index = value.indexOf(' ') + 1;
+			concept.reset(value.substr(index), concept.index + index, concept.lang);
+			return trimLowecaseWords(concept);
+		}
+	}
+
+	return concept;
+}
+
 /**
  * Creates 2 concepts from a concept
  * @param  {Array}  list      Concepts container
@@ -60,13 +76,17 @@ function canSplit(concept: Concept): boolean {
  * @param  {Number} index     Separator index
  * @return {Array}            Concepts container
  */
-function createConcepts(concept: Concept, separator: string, index: number): Concept[] {
+export function createConceptsFromConcept(concept: Concept, index: number, separator?: string): Concept[] {
+	separator = separator || ' ';
 	let list: Concept[] = [];
 
 	let c = createConcept(concept.value.substr(0, index), concept.index, concept.lang);
 	if (isValid(c)) {
-		if (c.countWords > 1 && endsWithLowercaseWord(c.value)) {
-			list = list.concat(createConcepts(c, ' ', c.value.lastIndexOf(' ')));
+		if (c.countWords > 1) {
+			c = trimLowecaseWords(c);
+			if (isValid(c)) {
+				list.push(c);
+			}
 		} else {
 			list.push(c);
 		}
@@ -74,8 +94,11 @@ function createConcepts(concept: Concept, separator: string, index: number): Con
 	index += separator.length;
 	c = createConcept(concept.value.substr(index), concept.index + index, concept.lang);
 	if (isValid(c)) {
-		if (c.countWords > 1 && startsWithLowercaseWord(c.value)) {
-			list = list.concat(createConcepts(c, ' ', c.value.indexOf(' ')));
+		if (c.countWords > 1) {
+			c = trimLowecaseWords(c);
+			if (isValid(c)) {
+				list.push(c);
+			}
 		} else {
 			list.push(c);
 		}
@@ -110,7 +133,7 @@ export function splitByWords(concept: Concept, words?: string[]): Concept[] {
 		word = ' ' + words[i] + ' ';
 		index = concept.value.indexOf(word);
 		if (index > 0) {
-			return createConcepts(concept, word, index);
+			return createConceptsFromConcept(concept, index, word);
 		}
 	}
 
@@ -124,14 +147,21 @@ export function splitByWords(concept: Concept, words?: string[]): Concept[] {
  */
 export function simpleSplit(concept: Concept): Concept[] {
 	let list: Concept[] = [];
-	const space = ' ';
-	let index = concept.value.indexOf(space);
-	if (index > 0) {
-		list = list.concat(createConcepts(concept, space, index));
-		let i = concept.value.lastIndexOf(space);
-		if (i > index) {
-			list = list.concat(createConcepts(concept, space, i));
-		}
+	let splitLength = concept.countWords - 1;
+	const conceptWords = concept.value.split(/\s+/g);
+	const wordsLength = conceptWords.map(word => word.length);
+	while (splitLength > 0) {
+		const index = wordsLength.slice(0, splitLength)
+			.reduce<number>((sum, current) => sum + current, 0)
+			+ splitLength - 1;
+
+		// if (concept.value[index] !== ' ') {
+		// 	console.log(`invalid index: ${index}=${concept.value[index]}`, concept.value, JSON.stringify(wordsLength), splitLength);
+		// }
+
+		list = list.concat(createConceptsFromConcept(concept, index));
+
+		splitLength--;
 	}
 
 	list = uniqConcepts(list);
