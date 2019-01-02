@@ -1707,6 +1707,11 @@ irregular-plurals@^1.0.0:
   resolved "https://registry.yarnpkg.com/irregular-plurals/-/irregular-plurals-1.4.0.tgz#2ca9b033651111855412f16be5d77c62a458a766"
   integrity sha1-LKmwM2UREYVUEvFr5dd8YqRYp2Y=
 
+is-abbr-of@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/is-abbr-of/-/is-abbr-of-0.1.2.tgz#032908fea5108df57b37522981ab1ef0a4fd8ef0"
+  integrity sha512-gdK3lGvsh6KxgWcEVhnrJN8+5QSSbibhmSyyI4+SZw1gUcWa/lmxgye4DR+iJmZX7PYevU/vNilA+SGQgreLJg==
+
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"

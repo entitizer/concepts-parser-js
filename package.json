@@ -42,7 +42,8 @@
   },
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
-    "atonic": "^1.x.x"
+    "atonic": "^1.x.x",
+    "is-abbr-of": "^0.1.2"
   },
   "devDependencies": {
     "@types/node": "10.12.6",
