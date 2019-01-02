@@ -1,7 +1,5 @@
 ##
 ## Connect words
-##
-
 &
 a
 al
@@ -18,11 +16,13 @@ del
 der
 di
 din
+do
 dos
 du
 for
 in
 lui
+nad
 of
 of the
 pentru
@@ -33,5 +33,6 @@ van der
 von
 von der
 în
+şi
 și
 –

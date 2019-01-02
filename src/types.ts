@@ -1,4 +1,6 @@
 
+export type Dictionary<T> = { [index: string]: T }
+
 function checkField(name: string) {
     if (typeof name !== 'string') {
         throw new Error('Invalid model field name');
