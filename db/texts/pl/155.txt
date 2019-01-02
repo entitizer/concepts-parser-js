@@ -1,0 +1,155 @@
+Adobe Systems Incorporated (/əˈdoʊbiː/) – amerykańskie przedsiębiorstwo komputerowe z siedzibą w San Jose, w stanie Kalifornia, znane z projektowania szeroko rozumianego oprogramowania graficznego dla systemów macOS i Windows. Przedsiębiorstwo założyli w roku 1982 byli pracownicy Xerox PARC, John Warnock i Charles Geschke.
+Adobe Systems jest prekursorem oprogramowania do składu publikacji, twórcą standardu PostScript – powszechnie stosowanego języka opisu stron. Powszechnie znanym i stosowanym standardem jest też Portable Document Format. W 1994 r. Adobe przejęła firmę Aldus wraz z należącymi do niej programami After Effects, PageMaker. Natomiast tuż przed połączeniem z Adobe firma Aldus sprzedała należący do niej program FreeHand firmie Macromedia. Przejęcie firmy Aldus umocniło pozycję Adobe na rynku oprogramowania DTP oraz oprogramowania przeznaczonego do tworzenia produkcji telewizyjnych i multimedialnych. Pod koniec 2005 roku Adobe przejęło także firmę Macromedia – lidera branży oprogramowania do tworzenia witryn internetowych.
+Rozwijający się rynek oprogramowania konsumenckiego, związany zwłaszcza z rewolucją cyfrowych aparatów fotograficznych i kamer wideo, spowodował wejście Adobe także i na ten rynek – firma oferuje uproszczone wersje programów Photoshop i Premiere – Adobe Photoshop Elements i Adobe Premiere Elements, należące do czołówki w klasie oprogramowania domowego. Coraz większą popularność i uznanie zawodowych fotografów zdobywa program Adobe Lightroom przeznaczony do wywoływania i obróbki plików RAW z aparatów cyfrowych, oraz obróbki plików JPG z prostszych aparatów.
+Adobe Acrobat Pro DC – tworzenie i zarządzanie PDF
+Adobe Acrobat DC – tworzenie i modyfikacja PDF
+Adobe Acrobat Reader – czytnik PDF
+Adobe AIR – środowisko uruchomieniowe dla aplikacji napisanych w technologii Adobe Flash/Adobe Flex
+Adobe After Effects – animacje i efekty specjalne
+Adobe Audition – program do zaawansowanej edycji dźwięku przeznaczony dla muzyków i profesjonalistów
+Adobe Bridge – rozbudowany menedżer plików graficznych do DTP
+Adobe Captivate – tworzenie rozbudowanych interaktywnych kursów internetowych
+Adobe Character Animator – animowanie postaci 2D w czasie rzeczywistym
+Adobe ColdFusion – tworzenie aplikacji webowych w języku CFML
+Adobe Content Server
+Adobe Dreamweaver – graficzne tworzenie stron internetowych
+Adobe Dimension – fotorealistyczne obrazy dzięki łatwemu tworzeniu kompozycji 2D i 3D
+Adobe Animate (dawniej Adobe Flash Proffessional) – tworzenie dynamicznych, interaktywnych prezentacji multimedialnych, aplikacji webowych (również na urządzenia przenośne), a także programów wykonywalnych
+Adobe Flex – tworzenie aplikacji webowych w oparciu o technologię Flash
+Adobe Fuse – tworzenie własnych postaci 3D do projektów programu Photoshop
+Adobe FrameMaker – desktop publishing dla szczególnie obszernych publikacji
+Adobe Illustrator – grafika wektorowa
+Adobe InCopy – uproszczenie przepływu dokumentów podczas składania publikacji DTP
+Adobe InDesign – składanie publikacji wielostronicowych DTP (grafika i teksty)
+Adobe LiveCycle – tworzenie biznesowego przepływu danych
+Adobe Media Encoder – szybkie wysyłanie plików wideo na dowolny ekran
+Adobe Photoshop – grafika rastrowa, 3D, analiza obrazów
+Adobe Photoshop Lightroom (Adobe Lightroom Classic CC (lokalnie) oraz Adobe Lightroom CC (w chmurze)) – obróbka i wywoływanie zdjęć z aparatów cyfrowych
+Adobe PhoneGap Build – pakowanie aplikacji dla urządzeń przenośnych w chmurze
+Adobe Prelude – gromadzenie metadanych, rejestrowanie i wersje wstępne
+Adobe Premiere Pro – edycja wideo, montaż filmów
+Adobe Project Rush – edycja i udostępnianie filmów online
+Adobe RoboHelp – tworzenie rozbudowanych systemów pomocy i baz wiedzy
+Adobe Scout – profilowanie gier Flash na stronach internetowych i urządzeniach
+Adobe Stock – licencjonowane zasoby
+Adobe XD (Experience Design) – projektowanie i tworzenie prototypów interfejsów użytkownika witryn i aplikacji na urządzenia przenośne
+Adobe Photoshop Elements – obróbka zdjęć oraz ich porządkowanie
+Adobe Premiere Elements – obróbka, montaż i porządkowanie wideo
+Adobe Analytics – zbieranie i analiza danych klientów
+Adobe Audience Manager – tworzenie profili odbiorców
+Adobe Campaign – dostarczanie zautomatyzowanych wiadomości
+Adobe Experience Manager – zarządzanie i dostarczanie treści i zasobów
+Adobe Primetime – tworzenie i zarabianie na spersonalizowanych filmach
+Adobe Target – tworzenie testów A/B
+Adobe Advertising Cloud – przewidywanie wpływu zmian na reklamy
+Adobe Acrobat Reader
+Adobe Acrobat Reader for Intune
+Adobe Authenticator
+Adobe Sign – podpisy elektroniczne
+Adobe Capture CC – przechwytywanie zdjęć i przekształcanie ich w motywy kolorystyczne, wzorki, kroje pisma, materiały, pędzle oraz kształty
+Adobe Captivate Prime
+Adobe Comp CC – projektowanie układów
+Adobe Connect – tworzenie szkoleń cyfrowych i seminariów internetowych
+Adobe Content Viewer
+Adobe Digital Editions – czytnik eBook
+Adobe Fill & Sign
+Adobe Illustrator Draw – tworzenie projektów wektorowych
+Adobe PhoneGap Developer
+Adobe Photoshop Express – szybka edycja zdjęć
+Adobe Photoshop Fix – retuszowanie zdjęć
+Adobe Photoshop Lightroom Mobile – mobilna wersja programu Adobe Photoshop Lightroom
+Adobe Photoshop Mix – kadrowanie i łączenie obrazów
+Adobe Photoshop Sketch – rysowanie i malowanie
+Adobe Premiere Clip – montowanie filmów
+Adobe Scout
+Adobe Spark Post, Adobe Spark Page, Adobe Spark Video – mobilne aplikacje pozwalające na korzystanie z Adobe Spark
+AEM Screens
+AEM – Mobile Preflight
+Adobe Experience Manager Forms
+Adobe AlterCast – serwer do zarządzania grafikami
+Adobe Adobe Graphics Server – program do automatyzacji i przetwarzanie grafiki na potrzeby publikacji w Internecie.
+Adobe Atmosphere – program do tworzenia trójwymiarowych stron www
+Adobe Contribute – uproszczone zarządzanie treściami stron WWW
+Adobe Director – tworzenie gier, animacji i aplikacji multimedialnych
+Adobe Dimensions – grafika 2D i 3D
+Adobe Edge Code – niewielki edytor kodów dla projektantów i twórców stron internetowych, którzy pracują w językach HTML, CSS i JavaScript
+Adobe Encore – projektowanie i nagrywanie DVD
+Adobe Fireworks – edytor grafiki wektorowej i rastrowej stworzony przez firmę Macromedia
+Adobe Flash Catalyst – narzędzie do projektowania i edycji interaktywnych treści w technologii Flash bez znajomości kodu AS
+Adobe FlashPaper – wirtualna drukarka formatów SWF i PDF
+Adobe GoLive – tworzenie serwisów www
+Adobe Muse – tworzenie stron www bez potrzeby kodowania
+Adobe OnLocation – przechwytywanie obrazów wideo
+Adobe PageMill – tworzenie stron www
+Adobe ImageReady – grafika rastrowa dla www
+Adobe PageMaker – program DTP
+Adobe Shockwave Player – umożliwia przeglądarkom odtwarzanie zawartości stron internetowych, które zostały wykonane w technologii Shockwave, w programie Adobe (Macromedia) Director Shockwave Studio. Po zainstalowaniu tego pluginu przeglądarka jest w stanie uruchomić multimedialne elementy stron www takie jak gry online, filmy, interaktywne symulacje, animacje itp.
+Adobe Streamline – konwersja grafiki rastrowej do wektorowej
+Adobe SVG Viewer – przeglądarka grafik SVG
+Adobe SpeedGrade – dopracowywanie filmów i stopniowanie kolorów
+Adobe Type Manager – zarządzanie czcionkami
+Fotografia (Adobe Photoshop CC, Adobe Lightroom CC, Adobe Lightroom Classic CC)
+Pojedyncza aplikacja
+Wszystkie aplikacje
+Wszystkie aplikacje + Adobe Stock
+Standard Edition (Adobe Bridge (tylko CS2), Adobe Illustrator, Adobe InDesign, Adobe Photoshop, Adobe ImageReady, Adobe Version Cue, Adobe Stock)
+Premium Edition (Standard Edition + Adobe Acrobat Professional (wersja 8 w CS2.3), Adobe Dreamweaver (od CS2.3), Adobe GoLive)
+Standard Edition (Adobe After Effects Standard, Adobe Bridge, Adobe Premiere Pro, Adobe Photoshop)
+Premium Edition (Adobe After Effects Professional, Adobe Audition, Adobe Bridge, Adboe Encore DVD, Adobe Premiere Pro, Adobe Photoshop, Adobe Ilustrator, Adobe Dynamic Link)
+Macromedia Studio MX
+Macromedia Studio MX Plus
+Macromedia Studio MX 2004
+Macromedia Studio 8
+Design Standard (Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Acrobat 8 Pro, Adobe Bridge, Adobe Device Central, Adobe Stock, Adobe Version Cue)
+Design Premium (Adobe Phtoshop Extended, Adobe Illustrator, Adobe InDesign, Acrobat 8 Pro, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks (CS3.3), Adobe Bridge, Adobe Device Central, Adobe Stock, Adobe Version Cue)
+Web Standard (Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Contribute, Adobe Bridge, Adobe Device Central, Adobe Stock, Adobe Version Cue)
+Web Premium (Adobe Photoshop Extended, Adobe Illustrator, Acrobat 8 Pro, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Contribute, Adobe Bridge, Adobe Device Central, Adobe Stock, Adobe Version Cue)
+Production Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe Flash Professional, Adobe Soundbooth, Adobe After Effects Professional, Adobe Premiere Pro, Adobe Encore, Adobe OnLocation, Adobe Ultra, Adobe Bridge, Adobe Device Central, Adobe Stock)
+Master Collection (wszystkie aplikacje, z tym, że Adobe Photoshop jest w wersji Extended)
+Design Standard (Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Acrobat 9 Pro, Adobe Bridge, Adobe Device Central, Adobe Version Cue)
+Design Premium (Adobe Phtoshop Extended, Adobe Illustrator, Adobe InDesign, Acrobat 9 Pro, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Bridge, Adobe Device Central Adobe Version Cue)
+Web Standard (Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Contribute, Adobe Bridge, Adobe Device Central, Adobe Version Cue)
+Web Premium (Adobe Photoshop Extended, Adobe Illustrator, Acrobat 9 Pro, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Contribute, Adobe Soundbooth, Adobe Bridge, Adobe Device Central, Adobe Version Cue)
+Production Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe Flash Professional, Adobe Soundbooth, Adobe After Effects, Adobe Premiere Pro, Adobe OnLocation, Adobe Encore, Adobe Bridge, Adobe Device Central, Adobe Dynamic Link)
+Master Collection (wszystkie aplikacje, z tym, że Adobe Photoshop jest w wersji Extended)
+Design Standard (Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Acrobat 9.3 Pro, Adobe Bridge, Adobe Device Central, Adobe CS Live)
+Design Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe InDesign, Acrobat 9.3 Pro, Adobe Flash Catalyst, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Bridge, Adobe Device Central, Adobe CS Live)
+Web Premium (Adobe Photoshop Extended, Adobe Illustrator, Acrobat 9.3 Pro, Adobe Flash Catalyst, Adobe Flash Professional, Adobe Flash Builder 4 Standard, Adobe Dreamweaver, Adobe Fireworks, Adobe Contribute, Adobe Bridge, Adobe Device Central, Adobe CS Live)
+Production Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe Flash Catalyst, Adobe Flash Professional, Adobe Premiere Pro, Adobe OnLocation, Adobe Encore, Adobe After Effects, Adobe Soundbooth, Adobe Bridge, Adobe Device Central, Adobe CS Live, Adobe Dynamic Link)
+Master Collection (wszystkie aplikacje, z tym, że Adobe Photoshop jest w wersji Extended)
+Adobe Soundbooth został zastąpiony przez Adobe Audition (CS5.5), a Acrobat 9.3 Pro został zastąpiony przez Adobe Acrobat X Pro.
+Nowe produkty:
+Adobe Extension Manager (CS5.5) dostępny w każdym pakiecie.Adobe Story (CS5.5), służący do pisania scenariuszy i przedprodukcji oparty na Adobe AIR
+Adobe ExtendScript Toolkit (CS5.5)
+Adobe Media Encoder (CS5.5)
+Adobe Flash Builder 4.5 Premium Edition dostępny w pakiecie Web Premium oraz Master Collection.Produkty zaktualizowane do wersji CS5.5:
+Adobe InDesign
+Adobe Flash Catalyst
+Adobe Flash Professional
+Adobe Dreamweaver
+Adobe Premiere Pro
+Adobe After Effects
+Adobe Device CentralProdukty niezaktualizowane do wersji CS5.5:
+Adobe Photoshop
+Adobe Photoshop Extended
+Adobe Illustrator
+Adobe Fireworks
+Adobe Contribute
+Adobe OnLocation
+Adobe Encore
+Adobe BridgeDostępne pakiety:
+Design Standard
+Design Premium
+Web Premium
+Production Premium
+Master Collection
+Design Standard (Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Adobe Acrobat X Pro, Adobe Bridge, Adobe Media Encoder)
+Design & Web Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe InDesign, Adobe Acrobat X Pro, Adobe Flash Professional, Adobe Dreamweaver, Adobe Fireworks, Adobe Bridge, Adobe Media Encoder)
+Production Premium (Adobe Photoshop Extended, Adobe Illustrator, Adobe Flash Professional, Adobe Premiere Pro, Adobe OnLocation, Adobe Encore, Adobe After Effects, Adobe Audition, Adobe SpeedGrade, Adobe Prelude, Adobe Bridge, Adobe Media Encoder, Adobe Dynamic Link)
+Master Collection (wszystkie aplikacje, z tym, że Adobe Photoshop jest w wersji Extended)
+Inne produkty: Adobe Extension Manager, Adobe Extension Toolkit, Adobe Story Plus
+Oficjalna strona internetowa Adobe Polska
+Adobe Creative Cloud
+Adobe Creative Suite
+Adobe Experience Cloud
+Adobe Document Cloud

@@ -1,0 +1,39 @@
+Az America Online, vagy röviden csak AOL egy céges hálózati szolgáltató és internetszolgáltató.
+Az AOL a virginiai Dullesben székelt, egészen 2008 áprilisáig, amikor a cég áttette a székhelyét New Yorkba. Regionális irodái vannak a világ számos városában, messze a legsikeresebb hálózatos szolgáltatással, több mint 32 millió ügyféllel szerte a világban (USA-ban, Kanadában, Németországban, Franciaországban, Nagy-Britanniában, Brazíliában, Argentínában, és Japánban). 2005 elején az AOL Hongkongban beszüntette a szolgáltatását.
+Sok amerikai számára a kilencvenes évek közepén az AOL volt maga az internet, de az internethez való szabad hozzáférés terjedésével csökkent az AOL részesedése a piacon, hátrahagyva a kérdést: hogyan tovább.
+2000-ben az AOL és a Time Warner bejelentették egyesülésüket, ezt a Federal Trade Commission 2001. január 11-én hagyta jóvá.
+2009. május 28-án a Time Warner közölte, hogy az AOL leválik a cégcsoportról és egy független, a tőzsdére bevezetendő társaságként folytatja tovább.
+Az AOL elindított egy rövid életű vállalkozást Control Video néven, egy céget, amelynek egy online szolgáltatás volt a terméke, a Gameline, melyet Atari 2600 videojáték-konzolokon lehetett elérni. Az előfizetők egy modemet vásároltak a cégtől 49.95 dolláros áron és egyszeri 15 dollárt a telepítésért. A Gameline lehetővé tette a felhasználóknak, hogy a játékokat csak ideiglenesen töltsék le és csak a legmagasabb pontszámok tárolódjanak helyben, mindezt körülbelül óránkénti 1 dolláros áron.
+1983-ban a cég csődközelbe jutott, ekkor egy Steve Case nevű, fiatal marketing-veterán ült a cégvezetői székbe.
+Megváltoztatta a cégfilozófiát, és 1985-ben elindított egyfajta mega-BBS szolgáltatást Commodore 64 és 128 számítógépekre, melyet eredetileg Quantum Link névre kereszteltek (röviden csak „Q-Link”). A cég nevét is megváltoztatta, az új név Quantum Computer Services lett. 1989 októberében a Quantum elindította AOL szolgáltatását Apple II és Macintosh számítógépekre, 1991 februárjában az AOL DOS változata jelent meg, ezt egy GeoWorks interfész követte egy évvel később, az AOL Windows változata. A cég 1991 októberében változtatta meg a nevét Quantum America Online-ra. Ezek a változtatások egybevágtak a fizetős BBS szolgáltatások gyarapodásával, mint amilyen a Prodigy, a CompuServe és a GEnie.
+Az AOL felhasználóinak (néha  „AOLers”-ként emlegetik őket) internetes körökben olyan hírnevük van, mint mérhetetlenül új fiúknak, akik nem ismerik a netikettet sem.
+Az AOL-t többször is beperelték, amiért nem állította le gyorsan a számlázást, miután a felhasználó vagy egy társaság szerződést bontott a vállalattal az internethasználatról. Ezenkívül még egy per után meg kellett változtatnia a számlázási módszerét: eredetileg az internethasználat idejéhez hozzáadott 15 másodpercet, majd ezt felkerekítették a következő percig, tehát ha valaki például 11 perc 46 másodpercig használta az internetet, 13 percet számláztak ki neki. Az AOL azt állította, ez a be- és kijelentkezési idő miatt volt, de mivel ügyfeleit nem értesítette erről a gyakorlatról, elveszítette a pert (egyesek arra is rámutattak, hogy a be- és kijelentkezés nem tart 15 másodpercig, különösen akkor nem, ha másik szolgáltatón keresztül csatlakoznak). Az AOL ezután minden ügyfele számára elérhetővé tette ezt az információt, és több óra ingyen nethasználattal kárpótolta őket, valamint a szoftver értesítette a felhasználókat arról, hogy milyen sokáig voltak csatlakozva az internethez, és hány percet számláztak fel nekik.
+Ahogy növekedett az AOL, felvásárolt néhány szoftvercéget, mint például az alábbiak:
+BookLink 1994 decemberében.
+NaviSoft's NaviServer (később ebből lett a AOLserver) 1994-ben.
+ImagiNation Network (I.N.N.) az AT&T-től 1996-ban.
+CompuServe 1998 februárjában.
+Mirabilis (az ICQ gyártója) 1998-ban.
+PLS text-search szoftver 1998-ban,
+Nullsoft (a Winamp gyártója), 1999-ben 86 millió USA dolláros áron
+Netscape, 1999-ben 4,2 milliárd dolláros áron.
+Mapquest 1999-ben.
+Tegic 1999 decemberében.
+Singingfish keresőmotor, 2003. november.
+Wildseed, egy mobil eszközökre írt szoftvereket forgalmazó magáncég, 2005 augusztusában.
+Jim Kimsey (volt cégvezető és bizottsági elnök)
+Steve Case (volt cégvezető és bizottsági elnök)
+Jan Brandt (volt marketing igazgató)
+Justin Frankel (Nullsoft alapító), 2004 elején lemondott
+Ted Leonsis (alelnök, az AOL Ügyfélszolgálati Csoport elnöke)
+Michael Powell (a Time Warner-ral való egyesüléskor volt szerepe)
+Marc Andreessen (a Netscape társalapítója)
+Karen Thompson (Az AOL nagy-britanniai elnöke és cégvezetője)
+AOHack programs
+Sessions @ AOL
+AOL Corporate (céges weboldala)
+AOL Németország
+AOL Franciaország
+AOL Nagy-Britannia
+AOL történelem
+AOL Disk Collection

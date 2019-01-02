@@ -1,0 +1,4 @@
+Alexa Internet, Alexa – amerykańska spółka kontrolowana przez Amazon.com, prowadząca witrynę Alexa, która dostarcza informacje na temat generowanego ruchu do innych stron internetowych. Spółka została założona 1 kwietnia 1996 roku, a trzy lata później kontrolę nad nią przejął Amazon.com.
+Wyszukiwarka Alexa zaopatrzona jest w robota internetowego, który indeksuje ponad 4,5 miliarda stron. Posiada także katalog stron WWW.
+Strony występujące w serwisie Alexa pojawiają się na wyższej pozycji niż pozostałe, zaś w obliczaniu statystyk nie są w ogóle brane pod uwagę połączenia RSS, HTTPS i wszelkie transakcje niezwiązane z protokołem HTTP. Oznacza to, iż bardziej zainteresowani bezpieczeństwem bądź wolnym oprogramowaniem użytkownicy w statystykach Aleksy są pomijani. Skutkiem tego statystyki Aleksy mogą zaniżyć faktyczną wartość ruchu na niektórych ze stron.
+Oficjalna strona Alexa Internet

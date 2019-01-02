@@ -43,7 +43,8 @@ export function delay(ms: number) {
 }
 
 export async function getWikiArticleText(lang: string, title: string) {
-    const response = await fetch(`https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=true&titles=${encodeURIComponent(title)}&format=json`, { timeout: 1000 * 20 });
+    const response = await fetch(`https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=true&titles=${encodeURIComponent(title)}&format=json`,
+        { timeout: 1000 * 30 });
     const json = await response.json();
     const id = Object.keys(json.query.pages)[0];
     const text = json.query.pages[id].extract as string;

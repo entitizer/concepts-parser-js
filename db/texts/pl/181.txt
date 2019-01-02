@@ -1,0 +1,21 @@
+Defense Advanced Research Projects Agency – DARPA (Agencja Zaawansowanych Projektów Badawczych w Obszarze Obronności). W latach 1958-1972 i 1993-1996 pod nazwą – Advanced Research Projects Agency – ARPA (Agencja Zaawansowanych Projektów Badawczych) – amerykańska agencja rządowa zajmująca się rozwojem technologii wojskowej działająca w strukturach Departamentu Obrony.
+Na zlecenie Departamentu Obrony w 1967 rozpoczęła projekt budowy zdecentralizowanej sieci komputerowej, którą nazwano później ARPANET i która zapoczątkowała rozwój Internetu. Na początku lat 70. agencja DARPA współfinansowała opracowanie zestawu protokołów TCP/IP. DARPA nigdy nie prowadziła badań samodzielnie, zajmowała się finansowaniem wyższych uczelni, instytucji komercyjnych i innych organizacji (non-profit).
+W 1981 DARPA założyła grupę ekspertów – ICCB (Internet Configuration Control Board). Zadaniem grupy było zarządzanie przebiegiem prac badawczych prowadzonych w związku z siecią Internet. W 1984 agencja przekształciła ICCB w IAB (Internet Activities Board), która z kolei została podzielona na grupy robocze, zajmujące się takimi zagadnieniami jak zastosowanie, współdziałania, bezpieczeństwo i testowanie. Na koniec IAB została przekształcona w IETF (Internet Engineering Task Force) oraz w IRTF (Internet Research Task Force). Grupy te były odpowiedzialne za rozwój konstrukcji sieci Internet i badania nad rozwojami w tej dziedzinie.
+Agencja rozwija w ramach Future Combat Systems wiele projektów min: egzoszkielet wspomagany, UAV różnej wielkości, i lądowe pojazdy autonomiczne UGCV.
+W 2004 DARPA zaczęła sponsorować DARPA Grand Challenge, wyścigi zautomatyzowanych samochodów bez kierowców też w ramach FCS.
+DARPA prowadzi badania, rozwija technicznie i koorydynuje pod względem naukowym program globalnej obrony antybalistycznej USA.
+Defense Advanced Research Projects Agency rozwija projekt budowy wielkiego działa elektromagnetycznego. Wyrzutnia ta ma wystrzeliwać wojskowe satelity na orbitę, oraz niszczyć wystrzeliwanymi elektromagnetycznie pociskami naddźwiękowe wrogie pociski.
+Agencja Zaawansowanych Obronnych Projektów Badawczych Departamentu Obrony USA rozwija wojskowy-naukowy program pogodowy HAARP.
+Agencja zainwestowała w badania nad aparatem wykonującym zdjęcia w wysokiej rozdzielczości.
+Biuro Zarządu (Director's Office)
+Biuro Nauk Obronnych (Defense Sciences Office)
+Biuro Technologii Obróbki Informacji (Information Processing Technology Office)
+Biuro Zastosowań Informacji (Information Exploitation Office)
+Biuro Technologii Mikrosystemów (Microsystems Technology Office)
+Biuro Technologii Strategicznych (Strategic Technology Office)
+Biuro Technologii Taktycznych (Tactical Technology Office)
+Biuro ds Kontroli Budżetu (Office of the Comptroller)
+Biuro ds Kontraktów (Contracts Management Office)
+Dyrekcja ds Pracowniczych (Human Resources Directorate)
+Biuro Administracyjne (Office of Management Operations)
+Oficjalna strona agencji (ang.)

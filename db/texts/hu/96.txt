@@ -1,0 +1,61 @@
+A Svájci Szövetségi Vasutak (SBB-CFF-FFS; németül: Schweizerische Bundesbahnen, franciául: Chemins de fer fédéraux suisses, olaszul: Ferrovie Federali Svizzere) Svájc állami vasúttársasága. A vasúthálózat hossza 2908 km normál nyomtáv, illetve 74 km SBB-tulajdonú keskenynyomközű vonal (a Brünigbahn) is tartozik hozzá, amely a Zentralbahn cégbe lett kiszervezve.
+Az SBB adatai szerint 2000. január 1-én az SBB járműállagába a következő közforgalmú járművek voltak besorozva:
+Dízelmozdonyok száma: 271,
+Villamosmozdonyok száma: 1092, amiből 745-nek a teljesítménye eléri, illetve meghaladja a 3000 kW-ot,
+Vasút személyszállító járművek száma: 3466, ebből 11 a villamos motorkocsiké, 21 pedig a villamos motorvonatoké,
+RIC-forgalomra alkalmas kocsik száma: 656, amiből 44 az étkező-, 60 a fekvőhelyes, 13 a hálókocsik száma,
+Első- és másodosztályú ülőhelyes kocsik száma: 3002. A személykocsikból 974 a légjavítóval felszereltek száma. A vasút 245 poggyászkocsit tart állagában,
+Vezérlőkocsik száma: 288,
+Teherkocsik száma: 13 021,
+Magánkocsik száma 6770, (Az állagban a magánkocsik száma nő, az előbbi szám 1998-ban még csak 6374 volt)
+A saját kocsik közül a normálépítésű „fedett (G) kocsik száma: 683,
+Különleges építésük száma: (H): 3754,
+Forgóvázas fedett kocsik száma 200,
+Normálépítésű nyitott (E) kocsik száma 2273,
+Különleges építésüké: (F),
+Forgóvázas nyitott kocsik száma mindkét sorozatból összesen 1757,
+Normálépítésű 2-tengelyes pőrekocsik (K, L) száma: 1323,
+4-tengelyeseké (R): 865,
+Különleges építésű pőrekocsiké (S): 1461.
+Nyitható tetejű (T) kocsik száma: 1343,
+Egyéb különleges építésű (U) kocsik száma: 448.
+Yverdon: korszerű mozdonyok, 240 fő (2005-ben 40%-kal kisebb létszám),
+Olten: személykocsi, 550 fő (560 fő),
+Plattform Zürich: személyszállítás járművei, 1000 fő (1000 fő),
+Biel: Dízel-üzemű járművek, különleges építésű teherkocsik, 210 fő (-16%),
+Bellinzona: mozdonyok, normál építésű teherkocsik, 430 fő (-15%).
+Utasok száma: 285,1 millió
+Elszállított teheráru: 60 millió tonna
+Állomások száma: 824
+Utasforgalomra megnyitott állomások: 760
+Teherforgalomra megnyitott állomások: 452
+Iparvágány-csatlakozások: kb. 2500
+Parkolók összes kapacitása: 23685 autó
+Alkalmazottak száma: 27933
+Pontosság: 96,2%-a a vonatoknak, illetve 95,9%-a a munkanapokon közlekedő vonatoknak, melyek 5 percnél kevesebbet késtek
+Támogatás az üzemeltetéshez, fejlesztéshez (2007-2010): 5,88 milliárd svájci frank
+Az SBB az alábbi vonatnemeket üzemelteti:
+R: Regio (Regionalzug): az összes állomáson megáll
+S: S-Bahn/RER: nagyvárosok S-Bahn-vonatjai
+RE: RegioExpress
+IR: InterRegio,
+IC: InterCity: nagyobb városokban áll meg (Genf, Lausanne, Fribourg stb.)
+ICN: InterCity billenőszekrényes vonat
+CityNightLine
+EC: EuroCity
+Svájcban 3 hivatalos nyelv van, emiatt a feliratok, állomásnevek is három nyelven vannak kiírva, vagy a térségre jellemző 2 nyelven,
+Szinte az összes vasútvonal villamosított, a villamosított vonalak aránya a világon itt a legmagasabb,
+Itt található a világ leghosszabb vasúti alagútja, a Gotthárd-bázisalagút.
+Rolf Gutzwiller-Peter Scheideggen-Hans Schlunegger-Oskar Stalder: Railways in Switzerland. University of Tokyo, Chair of Transportation Systems Engineering, 1996.
+Stewe Bennett: SBB Wants Time For Its New Structure To Flourish. International Railway Journal. 1999. 12. sz. l5.-19. p.
+Neuorganisation des Fahrzeugunterhalts bei den SBB. Schweizer Eisenbahn-Revue. 2000. 8.-9. sz. 376-378 p.
+Christian König – Daniel Forrer: Der SBB-Neigezug ICN. Eisenbahnigenieur. 1998. 10. sz. 20.-28. p.
+Christian König – Daniel Forrer: Der SBB Neigezug ICN zwei Jahre nach der Bestellung Eisenbahn-Revue International. 1998. 10. sz. 422.-431.p.
+Vorserie-Neigezug der SBB demontiert. Eisenbahn-Revue International. 2001. 4. sz. 157. p.
+ICN mit Note 5.3. Schweizer Eisenbahn-Revue. 2000. 12. sz. 532.-533. p.
+Schweizer Ingenieur und Architekt. Schweizerische Bauzeitung 23.-24. kötet, 1999. au-gusztus 14.
+Bahn 2000. Les Editions Grands Travaux SA. Genf, 2000. 126, p.
+Angol SBB-CFF-FFS weboldal
+Az SBB cargo weboldala
+A CityNightLine weboldala német, holland és angol nyelven
+TAzRe4/4II tipusú villanymozdony Svájcban
