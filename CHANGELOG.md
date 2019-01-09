@@ -1,5 +1,11 @@
 # Changelog
 
+### v1.5.4 - January 9, 2019
+
+- normalize-data script;
+- split concept to one word;
+- using `is-abbr-of` (fix);
+
 ### v1.5.2 - November 22, 2018
 
 - complex valid suffixes

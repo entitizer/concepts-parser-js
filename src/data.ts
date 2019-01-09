@@ -53,6 +53,7 @@ const builders: IBuilder = {
 		return items.length > 0 ? [new RegExp(`^(${items.join('|')}) `, 'i')] : [];
 	},
 	known_concepts: function (items: string[]): RegExp[] {
+		items = sortByCountWordsDesc(items);
 		return items.map((item) => {
 			return new RegExp(`(\\b|\\s)${item}(\\b|\\s)`, 'ig');
 		});
@@ -61,13 +62,14 @@ const builders: IBuilder = {
 		return items.length > 0 ? [new RegExp(`^(${items.join('|')})$`, 'i')] : [];
 	},
 	valid_prefixes: function (items: string[]): RegExp[] {
+		items = sortByCountWordsDesc(items);
 		return items.length > 0 ? [new RegExp(`(^|\\b|\\s)(${items.join('|')}) $`, 'i')] : [];
 	},
 	valid_suffixes: function (items: string[]): SuffixDataItem[] {
 		if (items.length === 0) {
 			return [];
 		}
-		const simpleList: string[] = []
+		let simpleList: string[] = []
 		const complexList: SuffixDataItem[] = []
 		items.forEach(item => {
 			item = item.trim();
@@ -89,6 +91,7 @@ const builders: IBuilder = {
 		});
 
 		if (simpleList.length) {
+			simpleList = sortByCountWordsDesc(simpleList);
 			complexList.push({
 				reg: new RegExp(`^ (${simpleList.join('|')})(\\b|\\s)`, 'i')
 			})
@@ -99,6 +102,10 @@ const builders: IBuilder = {
 	firstnames: function (items: string[]): RegExp[] {
 		return items.length > 0 ? [new RegExp(`^(${items.join('|')})[ -]`)] : [];
 	},
+}
+
+function sortByCountWordsDesc(items: string[]) {
+	return items.sort((a, b) => b.split(/\s+/g).length - a.split(/\s+/g).length);
 }
 
 function getFileData(file: string): string[] {
