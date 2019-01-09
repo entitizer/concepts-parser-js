@@ -1,10 +1,10 @@
-​Szef
-Dyrektor
+dyrektor
+minister
 mężczyzna
-Minister
-Oficer
-Prezydenci
-Prezydent
-Sekretarz Generalny
-Spotkanie
-W
+oficer
+prezydenci
+prezydent
+sekretarz generalny
+spotkanie
+w
+​szef

@@ -6,18 +6,18 @@
 (hoře|hora)
 [\S]+ organizace
 arabsk[\S]+ emirát[\S]+
-Arén[ay]
 armád[ay]
+arén[ay]
 bezpečnostní úřad[\S]*
 centráln[\S]+ bank[\S]*
-Divadl[oe]
+divadl[oe]
 domů
 hydrometeorologick[\S]+ ústav[\S]*
 kraj(i|e)?
 kras
 ledový oceán[\S]*
-měnový fond[\S]*
 moř[ie]
+měnový fond[\S]*
 národn[\S]+ kongres[\S]*
 národní kongres
 oceán[\S]*
@@ -34,7 +34,7 @@ správní soud
 svaz
 uni[ei]
 univerzit[ay]
-Veřejn[\S]+ ochránce práv
+veřejn[\S]+ ochránce práv
 vodopád
 vrch[yů]
 vrchovin[\S]+

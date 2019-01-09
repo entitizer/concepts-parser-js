@@ -15,6 +15,20 @@ const NAMES: string[] = [
 	'firstnames',
 ];
 
+export type NameInfo = { atonic: boolean, insensitive: boolean, sort: boolean };
+
+const NAMES_INFO: { [name: string]: NameInfo } = {
+	'connect_words': { atonic: false, insensitive: false, sort: true },
+	'split_words': { atonic: false, insensitive: false, sort: true },
+	'invalid_concepts': { atonic: true, insensitive: false, sort: true },
+	'invalid_prefixes': { atonic: true, insensitive: false, sort: true },
+	'known_concepts': { atonic: false, insensitive: false, sort: true },
+	'partial_concepts': { atonic: false, insensitive: false, sort: true },
+	'valid_prefixes': { atonic: false, insensitive: false, sort: true },
+	'valid_suffixes': { atonic: false, insensitive: false, sort: true },
+	'firstnames': { atonic: false, insensitive: false, sort: true },
+}
+
 type DataType = RegExp[] | SuffixDataItem[];
 
 interface IBuilder {
@@ -190,4 +204,8 @@ export function getLanguages(): string[] {
 
 export function getNames(): string[] {
 	return NAMES;
+}
+
+export function getNameInfo(name: string): NameInfo | undefined {
+	return NAMES_INFO[name];
 }

@@ -1,6 +1,6 @@
-Dal( \d+)?
-Deputato
-Gli
-Il
+dal( \d+)?
+deputato
+gli
+il
 in
 per

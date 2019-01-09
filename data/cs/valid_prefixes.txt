@@ -1,11 +1,7 @@
-[\S]+ soud[\S]* v
 Akademi[\S]+ věd[\S]*
-cen[a|y]
 Divadl[oe]
 Fotbalov[\S]+ asociac[\S]+
-hotel
 Kauza
-kraj(i|e)?
 Ministerstv[\S]+ dopravy
 Ministerstv[\S]+ financí
 Ministerstv[\S]+ kultury
@@ -15,16 +11,20 @@ Ministerstv[\S]+ vnitra
 Ministerstv[\S]+ zahraničních věcí
 Ministerstv[\S]+ zahraničních věcí[\S]*
 Ministerstv[\S]+ zdravotnictví
-nakladatelství
-Národn[\S]+ park[\S]*
 Nejvyšš[\S]+ soud( v)?
+Národn[\S]+ park[\S]*
 Okres(e|u)?
+Univerzit[\S]+ v
+Západočesk[\S]+ univerzit[\S]+ v
+[\S]+ soud[\S]* v
+cen[a|y]
+hotel
+kraj(i|e)?
+nakladatelství
 okres[\S]*
 ostrov[\S]*
 papež
-řek[auy]
 univerzit[ay]
-Univerzit[\S]+ v
-Ústavn[\S]+ soud[\S]*
 věznic[\S]+
-Západočesk[\S]+ univerzit[\S]+ v
+Ústavn[\S]+ soud[\S]*
+řek[auy]

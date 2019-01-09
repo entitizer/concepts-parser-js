@@ -1,6 +1,3 @@
-(bansal|bansal['’]s|bansals)
-(centre|center|central|centre's)
-(company|company's)
 (dec|mar|jan|feb|apr|jun|jul|aug|sep|oct|nov)( \d+)?
 (january|february|march|april|may|june|july|august|september|october|november|december)( \d+)?
 (monday|wednesday|tuesday|thursday|friday|saturday|sunday|tuesday)(s)?( \d+)?
@@ -79,6 +76,9 @@ available
 away
 awfully
 b
+bansal
+bansal['’]s
+bansals
 batra
 be
 beas
@@ -127,6 +127,10 @@ capital
 care
 cause
 causes
+center
+central
+centre
+centre's
 certain
 certainly
 changes
@@ -144,6 +148,8 @@ comics
 commerce
 commission
 committee
+company
+company's
 compat
 concerning
 cong

@@ -56,7 +56,6 @@ Iosif
 Iulian(a|ei)
 Jenny
 Joey
-jorge
 Leo
 Loren(a|ei)
 Lucescu
@@ -88,3 +87,4 @@ Tiberiu
 Veronica
 Williams
 Xenia
+jorge

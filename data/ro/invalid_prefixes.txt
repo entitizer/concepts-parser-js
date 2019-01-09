@@ -38,6 +38,7 @@ c[ia]ntareata
 c[ia]ntaretul
 ca
 cancelarul\w*
+capitala
 cardinalul
 catre
 cei

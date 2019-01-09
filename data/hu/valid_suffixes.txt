@@ -6,15 +6,14 @@
 [\S]+ kir[aá]lyn[\S]+
 autonóm megye
 béke tere
-Egyetem[\S]*
-Egyház[\S]*
+egyetem[\S]*
+egyház[\S]*
 folyó
 hurrikán
 kup[aá](n)?
 labdarúgó-bajnokság[\S]*
 lánchíd
 múzeum
-óceán(nak)?
 p[aá]pa
 parlament
 pátriárka
@@ -25,5 +24,6 @@ színház[\S]*
 temet[oő][\S]*
 temető
 tenger[\S]*
-űrhajó
 vár(a)?
+óceán(nak)?
+űrhajó

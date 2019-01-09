@@ -1,5 +1,3 @@
-(deti|deti|dite)
-(dvd|cd)
 a
 aby
 ackoli
@@ -42,6 +40,7 @@ byly
 bys
 byt
 cau
+cd
 cerna
 chce
 chceme
@@ -71,8 +70,10 @@ dekujeme
 dekuji
 den
 deset
+deti
 devatenact
 devet
+dite
 dnes
 do
 dobry
@@ -80,6 +81,7 @@ docela
 dva
 dvacet
 dvanact
+dvd
 dve
 e\d+
 foto

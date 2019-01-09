@@ -1,7 +1,7 @@
 
-#închisoarea Sighet, închisoarea din Sighet
+# aeroportul frankfurt
+# închisoarea sighet, închisoarea din sighet
 [îi]nchiso(area|rii)( din)?
-# aeroportul Frankfurt
 aeroportul\w*
 aeroportul\w* de la
 aeroportul\w* din
@@ -13,8 +13,8 @@ cartierul\w*
 cascada
 cascadei
 castelul
-Castelul\w* regal( de la)?
-Catedra\w+ mitropolitan\w+( din)?
+castelul\w* regal( de la)?
+catedra\w+ mitropolitan\w+( din)?
 cimitirul\w*
 colegiul(ui)?
 contes[ăa] de
@@ -26,9 +26,9 @@ dosarul\w*
 duces[ăa] de
 ducesa
 f[aâ]nt[aâ]n(ii|a)
-Festivalul\w*( Interna[țt]ional| na[țt]ional|)?
+festivalul\w*( interna[țt]ional| na[țt]ional|)?
 fluviul(ui)?
-Gazoductu\w*
+gazoductu\w*
 golful(ui)?
 hotelul
 insula
@@ -58,13 +58,13 @@ premiil\w+
 premiu\w*
 prin[tț]es(a|ei)
 prin[tț]ul\w*
-Principel\w+
+principel\w+
 principes(a|ei)
 provinci(a|ei)
 r[aâîi]ul\w*
 raionul\w*
 regiun(ea|ei|ii)
-Sectorul(ui)?
+sectorul(ui)?
 spitalul
 stadionul\w*
 turnul(ui)?

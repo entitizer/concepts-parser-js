@@ -1,6 +1,4 @@
 (august|septembrie|octombrie|noiembrie|decembrie)( \d+)?
-(autoritate(a)?|autoritatii)
-(campio\w+ moldovei)
 (ianuarie|februarie|martie|aprilie|mai|iunie|iulie)( \d+)?
 (sala|salii) sporturilor
 [ivx]+-a
@@ -96,6 +94,8 @@ audio
 aur
 auto
 autor(ul)?
+autoritate(a)?
+autoritatii
 autostrada
 autostrazi
 avea
@@ -151,6 +151,7 @@ cap
 capacitate
 capacitate \d{4}
 capital
+capitala
 capitalei
 capitan
 capitol
@@ -838,6 +839,7 @@ spital(ul)?
 spitalul judetean
 sport
 spre
+sputnik
 srl
 star
 stat

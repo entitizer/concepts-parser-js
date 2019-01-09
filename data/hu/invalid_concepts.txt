@@ -1,4 +1,3 @@
-(nyugat|nyugatnak)
 a
 abba
 abban
@@ -598,6 +597,8 @@ nyolcadik
 nyolcadikat
 nyolcat
 nyolcvan
+nyugat
+nyugatnak
 o
 oda
 office

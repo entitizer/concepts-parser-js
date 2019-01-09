@@ -8,11 +8,17 @@ export function md5(value: string): string {
 }
 
 export function saveDataFileLines(lang: string, data: string, fileName: string) {
+    if (!fileName.endsWith('.txt')) {
+        fileName += '.txt';
+    }
     const file = join(__dirname, '..', '..', 'data', lang, fileName);
     writeFileSync(file, data, 'utf8');
 }
 
 export function getDataFileLines(lang: string, fileName: string) {
+    if (!fileName.endsWith('.txt')) {
+        fileName += '.txt';
+    }
     const file = join(__dirname, '..', '..', 'data', lang, fileName);
     let lines: string[] = readFileSync(file, 'utf8').split(/\s*\n\s*/g);
     return lines;

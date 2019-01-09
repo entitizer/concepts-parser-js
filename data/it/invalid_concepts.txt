@@ -1,6 +1,4 @@
 (d\* )?ore
-(uno|due|tre|quattro|cinque|sei|sette|otto|nuovo|dieci)
-IE
 a
 abbastanza
 abbia
@@ -100,6 +98,7 @@ ciascuna
 ciascuno
 cima
 cinquanta
+cinque
 cio
 cioe
 circa
@@ -131,6 +130,7 @@ cos
 cosa
 cosi
 cui
+cultura
 d
 da
 dagl
@@ -157,6 +157,7 @@ deve
 di
 diana
 dice
+dieci
 dietro
 dire
 dirimpetto
@@ -239,6 +240,7 @@ fecero
 feci
 fin
 finalmente
+finanza
 finche
 fine
 fino
@@ -250,6 +252,7 @@ fossi
 fossimo
 foste
 fosti
+fotogramma
 fra
 frattempo
 fu
@@ -294,8 +297,10 @@ intanto
 intorno
 invece
 io
+italpress
 l
 la
+laroma
 lasciato
 lato
 lavoro
@@ -469,6 +474,7 @@ quindi
 realmente
 recente
 recentemente
+reddito
 registrazione
 relativo
 richter
@@ -507,6 +513,7 @@ sia
 siamo
 siano
 siate
+sicurezza
 siete
 sig
 solito
@@ -565,6 +572,7 @@ sua
 subito
 successivamente
 successivo
+sud
 sue
 sugl
 sugli
@@ -626,6 +634,7 @@ video
 violetta
 visto
 vita
+voglio
 voi
 volta
 volte
