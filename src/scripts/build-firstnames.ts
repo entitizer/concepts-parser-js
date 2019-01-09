@@ -3,8 +3,8 @@ const atonic = require('atonic');
 import { getLanguages } from '../data';
 const fs = require('fs');
 const join = require('path').join;
-import fetch from 'node-fetch';
 import { uniq } from '../utils';
+import { queryWikidata } from './wikidata';
 
 buildFirstnames()
     .then(() => console.log('DONE!'))
@@ -77,18 +77,11 @@ function getWikipediaPopularFirstnamesByLangAndCountry(lang: string, country: st
     return fetchWikipediaPopularFirstnames(query);
 }
 
-function fetchWikipediaPopularFirstnames(query: string): Promise<string[]> {
-
-    return fetch('https://query.wikidata.org/sparql?format=json&query=' + query)
-        .then(response => response.json())
-        .then<any[]>(json => json.results && json.results.bindings || [])
-        .then(items => items.map(item => item.firstnameLabel.value as string))
-        .then(items => {
-            let names: string[] = [];
-            items.forEach(item => names = names.concat(getNames(item)));
-            return names;
-        })
-        .then(names => names.filter(name => isValidName(name)));
+async function fetchWikipediaPopularFirstnames(query: string): Promise<string[]> {
+    const items = (await queryWikidata(query)).map(item => item.firstnameLabel.value)
+    let names: string[] = [];
+    items.forEach(item => names = names.concat(getNames(item)));
+    return names.filter(name => isValidName(name));
 }
 
 function getNames(name: string): string[] {

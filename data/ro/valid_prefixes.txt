@@ -1,10 +1,12 @@
 
-[îi]nchiso(area|rii)
+#închisoarea Sighet, închisoarea din Sighet
+[îi]nchiso(area|rii)( din)?
+# aeroportul Frankfurt
 aeroportul\w*
 aeroportul\w* de la
 aeroportul\w* din
 aren(a|ei)
-Arhiepiscop\w* de
+arhiepiscop\w* de
 biseric(a|ii)
 cantonul(ui)?
 cartierul\w*

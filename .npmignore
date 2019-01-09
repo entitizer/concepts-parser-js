@@ -1,4 +1,11 @@
-*
-!lib/**
-!types/**
-!data/**
+
+node_modules/
+src/
+.travis.yml
+.gitignore
+CHANGELOG.md
+NOTES.md
+tsconfig.json
+yarn.lock
+lib/scripts/
+types/scripts/

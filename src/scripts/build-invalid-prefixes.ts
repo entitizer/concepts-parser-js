@@ -15,7 +15,7 @@ async function start() {
         const texts = getDbTextFiles(lang, 100);
         let items = getDataFileLines(lang, FILE_NAME);
         const newItems = buildInvalidPrefixes(texts);
-        console.log(newItems.length)
+        console.log(newItems.length);
         // items = items.concat(newItems);
         items = normalizeitems(items);
         saveDataFileLines(lang, items.join('\n'), FILE_NAME);
@@ -50,15 +50,28 @@ function buildInvalidPrefixes(texts: string[]) {
                 let i = 0;
                 while (i < words.length && isUpper(words[i][0])) {
                     i++;
-                }
-                if (i > 0) {
-                    const result = atonic(words.slice(0, i).join(' ').toLowerCase());
-                    if (!results[result]) {
-                        results[result] = { value: result, popularity: 0, texts: [] };
+                    if (endsWithPunctuation(words[i])) {
+                        break;
                     }
-                    results[result].popularity++;
-                    if (results[result].texts.indexOf(textHash) < 0) {
-                        results[result].texts.push(textHash);
+                }
+                if (i > 1) {
+                    let concept = words.slice(0, i).join(' ');
+                    if (endsWithPunctuation(concept)) {
+                        concept = concept.substr(0, concept.length - 1);
+                    }
+                    const textValue = words[0];
+                    const value = atonic(textValue.toLowerCase());
+                    if (!results[value]) {
+                        console.log(`testing ${textValue} AND ${concept}`);
+                        if (existsWordInSentences(sentences, textValue, concept)) {
+                            results[value] = { value, popularity: 0, texts: [] };
+                        } else {
+                            continue;
+                        }
+                    }
+                    results[value].popularity++;
+                    if (results[value].texts.indexOf(textHash) < 0) {
+                        results[value].texts.push(textHash);
                     }
                 }
             }
@@ -70,4 +83,18 @@ function buildInvalidPrefixes(texts: string[]) {
         .map(key => results[key]);
 
     return list.map(item => item.value);
+}
+
+function endsWithPunctuation(text: string) {
+    return [',', '.', ':', ';', '?', '/'].indexOf(text[text.length - 1]) > -1;
+}
+
+function existsWordInSentences(sentences: string[], concept: string, text: string) {
+    for (const sentence of sentences) {
+        if (new RegExp(`(\s)${concept}([\s.!?]|$)`).test(sentence) && !sentence.includes(text)) {
+            return true;
+        }
+    }
+
+    return false;
 }

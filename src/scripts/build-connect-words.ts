@@ -15,7 +15,8 @@ async function start() {
     for (let lang of LANGS) {
         let items = getDataFileLines(lang, FILE_NAME);
         const newItems = await buildConnectWords(lang);
-        items = items.concat(newItems);
+        console.log(newItems.length);
+        // items = items.concat(newItems);
         items = normalizeitems(items);
         saveDataFileLines(lang, items.join('\n'), FILE_NAME);
     }

@@ -17,6 +17,7 @@
     "clean-code": "rimraf ./lib/**/*.test.js && rimraf ./types/**/*.test.d.ts && rimraf ./types/scripts/**",
     "build-invalid-concepts": "node ./lib/scripts/build-invalid-concepts.js",
     "build-firstnames": "node ./lib/scripts/build-firstnames.js",
+    "build-connect-words": "node ./lib/scripts/build-connect-words.js",
     "build": "tsc && yarn build-invalid-concepts && yarn build-firstnames"
   },
   "engines": {
@@ -46,10 +47,12 @@
     "is-abbr-of": "^0.1.2"
   },
   "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
     "@types/node": "10.12.6",
     "@types/node-fetch": "^2.1.2",
     "ava": "^0.25.0",
     "debug": "^4.1.0",
+    "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
     "rimraf": "^2.6.2",
     "stopwords-json": "^1.2.0",
