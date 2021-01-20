@@ -83,6 +83,7 @@ asemenea
 asta
 astazi
 astea
+astfel
 astia
 asupra
 atac
@@ -207,6 +208,7 @@ circul
 ciresar
 cit
 cite
+citeste
 citi
 citva
 city
@@ -283,6 +285,7 @@ departe
 deputat\w*
 desi
 design
+despre
 destin
 diamant
 dieter
@@ -302,6 +305,7 @@ directoratul\w*
 dn\d+
 doamna
 doc
+documentul
 doi
 doilea
 dolea
@@ -332,6 +336,7 @@ euro \d
 evaluare
 eveniment\w*
 exclusiv
+exista
 exotic
 explozie
 extraordinar
@@ -369,6 +374,8 @@ fondul(ui)?
 formula
 formulei
 forum radio
+fosta
+fostul
 foto
 foto hot
 fotografia zilei
@@ -617,6 +624,7 @@ oameni
 oamenii
 ocean
 oficial
+oficial\w*
 oglinda
 omul
 oncologie
@@ -676,6 +684,7 @@ piscicultura
 placinta
 plan
 planeta
+planul\w*
 plop
 poate
 poezi[ea]
@@ -687,6 +696,7 @@ polo
 portocaliu
 posta
 pot
+potrivit
 poveste
 povesti
 power
@@ -710,8 +720,9 @@ primarului
 primavara
 primul
 prin
-printr-
+printr-o
 printr-un
+printre
 pro
 problem[ea]
 procuror\w*
@@ -950,6 +961,7 @@ va
 valea
 valea mare
 vara
+varianta
 vei
 verde
 verdict

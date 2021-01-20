@@ -44,6 +44,7 @@ mun[tț]ii
 muntele
 muntelui
 oceanul
+organiza[tț]i\w+
 palatul
 papa
 papei
@@ -67,6 +68,8 @@ regiun(ea|ei|ii)
 sectorul(ui)?
 spitalul
 stadionul\w*
+statul
+statului
 turnul(ui)?
 universitatea
 vulcanul\w*
