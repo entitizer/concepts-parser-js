@@ -22,7 +22,7 @@
     "build": "tsc && yarn build-invalid-concepts && yarn build-firstnames"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,7 @@
     "@types/fs-extra": "^5.0.4",
     "@types/node": "10.12.6",
     "@types/node-fetch": "^2.1.2",
-    "ava": "^2.0.0",
+    "ava": "^3.0.0",
     "debug": "^4.1.0",
     "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
