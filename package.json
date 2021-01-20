@@ -6,7 +6,7 @@
   "types": "./types/index.d.ts",
   "scripts": {
     "pretest": "yarn clean && yarn tsc && yarn normalize-data",
-    "test": "ava --no-cache --verbose lib/**/*.test.js",
+    "test": "ava --no-cache --verbose",
     "posttest": "yarn clean-code",
     "tsc": "tsc",
     "tscw": "tsc -w",
@@ -51,7 +51,7 @@
     "@types/fs-extra": "^5.0.4",
     "@types/node": "10.12.6",
     "@types/node-fetch": "^2.1.2",
-    "ava": "^0.25.0",
+    "ava": "^2.0.0",
     "debug": "^4.1.0",
     "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
