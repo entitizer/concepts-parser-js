@@ -4,6 +4,7 @@ ackoli
 aha
 ahoj
 aj
+aktualni
 albanec(i)?
 ale
 anebo
@@ -17,6 +18,7 @@ atd
 atp
 az
 behem
+online
 bez
 beze
 blesk
@@ -140,6 +142,7 @@ kdyz
 ke
 klara
 kolik
+konkretni
 krev
 krome
 ktera
@@ -153,6 +156,7 @@ lan
 lcd
 leden
 lide
+lidri
 ma
 madari
 maji
@@ -167,6 +171,7 @@ me
 mezi
 mhz
 mi
+mimo
 ministr
 mit
 mlha
@@ -222,6 +227,7 @@ neni
 nestaci
 nevadi
 nez
+součástí
 nic
 nich
 nim
@@ -231,6 +237,7 @@ nova
 nove
 novy
 nula
+nyní
 o
 od
 ode
@@ -256,11 +263,13 @@ porad
 potom
 pouze
 pozde
+později
 prave
 pravo
 pred
 pres
 prese
+přesto
 pri
 pricemz
 pro
@@ -318,6 +327,7 @@ tebou
 tecka
 ted'
 tedy
+musím
 tem
 tema
 temu
@@ -383,6 +393,7 @@ vubec
 vy
 vyber
 vzdy
+vztahy
 z
 za
 zac
@@ -394,3 +405,5 @@ ze
 zena
 zpet
 zpravy
+šéf
+šéfka
