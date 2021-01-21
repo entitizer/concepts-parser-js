@@ -11,6 +11,8 @@ arén[ay]
 bezpečnostní úřad[\S]*
 centráln[\S]+ bank[\S]*
 divadl[oe]
+domu
+domě
 domů
 hydrometeorologick[\S]+ ústav[\S]*
 kraj(i|e)?
@@ -31,6 +33,7 @@ průliv[\S]*
 ráj
 soud
 správní soud
+státy
 svaz
 uni[ei]
 univerzit[ay]

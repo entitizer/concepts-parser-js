@@ -19,6 +19,7 @@ Západočesk[\S]+ univerzit[\S]+ v
 [\S]+ soud[\S]* v
 cen[a|y]
 hotel
+hurikán[\S]*
 kraj(i|e)?
 nakladatelství
 okres[\S]*

@@ -72,4 +72,5 @@ statul
 statului
 turnul(ui)?
 universitatea
+uraganul\w*
 vulcanul\w*
