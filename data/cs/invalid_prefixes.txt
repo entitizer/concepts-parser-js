@@ -10,14 +10,18 @@ nic
 o
 obec
 podle
+poslanc[ie]
 prezident\S*
 pro
 rok( \d+)?
+rozhodnutí
+senátoři
 srážka
 takové
 také
 třetí
 v
+všechna
 z
 území
 čtyři
