@@ -1,34 +1,37 @@
-
-import { Concept } from '../concept';
-import { Context } from '../types';
-import { getValidPrefixes } from '../data';
+import { Concept } from "../concept";
+import { Context } from "../types";
+import { getValidPrefixes } from "../data";
 
 /**
  * Find concept prefix
  */
 export function filter(concepts: Concept[], context: Context): Concept[] {
-	const regexes = getValidPrefixes(context.lang);
+  const regexes = getValidPrefixes(context.lang);
 
-	return concepts.filter(function (concept) {
-		let text = context.text.substr(0, concept.index);
+  return concepts.filter(function (concept) {
+    let text = context.text.substr(0, concept.index);
 
-		for (let regex of regexes) {
-			let result = regex.exec(text);
+    for (let regex of regexes) {
+      let result = regex.exec(text);
 
-			if (result) {
-				let value = text.substr(result.index);
-				let indexSpace = 0;
-				if (/^\s/.test(value)) {
-					indexSpace = 1;
-					value = value.substr(1);
-				}
+      if (result) {
+        let value = text.substr(result.index);
+        let indexSpace = 0;
+        if (/^\s/.test(value)) {
+          indexSpace = 1;
+          value = value.substr(1);
+        }
 
-				concept.reset(value + concept.value, result.index + indexSpace, context.lang);
+        concept.reset(
+          value + concept.value,
+          result.index + indexSpace,
+          context.lang
+        );
 
-				return concept.isValid();
-			}
-		}
+        return concept.isValid();
+      }
+    }
 
-		return true;
-	});
-};
+    return true;
+  });
+}
