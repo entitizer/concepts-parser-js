@@ -184,7 +184,7 @@ moji
 mozna
 muj
 musi
-musím
+musim
 muze
 my
 na
@@ -236,7 +236,7 @@ nova
 nove
 novy
 nula
-nyní
+nyni
 o
 od
 ode
@@ -264,12 +264,14 @@ poslanc[ie]
 potom
 pouze
 pozde
-později
+pozdeji
 prave
 pravo
 pred
+predseda
 pres
 prese
+presto
 pri
 pricemz
 pro
@@ -281,8 +283,6 @@ proto
 protoze
 prvni
 pta
-předseda
-přesto
 r\d+
 re
 rok( d\+)?
@@ -291,6 +291,8 @@ s
 se
 sedm
 sedmnact
+sef
+sefka
 sest
 sestnact
 severozapad
@@ -301,7 +303,7 @@ smeji
 smi
 sms
 snad
-součástí
+soucasti
 spolu
 srazka
 sta
@@ -407,5 +409,3 @@ ze
 zena
 zpet
 zpravy
-šéf
-šéfka

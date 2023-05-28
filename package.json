@@ -19,7 +19,7 @@
     "build-firstnames": "node ./lib/scripts/build-firstnames.js",
     "build-connect-words": "node ./lib/scripts/build-connect-words.js",
     "normalize-data": "node ./lib/scripts/normalize-data.js",
-    "build": "tsc && yarn build-invalid-concepts && yarn build-firstnames"
+    "build": "tsc && yarn build-invalid-concepts && yarn build-firstnames && yarn build-connect-words"
   },
   "engines": {
     "node": ">=8.0.0"
