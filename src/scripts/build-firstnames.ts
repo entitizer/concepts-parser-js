@@ -34,17 +34,24 @@ async function buildFirstnames() {
 }
 
 async function getWikipediaPopularFirstnames(lang: string): Promise<string[]> {
-  let list = await getWikipediaPopularFirstnamesByLang(lang);
+  let list = await getWikipediaPopularFirstnamesByLang(lang).catch(() =>
+    getWikipediaPopularFirstnamesByLang(lang, false)
+  );
   for (const country of LANG_COUNTRIES[lang]) {
-    await getWikipediaPopularFirstnamesByLangAndCountry(lang, country).then(
-      (r) => (list = list.concat(r))
-    );
+    await getWikipediaPopularFirstnamesByLangAndCountry(lang, country)
+      .catch(() =>
+        getWikipediaPopularFirstnamesByLangAndCountry(lang, country, false)
+      )
+      .then((r) => (list = list.concat(r)));
   }
 
   return list;
 }
 
-function getWikipediaPopularFirstnamesByLang(lang: string): Promise<string[]> {
+function getWikipediaPopularFirstnamesByLang(
+  lang: string,
+  order = true
+): Promise<string[]> {
   const query = `SELECT ?firstname ?firstnameLabel ?count WHERE {
         {
           SELECT ?firstname (COUNT(?human) AS ?count) WHERE {
@@ -56,14 +63,15 @@ function getWikipediaPopularFirstnamesByLang(lang: string): Promise<string[]> {
         }
         SERVICE wikibase:label { bd:serviceParam wikibase:language "${lang}" } .
       }
-      ORDER BY DESC(?count)
+      ${order ? `ORDER BY DESC(?count)` : ""}
       LIMIT 200`;
 
   return fetchWikipediaPopularFirstnames(query);
 }
 function getWikipediaPopularFirstnamesByLangAndCountry(
   lang: string,
-  country: string
+  country: string,
+  order = true
 ): Promise<string[]> {
   const query = `SELECT ?firstname ?firstnameLabel ?count WHERE {
         {
@@ -77,7 +85,7 @@ function getWikipediaPopularFirstnamesByLangAndCountry(
         }
         SERVICE wikibase:label { bd:serviceParam wikibase:language "${lang}" } .
       }
-      ORDER BY DESC(?count)
+      ${order ? `ORDER BY DESC(?count)` : ""}
       LIMIT 200`;
 
   return fetchWikipediaPopularFirstnames(query);
@@ -128,5 +136,6 @@ const LANG_COUNTRIES: { [lang: string]: string[] } = {
   hu: ["Q28"],
   it: ["Q38"],
   pl: ["Q36"],
-  ru: ["Q159"]
+  ru: ["Q159"],
+  es: ["Q29"]
 };
