@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.5.5 - May 28, 2023
+
+- Spanish support (`es`)
+
 ### v1.5.4 - January 9, 2019
 
 - normalize-data script;
