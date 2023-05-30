@@ -1,6 +1,6 @@
 {
   "name": "concepts-parser",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
