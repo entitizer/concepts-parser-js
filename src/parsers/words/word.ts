@@ -1,6 +1,7 @@
 import * as utils from "../../utils";
 
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
+const TRAILING_CONNECT_CHARS = ["-", "'", "'", "`", "&"];
 
 export class Word {
   index = 0;
@@ -24,12 +25,14 @@ export class Word {
     const upperValue = value.toUpperCase();
 
     if (value.length > 1) {
-      // ends with dot
-      if (value[value.length - 1] === ".") {
-        // is NOT abbreviation
+      const last = value[value.length - 1];
+      if (last === ".") {
+        // keep the dot only for ALL-CAPS dotted abbreviations
         if (!(value === upperValue && ABBR_REG.test(value))) {
           value = value.slice(0, value.length - 1);
         }
+      } else if (TRAILING_CONNECT_CHARS.indexOf(last) > -1) {
+        value = value.slice(0, value.length - 1);
       }
     }
 

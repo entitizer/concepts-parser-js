@@ -252,3 +252,28 @@ test("hyphenated name at end of text is unaffected", () => {
   assert.equal(concepts[0].value, "Ana-Maria");
   assert.equal(concepts[0].index, 8);
 });
+
+test("stray dash after a word is not part of the concept", () => {
+  const text = `Ieri John- Smith a ajuns la Chișinău.`;
+  const concepts = parse({ text, lang: "ro" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["John", "Smith", "Chișinău"],
+  );
+  assert.equal(concepts[0].index, 5);
+  assert.equal(concepts[1].index, 11);
+});
+
+test("trailing connect char at end of text is stripped", () => {
+  const concepts = parse({ text: `A venit apoi Ana-`, lang: "ro" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Ana");
+  assert.equal(concepts[0].index, 13);
+});
+
+test("plural possessive apostrophe is not kept", () => {
+  const concepts = parse({ text: `The Smiths' cat is grey`, lang: "en" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Smiths");
+  assert.equal(concepts[0].index, 4);
+});
