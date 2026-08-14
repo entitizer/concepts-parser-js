@@ -3,4 +3,5 @@ types
 db
 data
 docs
+.superpowers
 package-lock.json
