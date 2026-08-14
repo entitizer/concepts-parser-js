@@ -14,7 +14,8 @@
   "files": [
     "lib",
     "types",
-    "data"
+    "data",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "pretest": "npm run normalize-data",
