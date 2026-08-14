@@ -8,20 +8,20 @@ const QuotationMarks = [
   ['"', '"'],
   ["„”“", "”“"],
   ["«", "»"],
-  ["‘", "’"]
+  ["‘", "’"],
 ];
 
 // const QuotationMarksReg = QuotationMarks.map(list => list.map(item => new RegExp(`[${item}]`)));
 
 const StartQuotationMark = QuotationMarks.reduce<string>(
-  (str, item) => (str += item[0]),
-  ""
+  (str, item) => str + item[0],
+  "",
 );
 const StartQuotationMarkReg = new RegExp(`[${StartQuotationMark}]`);
 
 const EndQuotationMark = QuotationMarks.reduce<string>(
-  (str, item) => (str += item[1]),
-  ""
+  (str, item) => str + item[1],
+  "",
 );
 const EndQuotationMarkReg = new RegExp(`[${EndQuotationMark}]`);
 
@@ -50,7 +50,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
         const prevConceptEndIndex =
           prevConcept.index + prevConcept.value.length;
         debug(
-          `prevConceptEndIndex= ${prevConceptEndIndex} > ${concept.index - 2}`
+          `prevConceptEndIndex= ${prevConceptEndIndex} > ${concept.index - 2}`,
         );
         if (concept.index - 2 === prevConceptEndIndex) {
           debug(`text beetwen= '${text[concept.index - 2]}'`);
@@ -58,7 +58,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
             const newConcept = new Concept({
               value: text.substring(prevConcept.index, conceptEndIndex + 1),
               index: prevConcept.index,
-              lang: context.lang
+              lang: context.lang,
             });
             if (newConcept.isValid()) {
               newConcepts.splice(newConcepts.length - 1, 1);

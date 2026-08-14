@@ -9,10 +9,10 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
   const regexes = getValidPrefixes(context.lang);
 
   return concepts.filter(function (concept) {
-    let text = context.text.slice(0, concept.index);
+    const text = context.text.slice(0, concept.index);
 
-    for (let regex of regexes) {
-      let result = regex.exec(text);
+    for (const regex of regexes) {
+      const result = regex.exec(text);
 
       if (result) {
         let value = text.slice(result.index);
@@ -25,7 +25,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
         concept.reset(
           value + concept.value,
           result.index + indexSpace,
-          context.lang
+          context.lang,
         );
 
         return concept.isValid();

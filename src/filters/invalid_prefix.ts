@@ -10,13 +10,13 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 
   return concepts.filter(function (concept) {
     for (let i = sources.length - 1; i >= 0; i--) {
-      let regex: RegExp = sources[i];
+      const regex: RegExp = sources[i];
 
-      let result = regex.exec(concept.atonicValue);
+      const result = regex.exec(concept.atonicValue);
 
       if (result) {
-        let match = result[0];
-        let value = concept.value.slice(match.length);
+        const match = result[0];
+        const value = concept.value.slice(match.length);
 
         concept.reset(value, concept.index + match.length, context.lang);
 

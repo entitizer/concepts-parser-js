@@ -25,7 +25,7 @@ export abstract class BaseParser {
       acceptStartQuotes: ['"', "“", "”", "„", "«"],
       acceptEndQuotes: ['"', "“", "”", "„", "»"],
       acceptPrefixes: [] as string[],
-      ...options
+      ...options,
     };
 
     resolved.acceptConceptWords.sort(function (a, b) {
@@ -35,18 +35,18 @@ export abstract class BaseParser {
     this.options = {
       ...resolved,
       acceptConceptWordsRegex: new RegExp(
-        "^(" + resolved.acceptConceptWords.join("|") + ") "
+        "^(" + resolved.acceptConceptWords.join("|") + ") ",
       ),
       acceptConceptWordsRegex2: new RegExp(
-        "^[ ](" + resolved.acceptConceptWords.join("|") + ")[ ]$"
-      )
+        "^[ ](" + resolved.acceptConceptWords.join("|") + ")[ ]$",
+      ),
     };
   }
 
   abstract parse(context: Context): Concepts;
 
   isIn(name: string, value: string): boolean {
-    var options: any = this.options;
+    const options: any = this.options;
     return options[name].indexOf(value) >= 0;
   }
 
@@ -71,7 +71,7 @@ export abstract class BaseParser {
   }
 
   getStartConceptWord(value: string): string | null {
-    let result = this.options.acceptConceptWordsRegex.exec(value);
+    const result = this.options.acceptConceptWordsRegex.exec(value);
     if (result) {
       return result[1];
     }
@@ -82,9 +82,9 @@ export abstract class BaseParser {
     context: Context,
     input: string,
     i: number,
-    start: number
+    start: number,
   ): Concept {
-    let text: string = input.slice(start, i - 1);
+    const text: string = input.slice(start, i - 1);
 
     return new Concept({ value: text, index: start, lang: context.lang });
   }
@@ -105,9 +105,9 @@ export abstract class BaseParser {
   }
 
   isLowerStartUpperWord(text: string, index: number): boolean {
-    let t = text.slice(index).trim();
+    const t = text.slice(index).trim();
     for (let i = 0; i < t.length; i++) {
-      let c = t[i];
+      const c = t[i];
       if (!this.isValidWordChar(c)) {
         return false;
       }

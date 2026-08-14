@@ -30,7 +30,7 @@ export abstract class Model implements IModel {
       if (typeof fields !== "object") {
         throw new Error("`fields` param must be an oject");
       }
-      for (let prop in fields) {
+      for (const prop in fields) {
         this.set(prop, fields[prop]);
       }
     }
@@ -55,7 +55,7 @@ export abstract class Model implements IModel {
   toJSON(): any {
     const fields: any = {};
 
-    for (let prop in this._fields) {
+    for (const prop in this._fields) {
       let value = this._fields[prop];
       if (value && typeof value.toJSON === "function") {
         value = value.toJSON();

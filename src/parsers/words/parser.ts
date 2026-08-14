@@ -18,7 +18,7 @@ export class Parser extends BaseParser {
 
     function addWord(i: number) {
       if (isConcept) {
-        let text = input.slice(start, i);
+        const text = input.slice(start, i);
         // console.log('text `' + text + '`');
         words.add(Words.create(text, start));
       }

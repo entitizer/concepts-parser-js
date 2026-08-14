@@ -11,12 +11,12 @@ export function parse(context: Context, options?: FilterOptions): Concept[] {
   debug("start parsing");
 
   const parser = new Parser({
-    acceptConceptWords: getConnectWords(context.lang)
+    acceptConceptWords: getConnectWords(context.lang),
   });
 
-  let concepts = parser.parse(context);
+  const concepts = parser.parse(context);
   debug("end parsing");
-  let conceptsList = concepts.filter(options);
+  const conceptsList = concepts.filter(options);
 
   return conceptsList;
 }

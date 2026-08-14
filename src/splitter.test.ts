@@ -4,16 +4,16 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 test("createConceptsFromConcept", () => {
-  let concept = parse({
+  const concept = parse({
     text: "Presedintele Republicii Moldova Igor Dodon este un...",
-    lang: "ro"
+    lang: "ro",
   })[0];
 
-  let value = "Republicii Moldova Igor Dodon";
+  const value = "Republicii Moldova Igor Dodon";
 
   assert.equal(concept.value, value);
 
-  let concepts = createConceptsFromConcept(concept, value.lastIndexOf(" "));
+  const concepts = createConceptsFromConcept(concept, value.lastIndexOf(" "));
 
   assert.equal(concepts[0].value, "Republicii Moldova Igor");
   assert.equal(concepts[1].value, "Dodon");
@@ -22,7 +22,7 @@ test("createConceptsFromConcept", () => {
 test("no split 1 word concept", () => {
   const concept = parse({
     text: "USA is a country",
-    lang: "en"
+    lang: "en",
   })[0];
   let concepts = simpleSplit(concept);
   assert.equal(0, concepts.length);
@@ -33,7 +33,7 @@ test("no split 1 word concept", () => {
 test("split: 2 words", () => {
   const concept = parse({
     text: "Nicolae Timofti nu a comentat deocamdată situația.",
-    lang: "ro"
+    lang: "ro",
   })[0];
   let concepts = simpleSplit(concept);
   assert.equal(2, concepts.length);
@@ -46,20 +46,20 @@ test("split: 2 words", () => {
 test("split: 3 words", () => {
   const concept = parse({
     text: "Doar Nicolae Timofti nu a comentat deocamdată situația.",
-    lang: "ro"
+    lang: "ro",
   })[0];
-  let concepts = simpleSplit(concept);
+  const concepts = simpleSplit(concept);
   assert.equal(4, concepts.length);
 });
 
 test("split: 4 words", () => {
   const concept = parse({
     text: "Y’all Need to Chill About Proxima Centauri b",
-    lang: "en"
+    lang: "en",
   })[1];
   const value = "Chill About Proxima Centauri";
   assert.equal(concept.value, value);
-  let concepts = simpleSplit(concept);
+  const concepts = simpleSplit(concept);
   assert.equal(6, concepts.length);
   assert.equal("Chill About Proxima", concepts[0].value);
   assert.equal("Centauri", concepts[1].value);
@@ -72,7 +72,7 @@ test("split: 4 words", () => {
 test("split by connect words", () => {
   const concept = parse({
     text: "Facebook and Microsoft are friends",
-    lang: "en"
+    lang: "en",
   })[0];
   assert.equal(concept.value, "Facebook and Microsoft");
   let concepts = simpleSplit(concept);
@@ -90,7 +90,7 @@ test("split by connect words", () => {
 test("remove lowercase words", () => {
   let concepts = parse({
     text: "liceul Ion Creanga",
-    lang: "ro"
+    lang: "ro",
   });
   assert.equal(concepts.length, 1);
   assert.equal(concepts[0].value, "liceul Ion Creanga");
@@ -103,7 +103,7 @@ test("remove lowercase words", () => {
 
   concepts = parse({
     text: "Colegiul Ion Creanga din Iasi",
-    lang: "ro"
+    lang: "ro",
   });
 
   assert.equal(concepts.length, 1);

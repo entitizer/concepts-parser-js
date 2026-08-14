@@ -6,10 +6,10 @@ import isAbbrOf from "is-abbr-of";
 const debug = createDebug("concepts:filter");
 
 function isInParentheses(concept: Concept, context: Context): boolean {
-  var i = concept.index;
-  var j = concept.endIndex;
-  var sp = context.text[i - 1];
-  var ep = context.text[j];
+  const i = concept.index;
+  const j = concept.endIndex;
+  const sp = context.text[i - 1];
+  const ep = context.text[j];
   // debug(concept.value, i, j, sp, ep);
   return i > 0 && j < context.text.length && sp === "(" && ep === ")";
 }

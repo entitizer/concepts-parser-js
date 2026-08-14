@@ -37,12 +37,12 @@ export class Words {
       }
     }
 
-    let length = this.list.length;
+    const length = this.list.length;
     if (length > 0) {
-      let prev = this.list[length - 1];
+      const prev = this.list[length - 1];
       prev.rightText = this.context.text.substring(
         prev.index + prev.value.length,
-        word.index
+        word.index,
       );
     }
 
@@ -80,13 +80,13 @@ export class Words {
       } else {
         const text = this.context.text.substring(
           index,
-          word.index + word.value.length
+          word.index + word.value.length,
         );
         // debug('added concept', text, word.rightText, index, word.value);
         const concept = new Concept({
           value: text,
           index,
-          lang: this.context.lang
+          lang: this.context.lang,
         });
         concepts.add(concept);
         firstWord = true;

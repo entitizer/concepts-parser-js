@@ -65,7 +65,7 @@ export class Concept extends Model implements IConcept {
   }
 
   isValid(): boolean {
-    let value = this.value;
+    const value = this.value;
     if (
       !value ||
       value.length < 2 ||
@@ -80,10 +80,7 @@ export class Concept extends Model implements IConcept {
       return false;
     }
 
-    if (
-      value.length === 2 &&
-      /[!"#%&'\(\)\*,\.\/:\?@\[\]\\_{}-]/.test(value[1])
-    ) {
+    if (value.length === 2 && /[!"#%&'()*,./:?@[\]\\_{}-]/.test(value[1])) {
       return false;
     }
 

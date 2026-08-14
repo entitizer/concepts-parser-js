@@ -6,11 +6,11 @@ export type WikidataQueryResultItem = Dictionary<{
 }>;
 
 export async function queryWikidata(
-  query: string
+  query: string,
 ): Promise<WikidataQueryResultItem[]> {
   const response = await fetch(
     "https://query.wikidata.org/sparql?format=json&query=" + query,
-    { signal: AbortSignal.timeout(1000 * 60) }
+    { signal: AbortSignal.timeout(1000 * 60) },
   );
   const json = (await response.json()) as any;
   return (json.results && json.results.bindings) || [];
@@ -24,7 +24,7 @@ export type WikiEntityInfo = {
 };
 
 export async function queryWikidataInfo(
-  query: string
+  query: string,
 ): Promise<Dictionary<WikiEntityInfo>> {
   const entries = await queryWikidata(query);
 
@@ -32,7 +32,7 @@ export async function queryWikidataInfo(
 
   for (const entry of entries) {
     const id = entry["item"].value.slice(
-      entry["item"].value.lastIndexOf("/") + 1
+      entry["item"].value.lastIndexOf("/") + 1,
     );
     const label = entry["label"].value;
     const title = entry["title"].value;
@@ -56,9 +56,9 @@ export function delay(ms: number) {
 export async function getWikiArticleText(lang: string, title: string) {
   const response = await fetch(
     `https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=true&titles=${encodeURIComponent(
-      title
+      title,
     )}&format=json`,
-    { signal: AbortSignal.timeout(1000 * 60) }
+    { signal: AbortSignal.timeout(1000 * 60) },
   );
   const json = (await response.json()) as any;
   const id = Object.keys(json.query.pages)[0];
@@ -83,18 +83,18 @@ export async function getWikiEntitiesInfo(lang: string, limit: number) {
     "Q6881511", // enterprise
     "Q327333", // government agency
     "Q20901295", // foreign affairs ministry
-    "Q1241288" // economic affairs ministry
+    "Q1241288", // economic affairs ministry
   ];
   let entities: Dictionary<WikiEntityInfo> = {};
   for (const type of types) {
     let data = await queryWikidataInfo(
-      formatEntitiesQuery(lang, type, limit, 10, false)
+      formatEntitiesQuery(lang, type, limit, 10, false),
     );
     // console.log('got data', data)
     entities = { ...entities, ...data };
     await delay(1000 * 3);
     data = await queryWikidataInfo(
-      formatEntitiesQuery(lang, type, limit, 5, true)
+      formatEntitiesQuery(lang, type, limit, 5, true),
     );
     // console.log('got data', data)
     entities = { ...entities, ...data };
@@ -109,7 +109,7 @@ function formatEntitiesQuery(
   type: string,
   limit: number,
   minSitelinks: number,
-  national: boolean
+  national: boolean,
 ) {
   return `SELECT ?item ?sitelinks ?label ?title ?alias WHERE {
         ?item wdt:P31 wd:${type}.

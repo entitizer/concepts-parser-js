@@ -33,7 +33,7 @@ export function isLetterOrDigit(s: string): boolean {
 }
 
 export function isPunctuation(s: string): boolean {
-  return /[!"#%&'\(\)\*,\.\/:\?@\[\]\\_{}-]/.test(s);
+  return /[!"#%&'()*,./:?@[\]\\_{}-]/.test(s);
 }
 
 export function isSentenceStartingWord(index: number, text: string) {
@@ -42,12 +42,12 @@ export function isSentenceStartingWord(index: number, text: string) {
     return true;
   }
   text = text.trim();
-  let last = text[text.length - 1];
-  return /^[!\.\?;-]$/.test(last);
+  const last = text[text.length - 1];
+  return /^[!.?;-]$/.test(last);
 }
 
 export function defaults(target: any, source: any) {
-  for (let prop in source) {
+  for (const prop in source) {
     if (typeof target[prop] === "undefined") {
       target[prop] = source[prop];
     }
@@ -57,7 +57,7 @@ export function defaults(target: any, source: any) {
 }
 
 export function pick(obj: any, props: string[]): any {
-  let o: any = {};
+  const o: any = {};
   for (let i = props.length - 1; i >= 0; i--) {
     if (typeof obj[props[i]] !== "undefined") {
       o[props[i]] = obj[props[i]];

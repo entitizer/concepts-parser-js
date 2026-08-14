@@ -25,7 +25,7 @@ const FILTERS_BY_MODE = {
     "start_word",
     "known",
     "quote",
-    "duplicate"
+    "duplicate",
   ],
   identify: [
     "invalid_prefix",
@@ -36,9 +36,9 @@ const FILTERS_BY_MODE = {
     "suffix",
     //'start_word',
     "known",
-    "quote"
+    "quote",
     //'duplicate'
-  ]
+  ],
 };
 
 interface IFilter {
@@ -55,7 +55,7 @@ const FILTERS: { [name: string]: IFilter } = {
   start_word,
   known,
   quote,
-  duplicate
+  duplicate,
 };
 
 function getFilter(name: string): IFilter {
@@ -74,11 +74,11 @@ export type FilterOptions = {
 export function filter(
   concepts: Concept[],
   context: Context,
-  options: FilterOptions = { mode: MODE_IDENTIFY }
+  options: FilterOptions = { mode: MODE_IDENTIFY },
 ): Concept[] {
   // debug('start filter');
 
-  let filters: string[] = [];
+  let filters: string[];
 
   if (options.mode) {
     switch (options.mode) {
@@ -99,7 +99,7 @@ export function filter(
     }
   }
 
-  for (let name of filters) {
+  for (const name of filters) {
     // console.log('filter ' + name + ', ' + filters.length);
     concepts = getFilter(name).filter(concepts, context);
   }

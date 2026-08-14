@@ -22,7 +22,7 @@ async function buildFirstnames() {
     const wikiNames = await getWikipediaPopularFirstnames(lang);
 
     firstNames = uniq(
-      firstNames.concat(wikiNames).map((item) => atonic(item) as string)
+      firstNames.concat(wikiNames).map((item) => atonic(item) as string),
     );
 
     firstNames = firstNames.filter((name) => isValidName(name));
@@ -35,12 +35,12 @@ async function buildFirstnames() {
 
 async function getWikipediaPopularFirstnames(lang: string): Promise<string[]> {
   let list = await getWikipediaPopularFirstnamesByLang(lang).catch(() =>
-    getWikipediaPopularFirstnamesByLang(lang, false)
+    getWikipediaPopularFirstnamesByLang(lang, false),
   );
   for (const country of LANG_COUNTRIES[lang]) {
     await getWikipediaPopularFirstnamesByLangAndCountry(lang, country)
       .catch(() =>
-        getWikipediaPopularFirstnamesByLangAndCountry(lang, country, false)
+        getWikipediaPopularFirstnamesByLangAndCountry(lang, country, false),
       )
       .then((r) => (list = list.concat(r)));
   }
@@ -50,7 +50,7 @@ async function getWikipediaPopularFirstnames(lang: string): Promise<string[]> {
 
 function getWikipediaPopularFirstnamesByLang(
   lang: string,
-  order = true
+  order = true,
 ): Promise<string[]> {
   const query = `SELECT ?firstname ?firstnameLabel ?count WHERE {
         {
@@ -71,7 +71,7 @@ function getWikipediaPopularFirstnamesByLang(
 function getWikipediaPopularFirstnamesByLangAndCountry(
   lang: string,
   country: string,
-  order = true
+  order = true,
 ): Promise<string[]> {
   const query = `SELECT ?firstname ?firstnameLabel ?count WHERE {
         {
@@ -92,10 +92,10 @@ function getWikipediaPopularFirstnamesByLangAndCountry(
 }
 
 async function fetchWikipediaPopularFirstnames(
-  query: string
+  query: string,
 ): Promise<string[]> {
   const items = (await queryWikidata(query)).map(
-    (item) => item.firstnameLabel.value
+    (item) => item.firstnameLabel.value,
   );
   let names: string[] = [];
   items.forEach((item) => (names = names.concat(getNames(item))));
@@ -107,7 +107,7 @@ function getNames(name: string): string[] {
     return [];
   }
   const names = name
-    .split(/[\/]/g)
+    .split(/[/]/g)
     .map((item) => item.trim())
     .map((item) => {
       if (item.indexOf("(") > 1) {
@@ -137,5 +137,5 @@ const LANG_COUNTRIES: { [lang: string]: string[] } = {
   it: ["Q38"],
   pl: ["Q36"],
   ru: ["Q159"],
-  es: ["Q29"]
+  es: ["Q29"],
 };

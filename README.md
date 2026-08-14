@@ -9,17 +9,17 @@ A Concept is a part of a text that may be a [Named entity](https://en.wikipedia.
 JavaScript:
 
 ```js
-const parser = require('concepts-parser');
+const parser = require("concepts-parser");
 
-const concepts = parser.parse({ text: 'Some text', lang: 'ru', country: 'ru' });
+const concepts = parser.parse({ text: "Some text", lang: "ru", country: "ru" });
 ```
 
 TypeScript:
 
 ```ts
-import { parse } from 'concepts-parser';
+import { parse } from "concepts-parser";
 
-const concepts = parse({ text: 'Some text', lang: 'ru', country: 'ru '});
+const concepts = parse({ text: "Some text", lang: "ru", country: "ru " });
 ```
 
 ## API
@@ -29,12 +29,12 @@ const concepts = parse({ text: 'Some text', lang: 'ru', country: 'ru '});
 Finds concepts in a context.
 
 - `context` (Object) **required** - Context
-  + `text` (String) **required** - Text to find concepts;
-  + `lang` (String) **required** - Text language, 2 chars code: `en`, `ru`;
-  + `country` (String) **optional** - Context country: `ru`, `it`;
+  - `text` (String) **required** - Text to find concepts;
+  - `lang` (String) **required** - Text language, 2 chars code: `en`, `ru`;
+  - `country` (String) **optional** - Context country: `ru`, `it`;
 - `options` (Object) **optional**:
-  + `mode` (String) **optional** - Can be **identity** or **collect**. Default: **identity**. **identity** mode excludes filters: `start_word`, `duplicate` and `partial`;
-  + `filters` (String[]) **optional** - Ordered list of filters;
+  - `mode` (String) **optional** - Can be **identity** or **collect**. Default: **identity**. **identity** mode excludes filters: `start_word`, `duplicate` and `partial`;
+  - `filters` (String[]) **optional** - Ordered list of filters;
 
 #### Valid filters
 

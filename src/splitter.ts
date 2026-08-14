@@ -18,7 +18,7 @@ function isValid(concept: Concept): boolean {
   }
   const invalid = getInvalidConcepts(concept.lang);
 
-  for (let reg of invalid) {
+  for (const reg of invalid) {
     if (reg.test(value)) {
       return false;
     }
@@ -58,7 +58,7 @@ function trimLowecaseWords(concept: Concept): Concept {
       concept.reset(
         value.slice(0, value.lastIndexOf(" ")),
         concept.index,
-        concept.lang
+        concept.lang,
       );
       return trimLowecaseWords(concept);
     } else if (startsWithLowercaseWord(value)) {
@@ -82,15 +82,15 @@ function trimLowecaseWords(concept: Concept): Concept {
 export function createConceptsFromConcept(
   concept: Concept,
   index: number,
-  separator?: string
+  separator?: string,
 ): Concept[] {
   separator = separator || " ";
-  let list: Concept[] = [];
+  const list: Concept[] = [];
 
   let c = createConcept(
     concept.value.slice(0, index),
     concept.index,
-    concept.lang
+    concept.lang,
   );
   if (isValid(c)) {
     if (c.countWords > 1) {
@@ -106,7 +106,7 @@ export function createConceptsFromConcept(
   c = createConcept(
     concept.value.slice(index),
     concept.index + index,
-    concept.lang
+    concept.lang,
   );
   if (isValid(c)) {
     if (c.countWords > 1) {
@@ -209,7 +209,7 @@ export function split(concept: Concept): Concept[] {
 }
 
 function uniqConcepts(list: Concept[]) {
-  let keys: any = {};
+  const keys: any = {};
   let key: string;
 
   list = list.filter(function (item) {

@@ -13,7 +13,7 @@ const LANGS = process.argv[2]
   .filter((item) => item.length === 2);
 
 async function start() {
-  for (let lang of LANGS) {
+  for (const lang of LANGS) {
     let items = getDataFileLines(lang, FILE_NAME);
     const newItems = await buildConnectWords(lang);
     console.log(newItems.length);
@@ -82,7 +82,7 @@ function getConnectWordTitle(title: string) {
   }
   const connectWords: string[] = [];
   for (const word of words.slice(1, words.length - 1)) {
-    if (isLower(word) && !/[\(\)\[\]]/.test(word)) {
+    if (isLower(word) && !/[()[\]]/.test(word)) {
       connectWords.push(word);
     } else if (connectWords.length) {
       break;

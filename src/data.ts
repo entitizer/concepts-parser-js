@@ -10,7 +10,7 @@ const LANGUAGES: string[] = [
   "pl",
   "it",
   "en",
-  "es"
+  "es",
 ];
 
 const NAMES: string[] = [
@@ -22,7 +22,7 @@ const NAMES: string[] = [
   "partial_concepts",
   "valid_prefixes",
   "valid_suffixes",
-  "firstnames"
+  "firstnames",
 ];
 
 export type NameInfo = { atonic: boolean; insensitive: boolean; sort: boolean };
@@ -36,7 +36,7 @@ const NAMES_INFO: { [name: string]: NameInfo } = {
   partial_concepts: { atonic: false, insensitive: false, sort: true },
   valid_prefixes: { atonic: false, insensitive: false, sort: true },
   valid_suffixes: { atonic: false, insensitive: false, sort: true },
-  firstnames: { atonic: false, insensitive: false, sort: true }
+  firstnames: { atonic: false, insensitive: false, sort: true },
 };
 
 type DataType = RegExp[] | SuffixDataItem[];
@@ -105,7 +105,7 @@ const builders: IBuilder = {
         complexList.push({
           reg: new RegExp(`^ (${parts[0]})`, "i"),
           concat,
-          prefix
+          prefix,
         });
       }
     });
@@ -113,7 +113,7 @@ const builders: IBuilder = {
     if (simpleList.length) {
       simpleList = sortByCountWordsDesc(simpleList);
       complexList.push({
-        reg: new RegExp(`^ (${simpleList.join("|")})(\\b|\\s)`, "i")
+        reg: new RegExp(`^ (${simpleList.join("|")})(\\b|\\s)`, "i"),
       });
     }
 
@@ -121,7 +121,7 @@ const builders: IBuilder = {
   },
   firstnames: function (items: string[]): RegExp[] {
     return items.length > 0 ? [new RegExp(`^(${items.join("|")})[ -]`)] : [];
-  }
+  },
 };
 
 function sortByCountWordsDesc(items: string[]) {
@@ -132,7 +132,7 @@ function getFileData(file: string): string[] {
   let content;
   try {
     content = fs.readFileSync(file, "utf8");
-  } catch (e) {
+  } catch {
     return [];
   }
   content = content.replace(/\r+/g, "").trim();
@@ -165,11 +165,11 @@ function load(name: string, lang: string, country?: string): string[] {
 function build(
   name: string,
   lang: string,
-  country?: string
+  country?: string,
 ): DataType | string[] {
-  let data = load(name, lang, country);
+  const data = load(name, lang, country);
 
-  let builder = builders[name];
+  const builder = builders[name];
   if (builder) {
     return builder(data);
   }
@@ -179,7 +179,7 @@ function build(
 
 export function get<T extends string[] | RegExp[] | SuffixDataItem[]>(
   name: string,
-  lang: string
+  lang: string,
 ): T {
   if (!name) {
     throw new Error("param `name` is required");

@@ -21,7 +21,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
       const concept = new Concept({
         value,
         index,
-        lang: context.lang
+        lang: context.lang,
       });
 
       if (concept.isValid()) {

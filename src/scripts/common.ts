@@ -10,7 +10,7 @@ export function md5(value: string): string {
 export function saveDataFileLines(
   lang: string,
   data: string,
-  fileName: string
+  fileName: string,
 ) {
   if (!fileName.endsWith(".txt")) {
     fileName += ".txt";
@@ -24,14 +24,14 @@ export function getDataFileLines(lang: string, fileName: string) {
     fileName += ".txt";
   }
   const file = join(__dirname, "..", "..", "data", lang, fileName);
-  let lines: string[] = readFileSync(file, "utf8").split(/\s*\n\s*/g);
+  const lines: string[] = readFileSync(file, "utf8").split(/\s*\n\s*/g);
   return lines;
 }
 
 export async function saveDbTextFile(
   lang: string,
   data: string,
-  fileName: string
+  fileName: string,
 ) {
   const file = join(__dirname, "..", "..", "db", "texts", lang, fileName);
   await mkdir(dirname(file), { recursive: true });

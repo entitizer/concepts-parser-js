@@ -3,7 +3,7 @@ import {
   getDbTextFiles,
   getDataFileLines,
   saveDataFileLines,
-  md5
+  md5,
 } from "./common";
 import { Dictionary } from "../types";
 const FILE_NAME = "invalid_prefixes.txt";
@@ -17,7 +17,7 @@ const LANGS = process.argv[2]
   .filter((item) => item.length === 2);
 
 async function start() {
-  for (let lang of LANGS) {
+  for (const lang of LANGS) {
     const texts = getDbTextFiles(lang, 100);
     let items = getDataFileLines(lang, FILE_NAME);
     const newItems = buildInvalidPrefixes(texts);
@@ -107,11 +107,11 @@ function endsWithPunctuation(text: string) {
 function existsWordInSentences(
   sentences: string[],
   concept: string,
-  text: string
+  text: string,
 ) {
   for (const sentence of sentences) {
     if (
-      new RegExp(`(\s)${concept}([\s.!?]|$)`).test(sentence) &&
+      new RegExp(`(\\s)${concept}([\\s.!?]|$)`).test(sentence) &&
       !sentence.includes(text)
     ) {
       return true;

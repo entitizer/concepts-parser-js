@@ -15,14 +15,14 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
       nextIsInvalid = false;
       return false;
     }
-    let text = context.text.slice(concept.index + concept.value.length);
+    const text = context.text.slice(concept.index + concept.value.length);
 
     for (const source of sources) {
-      let result = source.reg.exec(text);
+      const result = source.reg.exec(text);
 
       if (result) {
-        let match = result[0];
-        let value = text.slice(0, match.length);
+        const match = result[0];
+        const value = text.slice(0, match.length);
 
         if (source.prefix) {
           // is not required prefix
@@ -39,7 +39,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
               concept.reset(
                 concept.value + " " + nextConcept.value,
                 concept.index,
-                concept.lang
+                concept.lang,
               );
               nextIsInvalid = true;
             }
