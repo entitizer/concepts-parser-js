@@ -100,19 +100,6 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 6. Dotted abbreviations with 3+ letters lose the final dot.
-// ABBR_REG in src/parsers/words/word.ts allows only {1,2} letter-dot groups,
-// so "R." keeps its dot but "S.U.A." is truncated to "S.U.A".
-
-test("ro: S.U.A. keeps its final dot", { todo: true }, () => {
-  const concepts = parse({
-    text: "Delegația a zburat în S.U.A. săptămâna trecută.",
-    lang: "ro",
-  });
-  assert.deepEqual(vals(concepts), ["Delegația", "S.U.A."]);
-});
-
-// ---------------------------------------------------------------------------
 // 7. Language code is not normalized (src/data.ts). Concept lowercases lang,
 // but data loading uses it verbatim, so an uppercase code from a CMS or HTTP
 // header crashes instead of parsing.

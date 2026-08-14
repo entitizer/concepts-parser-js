@@ -306,3 +306,14 @@ test("explicitly invalid `filters` value still throws", () => {
     /`filters` fields is invalid/,
   );
 });
+
+test("dotted abbreviations with 3+ letters keep the final dot", () => {
+  const concepts = parse({
+    text: "Delegația a zburat în S.U.A. săptămâna trecută.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Delegația", "S.U.A."],
+  );
+});
