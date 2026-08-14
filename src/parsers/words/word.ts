@@ -1,7 +1,7 @@
 import * as utils from "../../utils";
 
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
-const TRAILING_CONNECT_CHARS = ["-", "'", "'", "`", "&"];
+const TRAILING_CONNECT_CHARS = ["-", "'", "’", "`", "&"];
 
 export class Word {
   index = 0;

@@ -277,3 +277,10 @@ test("plural possessive apostrophe is not kept", () => {
   assert.equal(concepts[0].value, "Smiths");
   assert.equal(concepts[0].index, 4);
 });
+
+test("trailing curly apostrophe at end of text is stripped", () => {
+  const concepts = parse({ text: `A venit apoi Ana'`, lang: "ro" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Ana");
+  assert.equal(concepts[0].index, 13);
+});
