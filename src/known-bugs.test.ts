@@ -100,7 +100,7 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 8. Spanish connect words are missing bare "de" (data/es/connect_words.txt
+// 4. Spanish connect words are missing bare "de" (data/es/connect_words.txt
 // has "de la" and "del" but not "de"), so the most common Spanish name
 // pattern fragments.
 
@@ -116,7 +116,7 @@ test("es: names joined with bare 'de' stay whole", { todo: true }, () => {
 });
 
 // ---------------------------------------------------------------------------
-// 9. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
+// 5. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
 // stopwords escape the invalid filter ("L'incontro" becomes a concept) and
 // entities keep junk prefixes ("dell'Unione Europea").
 
@@ -129,7 +129,7 @@ test("it: elided articles do not leak into concepts", { todo: true }, () => {
 });
 
 // ---------------------------------------------------------------------------
-// 11. start_word (collect mode) misses sentences opened by a dialog dash "–".
+// 6. start_word (collect mode) misses sentences opened by a dialog dash "–".
 // Only the dash case remains open: treating "–" as a sentence boundary is NOT
 // obviously safe, because a mid-sentence dash before a capitalized word
 // ("a spus el – Moldova va decide") would wrongly drop a real entity.
@@ -151,7 +151,7 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 12. "имени X" (named after X) is the standard Russian institution pattern,
+// 7. "имени X" (named after X) is the standard Russian institution pattern,
 // but "имени" is missing from data/ru/connect_words.txt.
 
 test("ru: 'имени' joins institution names", { todo: true }, () => {

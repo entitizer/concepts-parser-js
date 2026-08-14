@@ -5,6 +5,12 @@
 - BREAKING: requires Node.js >= 22 (engines was >= 8)
 - fix: `invalid_prefix` filter left an orphaned connect word (`"President of Russia"` → `"of Russia"`, `"Ministrul de Externe"` → `"de Externe"`); the concept is now kept whole when stripping would leave a leading connect word
 - fix: multi-word `invalid_prefixes` entries could never match — the alternation is first-match-wins and entries were sorted alphabetically, so a one-word prefix always won; entries are now tried longest-first
+- fix: `duplicate` filter and the filter registry mishandled names colliding with `Object.prototype` keys — a company called "Constructor" disappeared entirely in collect mode
+- fix: `parse(context, {})` threw instead of defaulting to identify mode
+- fix: dotted abbreviations with 3+ letters lost the final dot (`"S.U.A."` → `"S.U.A"`)
+- fix: the language code is normalized — `parse({ lang: "RO" })` crashed with "Invalid language"
+- fix: NBSP (U+00A0) joins words like a regular space (text pasted from Word fragmented concepts)
+- fix: a single-character ellipsis `…` ends a sentence for the `start_word` filter
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
 - fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
 - fix: tests run on Node >= 23 (removed `util.isRegExp`)
