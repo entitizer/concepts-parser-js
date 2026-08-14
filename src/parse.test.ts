@@ -317,3 +317,16 @@ test("dotted abbreviations with 3+ letters keep the final dot", () => {
     ["Delegația", "S.U.A."],
   );
 });
+
+test("language code is normalized (uppercase, padding)", () => {
+  const concepts = parse({ text: "Moldova este stat în Europa.", lang: "RO" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Moldova", "Europa"],
+  );
+  const padded = parse({ text: "Moldova este stat în Europa.", lang: " ro " });
+  assert.deepEqual(
+    padded.map((c) => c.value),
+    ["Moldova", "Europa"],
+  );
+});

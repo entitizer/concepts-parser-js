@@ -10,6 +10,8 @@ const debug = createDebug("concepts-parser");
 export function parse(context: Context, options?: FilterOptions): Concept[] {
   debug("start parsing");
 
+  context = { ...context, lang: context.lang.trim().toLowerCase() };
+
   const parser = new Parser({
     acceptConceptWords: getConnectWords(context.lang),
   });

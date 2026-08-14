@@ -100,16 +100,6 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 7. Language code is not normalized (src/data.ts). Concept lowercases lang,
-// but data loading uses it verbatim, so an uppercase code from a CMS or HTTP
-// header crashes instead of parsing.
-
-test('lang "RO" behaves like "ro"', { todo: true }, () => {
-  const concepts = parse({ text: "Moldova este stat în Europa.", lang: "RO" });
-  assert.deepEqual(vals(concepts), ["Moldova", "Europa"]);
-});
-
-// ---------------------------------------------------------------------------
 // 8. Spanish connect words are missing bare "de" (data/es/connect_words.txt
 // has "de la" and "del" but not "de"), so the most common Spanish name
 // pattern fragments.
