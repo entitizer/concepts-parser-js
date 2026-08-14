@@ -6,12 +6,12 @@
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
 - fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
 - fix: tests run on Node >= 23 (removed `util.isRegExp`)
+- fix: README documented mode `identity`; the accepted value is `identify`
 - fix: `abbr` filter reset the expanded concept's `index` to 0, so `text.slice(index)` pointed at the wrong place
 - fix: `Concept.reset` kept stale `isAbbr`/`endsWithDot`/`endsWithNumber` flags from the previous value
 - fix: parser dropped a word ending in connect char + letter at the end of text (`"I love McDonald's"` returned no concepts)
 - fix: parser missed concepts whose first uppercase letter follows a connect char (`d'Artagnan`)
 - fix: concepts no longer keep a stray trailing connect char (`"John- Smith"` is now `John` + `Smith`, `"Ana-"` is `Ana`)
-- fix: README documented mode `identity`; the accepted value is `identify`
 - TypeScript 6 (strict mode); code verified to also compile under the native TypeScript 7
 - native `node:test` runner via tsx (ava removed)
 - static filter registry (bundler-friendly, no dynamic `require`)
