@@ -1,25 +1,19 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "outDir": "lib",
-        "rootDir": "./src",
-        "target": "es6",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": false,
-        "moduleResolution": "node",
-        "declaration": true,
-        "declarationDir": "types",
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "allowJs": false
-    },
-    "formatCodeOptions": {
-        "indentSize": 2,
-        "tabSize": 2
-    },
-    "include": [
-        "src/**/*.ts"
-    ]
+  "compilerOptions": {
+    "module": "node16",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "outDir": "lib",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "types",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts"]
 }

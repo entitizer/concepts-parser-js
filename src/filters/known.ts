@@ -11,7 +11,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
   const newconcepts: Concept[] = [];
 
   sources.forEach((source) => {
-    let result: RegExpExecArray;
+    let result: RegExpExecArray | null;
 
     while ((result = source.exec(context.text)) !== null) {
       let match = result[0];

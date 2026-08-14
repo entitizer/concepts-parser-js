@@ -1,17 +1,18 @@
-const debug = require("debug")("concepts-parser:words");
-
+import createDebug from "debug";
 import { Word } from "./word";
 import { Context } from "../../types";
 import { Concept } from "../../concept";
 import { Concepts } from "../../concepts";
-import { ParserOptions } from "../base";
+import { ResolvedParserOptions } from "../base";
+
+const debug = createDebug("concepts-parser:words");
 
 export class Words {
-  private options: ParserOptions;
+  private options: ResolvedParserOptions;
   private context: Context;
   private list: Word[];
 
-  constructor(options: ParserOptions, context: Context) {
+  constructor(options: ResolvedParserOptions, context: Context) {
     this.options = options;
     this.context = context;
     this.list = [];

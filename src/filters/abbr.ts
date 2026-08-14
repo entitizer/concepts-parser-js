@@ -1,7 +1,9 @@
-const debug = require("debug")("concepts:filter");
+import createDebug from "debug";
 import { Context } from "../types";
 import { Concept } from "../concept";
-import isAbbrOf = require("is-abbr-of");
+import isAbbrOf from "is-abbr-of";
+
+const debug = createDebug("concepts:filter");
 
 function isInParentheses(concept: Concept, context: Context): boolean {
   var i = concept.index;

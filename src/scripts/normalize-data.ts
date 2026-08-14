@@ -12,7 +12,7 @@ function start() {
       try {
         lines = getDataFileLines(lang, name);
       } catch (e) {
-        console.log(e.message);
+        console.log((e as Error).message);
         continue;
       }
       const info = getNameInfo(name);

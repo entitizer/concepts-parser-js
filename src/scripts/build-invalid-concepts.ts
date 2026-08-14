@@ -1,9 +1,9 @@
-const stopwords = require("stopwords-json");
-const atonic = require("atonic");
+import stopwords from "stopwords-json";
+import atonic from "atonic";
 import { getLanguages } from "../data";
 import { uniq } from "../utils";
-const fs = require("fs");
-const join = require("path").join;
+import * as fs from "fs";
+import { join } from "path";
 
 for (let lang of getLanguages()) {
   let invalidConcepts = getFileInvalidConcepts(lang);

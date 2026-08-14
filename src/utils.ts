@@ -1,5 +1,4 @@
-const Atonic = require("atonic");
-// import * as crypto from 'crypto';
+import Atonic from "atonic";
 
 export function atonic(s: string): string {
   return Atonic(s);

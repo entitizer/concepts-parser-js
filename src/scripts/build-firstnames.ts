@@ -1,7 +1,7 @@
-const atonic = require("atonic");
+import atonic from "atonic";
 import { getLanguages } from "../data";
-const fs = require("fs");
-const join = require("path").join;
+import * as fs from "fs";
+import { join } from "path";
 import { uniq } from "../utils";
 import { queryWikidata } from "./wikidata";
 
@@ -16,7 +16,7 @@ async function buildFirstnames() {
     try {
       firstNames = fs.readFileSync(file, "utf8").split(/\n+/g);
     } catch (e) {
-      console.log(e.message);
+      console.log((e as Error).message);
     }
 
     const wikiNames = await getWikipediaPopularFirstnames(lang);

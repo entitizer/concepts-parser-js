@@ -9,37 +9,38 @@ export type ParserOptions = {
   acceptStartQuotes?: string[];
   acceptEndQuotes?: string[];
   acceptPrefixes?: string[];
-  acceptConceptWordsRegex?: RegExp;
-  acceptConceptWordsRegex2?: RegExp;
+};
+
+export type ResolvedParserOptions = Required<ParserOptions> & {
+  acceptConceptWordsRegex: RegExp;
+  acceptConceptWordsRegex2: RegExp;
 };
 
 export abstract class BaseParser {
-  options: ParserOptions;
+  options: ResolvedParserOptions;
   constructor(options?: ParserOptions) {
-    options = options || {};
-    options = {
-      acceptConceptWords: [],
+    const resolved = {
+      acceptConceptWords: [] as string[],
       acceptConnectChars: ["&", "-", "'", ".", "’", "`"],
       acceptStartQuotes: ['"', "“", "”", "„", "«"],
       acceptEndQuotes: ['"', "“", "”", "„", "»"],
-      acceptPrefixes: [],
+      acceptPrefixes: [] as string[],
       ...options
     };
 
-    if (options.acceptConceptWords) {
-      options.acceptConceptWords.sort(function (a, b) {
-        return b.length - a.length;
-      });
-    }
+    resolved.acceptConceptWords.sort(function (a, b) {
+      return b.length - a.length;
+    });
 
-    options.acceptConceptWordsRegex = new RegExp(
-      "^(" + options.acceptConceptWords.join("|") + ") "
-    );
-    options.acceptConceptWordsRegex2 = new RegExp(
-      "^[ ](" + options.acceptConceptWords.join("|") + ")[ ]$"
-    );
-
-    this.options = options;
+    this.options = {
+      ...resolved,
+      acceptConceptWordsRegex: new RegExp(
+        "^(" + resolved.acceptConceptWords.join("|") + ") "
+      ),
+      acceptConceptWordsRegex2: new RegExp(
+        "^[ ](" + resolved.acceptConceptWords.join("|") + ")[ ]$"
+      )
+    };
   }
 
   abstract parse(context: Context): Concepts;
@@ -69,7 +70,7 @@ export abstract class BaseParser {
     return this.isIn("acceptConceptWords", value);
   }
 
-  getStartConceptWord(value: string): string {
+  getStartConceptWord(value: string): string | null {
     let result = this.options.acceptConceptWordsRegex.exec(value);
     if (result) {
       return result[1];
@@ -79,7 +80,7 @@ export abstract class BaseParser {
 
   formatConcept(
     context: Context,
-    input: String,
+    input: string,
     i: number,
     start: number
   ): Concept {

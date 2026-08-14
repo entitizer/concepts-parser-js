@@ -66,7 +66,7 @@ function getData(name: string, lang: string) {
   try {
     return data.get(name, lang);
   } catch (e) {
-    console.log("error on: ", lang, name, e.message);
+    console.log("error on: ", lang, name, (e as Error).message);
     throw e;
   }
 }

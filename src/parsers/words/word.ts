@@ -3,11 +3,11 @@ import * as utils from "../../utils";
 const ABBR_REG = /^([^\d_`&-]\.){1,2}$/;
 
 export class Word {
-  index?: number;
-  value?: string;
-  isAbbr?: boolean;
-  isNumber?: boolean;
-  endsWithDot?: boolean;
+  index = 0;
+  value = "";
+  isAbbr = false;
+  isNumber = false;
+  endsWithDot = false;
   rightText?: string;
 
   constructor(value: string, index: number) {

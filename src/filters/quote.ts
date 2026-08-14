@@ -1,6 +1,8 @@
-const debug = require("debug")("concepts-parser:filters");
+import createDebug from "debug";
 import { Concept } from "../concept";
 import { Context } from "../types";
+
+const debug = createDebug("concepts-parser:filters");
 
 const QuotationMarks = [
   ['"', '"'],
