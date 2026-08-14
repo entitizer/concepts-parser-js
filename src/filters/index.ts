@@ -59,7 +59,9 @@ const FILTERS: { [name: string]: IFilter } = {
 };
 
 function getFilter(name: string): IFilter {
-  const found = FILTERS[name];
+  const found = Object.prototype.hasOwnProperty.call(FILTERS, name)
+    ? FILTERS[name]
+    : undefined;
   if (!found) {
     throw new Error("invalid filter name: " + name);
   }

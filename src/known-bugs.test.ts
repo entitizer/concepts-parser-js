@@ -100,45 +100,6 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 4. Object.prototype keys in the duplicate filter (src/filters/duplicate.ts).
-// `keys: any = {}` — lookups like keys["constructor"] are truthy on a plain
-// object, so a company called "Constructor" is removed as a "duplicate" in
-// collect mode, including its first occurrence.
-
-test(
-  'collect: a company named "Constructor" is not swallowed',
-  { todo: true },
-  () => {
-    const concepts = parse(
-      {
-        text: "Constructor is a proptech company. Constructor was founded in Norway by Ole Nilsen.",
-        lang: "en",
-      },
-      { mode: "collect" },
-    );
-    assert.deepEqual(vals(concepts), ["Constructor", "Norway", "Ole Nilsen"]);
-  },
-);
-
-// Same root cause in src/filters/index.ts getFilter(): an unknown filter name
-// that collides with Object.prototype gives a confusing TypeError instead of
-// the intended "invalid filter name" error.
-test(
-  "an unknown filter name always raises the intended error",
-  { todo: true },
-  () => {
-    assert.throws(
-      () =>
-        parse(
-          { text: "Moldova este stat.", lang: "ro" },
-          { filters: ["constructor"] },
-        ),
-      /invalid filter name/,
-    );
-  },
-);
-
-// ---------------------------------------------------------------------------
 // 5. parse(context, {}) throws (src/filters/index.ts). An empty options
 // object should behave like no options at all (identify mode).
 

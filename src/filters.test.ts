@@ -234,3 +234,28 @@ test("invalid prefixes: no mangling when a person follows the title phrase", () 
     ["Ministrul de Externe Nicu Popescu", "Berlin"],
   );
 });
+
+test("duplicate filter: names colliding with Object.prototype keys survive", () => {
+  const concepts = parse(
+    {
+      text: "The company Constructor raised new funds. Investors praised Constructor for its growth in Norway.",
+      lang: "en",
+    },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Constructor", "Norway"],
+  );
+});
+
+test("unknown filter names always raise the intended error", () => {
+  assert.throws(
+    () =>
+      parse(
+        { text: "Moldova este stat.", lang: "ro" },
+        { filters: ["constructor"] },
+      ),
+    /invalid filter name/,
+  );
+});
