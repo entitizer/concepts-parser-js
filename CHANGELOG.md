@@ -14,8 +14,10 @@
 - fix: Cyrillic suffixes deleted concepts instead of extending them — JS `\b` is ASCII-only, so ru/bg news lost entities like `"Магнитная гора"` mid-text
 - fix: the `invalid` filter now runs after `prefix`/`suffix`, so a stopword-headed name can be completed first (`"Большой"` → `"Большой театр"`)
 - fix: ru title+country genitive combos are stripped as invalid prefixes (`"Президент России Владимир Путин"` → `"Владимир Путин"` instead of the mangled `"России Владимир Путин"`)
+- fix: lowercase Italian elided articles are stripped from concepts (`"dell'Unione Europea"` → `"Unione Europea"`, `"l'Italia"` → `"Italia"`); case-sensitive on purpose, so names like `"L'Aquila"`, `"Dell'Utri"` and the `d'` particle (`"d'Artagnan"`) are untouched
+- fix: a dialog dash opening a line (`"– Plecăm..."`) counts as a sentence start for the `start_word` filter; mid-sentence dashes are unaffected
 - data: Spanish connect words gained bare `de` (`"Miguel de Cervantes"` no longer fragments)
-- data: Russian connect words gained `имени` (`"МГУ имени Ломоносова"` stays whole)
+- data: Russian connect words gained `имени` (`"МГУ имени Ломоносова"` stays whole; also mirrored in split_words for clean `concept.split()`)
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
 - fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
 - fix: tests run on Node >= 23 (removed `util.isRegExp`)
