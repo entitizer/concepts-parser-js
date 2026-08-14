@@ -43,7 +43,7 @@ export function isSentenceStartingWord(index: number, text: string) {
   }
   text = text.trim();
   const last = text[text.length - 1];
-  return /^[!.?;-]$/.test(last);
+  return /^[!.?;…-]$/.test(last);
 }
 
 export function defaults(target: any, source: any) {

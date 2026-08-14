@@ -259,3 +259,18 @@ test("unknown filter names always raise the intended error", () => {
     /invalid filter name/,
   );
 });
+
+test("start_word: sentence after … is treated like after a dot", () => {
+  const after_dot = parse(
+    { text: "Era târziu. Popescu dormea adânc.", lang: "ro" },
+    { mode: "collect" },
+  );
+  const after_ellipsis = parse(
+    { text: "Era târziu… Popescu dormea adânc.", lang: "ro" },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    after_ellipsis.map((c) => c.value),
+    after_dot.map((c) => c.value),
+  );
+});

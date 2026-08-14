@@ -129,25 +129,11 @@ test("it: elided articles do not leak into concepts", { todo: true }, () => {
 });
 
 // ---------------------------------------------------------------------------
-// 11. start_word (collect mode) misses sentence boundaries that end with a
-// single-character ellipsis "…" or start with a dialog dash "–", because
-// utils.isSentenceStartingWord only checks /^[!.?;-]$/.
-
-test(
-  "collect: sentence after … is treated like after a dot",
-  { todo: true },
-  () => {
-    const after_dot = parse(
-      { text: "Era târziu. Popescu dormea adânc.", lang: "ro" },
-      { mode: "collect" },
-    );
-    const after_ellipsis = parse(
-      { text: "Era târziu… Popescu dormea adânc.", lang: "ro" },
-      { mode: "collect" },
-    );
-    assert.deepEqual(vals(after_ellipsis), vals(after_dot));
-  },
-);
+// 11. start_word (collect mode) misses sentences opened by a dialog dash "–".
+// Only the dash case remains open: treating "–" as a sentence boundary is NOT
+// obviously safe, because a mid-sentence dash before a capitalized word
+// ("a spus el – Moldova va decide") would wrongly drop a real entity.
+// The "…" half was fixed in utils.isSentenceStartingWord.
 
 test(
   "collect: word after a dialog dash is a sentence starter",
