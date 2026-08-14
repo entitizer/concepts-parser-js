@@ -201,3 +201,36 @@ test("abbr: all concepts map back to the text (ru)", () => {
     assert.equal(text.slice(c.index, c.index + c.value.length), c.value);
   }
 });
+
+test("invalid prefixes: keep concept whole instead of leaving an orphaned connect word (en)", () => {
+  const concepts = parse({
+    text: "He met the President of Russia yesterday in Sochi.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["President of Russia", "Sochi"],
+  );
+});
+
+test("invalid prefixes: keep concept whole instead of leaving an orphaned connect word (ro)", () => {
+  const concepts = parse({
+    text: "Ministrul de Externe a plecat aseară la Berlin.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Ministrul de Externe", "Berlin"],
+  );
+});
+
+test("invalid prefixes: no mangling when a person follows the title phrase", () => {
+  const concepts = parse({
+    text: "Ministrul de Externe Nicu Popescu a confirmat vizita la Berlin.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Ministrul de Externe Nicu Popescu", "Berlin"],
+  );
+});

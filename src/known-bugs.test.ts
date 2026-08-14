@@ -78,34 +78,11 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 3. invalid_prefix leaves an orphaned connect word (HIGH, all languages).
-// src/filters/invalid_prefix.ts strips the invalid prefix once and stops;
-// when the prefix was followed by a connect word the result starts with a
-// dangling lowercase "of"/"de"/genitive remnant.
-
-test(
-  "en: no orphaned 'of' after stripping a title prefix",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "He met the President of Russia yesterday in Sochi.",
-      lang: "en",
-    });
-    assert.deepEqual(vals(concepts), ["Russia", "Sochi"]);
-  },
-);
-
-test(
-  "ro: no orphaned 'de' after stripping a title prefix",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "Ministrul de Externe a plecat aseară la Berlin.",
-      lang: "ro",
-    });
-    assert.deepEqual(vals(concepts), ["Externe", "Berlin"]);
-  },
-);
+// 3. invalid_prefix orphaned connect words: FIXED — the filter now keeps the
+// concept whole when stripping would leave a leading connect word ("of
+// Russia", "de Externe"); regression tests live in filters.test.ts. Still
+// open: the genitive remnant below, which only data can solve (the country
+// word is a capitalized regular word, not a connect word).
 
 test(
   "ru: title + genitive country + name yields the person's name",

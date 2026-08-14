@@ -62,6 +62,9 @@ const builders: IBuilder = {
     return items.length > 0 ? [new RegExp(`^(${items.join("|")})$`, "i")] : [];
   },
   invalid_prefixes: function (items: string[]): RegExp[] {
+    // longest first: the alternation takes the first match, so a multi-word
+    // entry after its one-word prefix would never fire
+    items = sortByCountWordsDesc(items);
     return items.length > 0 ? [new RegExp(`^(${items.join("|")}) `, "i")] : [];
   },
   known_concepts: function (items: string[]): RegExp[] {

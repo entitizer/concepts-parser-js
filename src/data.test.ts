@@ -71,3 +71,14 @@ function getData(name: string, lang: string) {
     throw e;
   }
 }
+
+test("invalid prefixes regex tries multi-word entries before their one-word prefixes", () => {
+  const [regex] = data.getInvalidPrefixes("en");
+  const multi = regex.source.indexOf("prime minister");
+  const single = regex.source.indexOf("president");
+  assert.ok(multi >= 0 && single >= 0, "expected entries missing from data");
+  assert.ok(
+    multi < single,
+    "multi-word invalid prefixes must come first, or they can never match",
+  );
+});

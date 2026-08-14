@@ -3,6 +3,8 @@
 ### v2.0.0 - August 14, 2026
 
 - BREAKING: requires Node.js >= 22 (engines was >= 8)
+- fix: `invalid_prefix` filter left an orphaned connect word (`"President of Russia"` → `"of Russia"`, `"Ministrul de Externe"` → `"de Externe"`); the concept is now kept whole when stripping would leave a leading connect word
+- fix: multi-word `invalid_prefixes` entries could never match — the alternation is first-match-wins and entries were sorted alphabetically, so a one-word prefix always won; entries are now tried longest-first
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
 - fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
 - fix: tests run on Node >= 23 (removed `util.isRegExp`)
