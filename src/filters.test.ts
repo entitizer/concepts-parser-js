@@ -312,3 +312,22 @@ test("filter order: suffix completes a stopword-headed name before invalid drops
     ["Делегация", "Большой театр"],
   );
 });
+
+test("invalid prefixes: ru title + genitive country is stripped from the name", () => {
+  const president = parse({
+    text: "Президент России Владимир Путин провёл переговоры в Кремле.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    president.map((c) => c.value),
+    ["Владимир Путин", "Кремле"],
+  );
+  const premier = parse({
+    text: "Премьер-министр Молдовы Дорин Речан посетил Киев на прошлой неделе.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    premier.map((c) => c.value),
+    ["Дорин Речан", "Киев"],
+  );
+});

@@ -167,9 +167,7 @@ test("ru article: identify", () => {
   const concepts = parse({ text: RU_TEXT, lang: "ru" });
   assert.deepEqual(vals(concepts), [
     "Москва",
-    // BUG(invalid-prefix-remnant): stripping "Президент" leaves the genitive
-    // "России" glued to the person's name
-    "России Владимир Путин",
+    "Владимир Путин", // "Президент России" stripped by invalid_prefix
     "Си Цзиньпином",
     "Кремле",
     "Стороны", // LIMITATION: sentence-start word kept in identify mode
@@ -194,7 +192,7 @@ test("ru article: identify", () => {
 test("ru article: collect", () => {
   const concepts = parse({ text: RU_TEXT, lang: "ru" }, { mode: "collect" });
   assert.deepEqual(vals(concepts), [
-    "России Владимир Путин",
+    "Владимир Путин",
     "Си Цзиньпином",
     "Кремле",
     "Сила Сибири",

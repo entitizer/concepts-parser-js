@@ -20,21 +20,6 @@ import assert from "node:assert/strict";
 const vals = (concepts: Concept[]) => concepts.map((c) => c.value);
 
 // ---------------------------------------------------------------------------
-// 3. invalid_prefix genitive remnant (ru). Stripping "Президент" leaves the
-// genitive country glued to the person's name. Only per-language data can
-// solve this: "России" is a capitalized ordinary word, not a connect word
-// (the connect-word case was fixed — the filter now declines such strips).
-
-test("KNOWN BUG: title + genitive country + name stays glued", () => {
-  const concepts = parse({
-    text: "Президент России Владимир Путин провёл переговоры в Кремле.",
-    lang: "ru",
-  });
-  // DESIRED: includes "Владимир Путин"
-  assert.deepEqual(vals(concepts), ["России Владимир Путин", "Кремле"]);
-});
-
-// ---------------------------------------------------------------------------
 // 5. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
 // stopwords escape the invalid filter ("L'incontro" becomes a concept) and
 // entities keep junk prefixes ("dell'Unione Europea").
