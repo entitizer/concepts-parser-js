@@ -50,18 +50,13 @@ export class Concept extends Model implements IConcept {
 
     const words = value.split(/[ ]+/g);
     this.set("atonicValue", utils.atonic(value));
-    if (words.length === 1 && value === value.toUpperCase()) {
-      this.set("isAbbr", true);
-    }
+    this.set("isAbbr", words.length === 1 && value === value.toUpperCase());
     this.set("countWords", words.length);
-    if (words.length > 1) {
-      if (utils.isDigit(words[words.length - 1])) {
-        this.set("endsWithNumber", true);
-      }
-    }
-    if (value[value.length - 1] === ".") {
-      this.set("endsWithDot", true);
-    }
+    this.set(
+      "endsWithNumber",
+      words.length > 1 && utils.isDigit(words[words.length - 1]),
+    );
+    this.set("endsWithDot", value[value.length - 1] === ".");
   }
 
   isValid(): boolean {
