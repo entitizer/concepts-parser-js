@@ -76,7 +76,7 @@ export type FilterOptions = {
 export function filter(
   concepts: Concept[],
   context: Context,
-  options: FilterOptions = { mode: MODE_IDENTIFY },
+  options: FilterOptions = {},
 ): Concept[] {
   // debug('start filter');
 
@@ -93,12 +93,13 @@ export function filter(
       default:
         throw new Error("invalid filter mode " + options.mode);
     }
-  } else {
-    if (Array.isArray(options.filters)) {
-      filters = options.filters;
-    } else {
+  } else if (options.filters !== undefined) {
+    if (!Array.isArray(options.filters)) {
       throw new Error("`filters` fields is invalid!");
     }
+    filters = options.filters;
+  } else {
+    filters = FILTERS_BY_MODE[MODE_IDENTIFY];
   }
 
   for (const name of filters) {

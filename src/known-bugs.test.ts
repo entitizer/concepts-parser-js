@@ -100,22 +100,6 @@ test(
 );
 
 // ---------------------------------------------------------------------------
-// 5. parse(context, {}) throws (src/filters/index.ts). An empty options
-// object should behave like no options at all (identify mode).
-
-test(
-  "parse with an empty options object defaults to identify",
-  { todo: true },
-  () => {
-    const concepts = parse(
-      { text: "Moldova este stat în Europa.", lang: "ro" },
-      {},
-    );
-    assert.deepEqual(vals(concepts), ["Moldova", "Europa"]);
-  },
-);
-
-// ---------------------------------------------------------------------------
 // 6. Dotted abbreviations with 3+ letters lose the final dot.
 // ABBR_REG in src/parsers/words/word.ts allows only {1,2} letter-dot groups,
 // so "R." keeps its dot but "S.U.A." is truncated to "S.U.A".

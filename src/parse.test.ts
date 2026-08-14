@@ -284,3 +284,25 @@ test("trailing curly apostrophe at end of text is stripped", () => {
   assert.equal(concepts[0].value, "Ana");
   assert.equal(concepts[0].index, 13);
 });
+
+test("empty options object defaults to identify mode", () => {
+  const concepts = parse(
+    { text: "Moldova este stat în Europa.", lang: "ro" },
+    {},
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Moldova", "Europa"],
+  );
+});
+
+test("explicitly invalid `filters` value still throws", () => {
+  assert.throws(
+    () =>
+      parse(
+        { text: "Moldova este stat.", lang: "ro" },
+        { filters: "duplicate" as unknown as string[] },
+      ),
+    /`filters` fields is invalid/,
+  );
+});
