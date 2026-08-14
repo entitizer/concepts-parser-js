@@ -1,13 +1,12 @@
 import * as data from "./data";
 import test from "ava";
-import { isRegExp } from "util";
 
 test("suffix complex items", (t) => {
   const items = data.getValidSuffixes("ru");
 
   t.true(items.length > 0);
 
-  t.true(isRegExp(items[0].prefix));
+  t.true(items[0].prefix instanceof RegExp);
 });
 
 test("prefixes", (t) => {
@@ -51,7 +50,7 @@ LANGUAGES.forEach(function (lang) {
                 foundWord = true;
               }
             } else {
-              if (isRegExp(dataWord) && dataWord.test(testWord)) {
+              if (dataWord instanceof RegExp && dataWord.test(testWord)) {
                 foundWord = true;
               }
             }
