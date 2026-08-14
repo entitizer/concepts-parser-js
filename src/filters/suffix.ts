@@ -22,7 +22,9 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 
       if (result) {
         const match = result[0];
-        const value = text.slice(0, match.length);
+        // the boundary group may have consumed a trailing space (\b never
+        // matches after a non-ASCII word char) — never keep it in the value
+        const value = text.slice(0, match.length).replace(/\s+$/, "");
 
         if (source.prefix) {
           // is not required prefix

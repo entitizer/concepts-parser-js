@@ -20,38 +20,6 @@ import assert from "node:assert/strict";
 const vals = (concepts: Concept[]) => concepts.map((c) => c.value);
 
 // ---------------------------------------------------------------------------
-// 1. Cyrillic suffix deletion (HIGH, ru + bg).
-// Root cause: the valid_suffixes builder in src/data.ts compiles simple
-// entries to /^ (item)(\b|\s)/ — JS \b is ASCII-only, so after a Cyrillic
-// word only \s can match, the matched value keeps a trailing space, and
-// suffix.ts's concept.reset(...) + isValid() then DROPS the whole concept.
-// Mid-text (the normal case in news) the entity disappears from the output.
-
-test("KNOWN BUG: ru suffix mid-text deletes the concept", () => {
-  const concepts = parse({
-    text: "Магнитная гора видна издалека даже ночью.",
-    lang: "ru",
-  });
-  // DESIRED: ["Магнитная гора"]
-  assert.deepEqual(vals(concepts), []);
-});
-
-test("KNOWN BUG: ru suffix at end of text does not extend the concept", () => {
-  const concepts = parse({ text: "Мы посетили Магнитная гора", lang: "ru" });
-  // DESIRED: ["Магнитная гора"]
-  assert.deepEqual(vals(concepts), ["Магнитная"]);
-});
-
-test("KNOWN BUG: bg suffix mid-text deletes the concept", () => {
-  const concepts = parse({
-    text: "Гостите разгледаха Народния дворец в центъра на София.",
-    lang: "bg",
-  });
-  // DESIRED: includes "Народния дворец"
-  assert.deepEqual(vals(concepts), ["Гостите", "София"]);
-});
-
-// ---------------------------------------------------------------------------
 // 2. Filter order: `invalid` runs before `suffix` (src/filters/index.ts), so a
 // name whose head word is a stopword ("Большой") is dropped before the suffix
 // filter could complete it to a real entity ("Большой театр").

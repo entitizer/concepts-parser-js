@@ -274,3 +274,30 @@ test("start_word: sentence after … is treated like after a dot", () => {
     after_dot.map((c) => c.value),
   );
 });
+
+test("suffix: Cyrillic concepts are extended, not deleted (ru)", () => {
+  const mid = parse({
+    text: "Магнитная гора видна издалека даже ночью.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    mid.map((c) => c.value),
+    ["Магнитная гора"],
+  );
+  const end = parse({ text: "Мы посетили Магнитная гора", lang: "ru" });
+  assert.deepEqual(
+    end.map((c) => c.value),
+    ["Магнитная гора"],
+  );
+});
+
+test("suffix: Cyrillic concepts are extended, not deleted (bg)", () => {
+  const concepts = parse({
+    text: "Гостите разгледаха Народния дворец в центъра на София.",
+    lang: "bg",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Гостите", "Народния дворец", "София"],
+  );
+});

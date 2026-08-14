@@ -115,8 +115,10 @@ const builders: IBuilder = {
 
     if (simpleList.length) {
       simpleList = sortByCountWordsDesc(simpleList);
+      // \b is ASCII-only, so after a Cyrillic word only \s (or $ at the end
+      // of the text) can close the match
       complexList.push({
-        reg: new RegExp(`^ (${simpleList.join("|")})(\\b|\\s)`, "i"),
+        reg: new RegExp(`^ (${simpleList.join("|")})(\\b|\\s|$)`, "i"),
       });
     }
 
