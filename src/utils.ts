@@ -41,6 +41,11 @@ export function isSentenceStartingWord(index: number, text: string) {
   if (text.length === 0 || /\n[ \t]*$/.test(text) || text.trim().length === 0) {
     return true;
   }
+  // a dialog dash opening a line starts a sentence; a mid-sentence dash
+  // ("a spus el – Moldova") is never the first non-space char on its line
+  if (/(^|\n)[ \t]*[–—][ \t]*$/.test(text)) {
+    return true;
+  }
   text = text.trim();
   const last = text[text.length - 1];
   return /^[!.?;…-]$/.test(last);

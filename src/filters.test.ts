@@ -332,19 +332,38 @@ test("invalid prefixes: ru title + genitive country is stripped from the name", 
   );
 });
 
-// KNOWN BUG (open, needs a design decision): start_word misses sentences
-// opened by a dialog dash "–". DESIRED: no "Plecăm". Treating "–" as a
-// sentence boundary is not obviously safe — a mid-sentence dash before a
-// capitalized word ("a spus el – Moldova va decide") would wrongly drop a
-// real entity. This test PINS the current output and fails the moment the
-// behavior changes — update it to the desired list then.
-test("KNOWN BUG: word after a dialog dash is kept in collect mode", () => {
-  const concepts = parse(
+// A dialog dash opening a line ("– Plecăm...") starts a sentence, so the
+// word after it is a sentence starter. Position makes this safe: a
+// mid-sentence dash ("a spus el – Moldova va decide") is never the first
+// non-space character on its line, and stays untouched.
+test("start_word: word after a line-opening dialog dash is a sentence starter", () => {
+  const dialog = parse(
     { text: "– Plecăm imediat la Bălți, a spus Ion.", lang: "ro" },
     { mode: "collect" },
   );
   assert.deepEqual(
+    dialog.map((c) => c.value),
+    ["Bălți", "Ion"],
+  );
+
+  const multiline = parse(
+    { text: "Ion a întrebat ceva.\n– Plecăm mâine la Cluj?", lang: "ro" },
+    { mode: "collect" },
+  );
+  // "Ion" is a text-start word, dropped by start_word like any other
+  assert.deepEqual(
+    multiline.map((c) => c.value),
+    ["Cluj"],
+  );
+});
+
+test("start_word: a mid-sentence dash does not drop the entity after it", () => {
+  const concepts = parse(
+    { text: "El a spus clar – Moldova va decide singură.", lang: "ro" },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
     concepts.map((c) => c.value),
-    ["Plecăm", "Bălți", "Ion"],
+    ["Moldova"],
   );
 });
