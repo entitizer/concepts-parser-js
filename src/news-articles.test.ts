@@ -5,9 +5,10 @@
  * possessives, Latin abbreviations inside Cyrillic text).
  *
  * The expected lists snapshot CURRENT behavior, verified by hand. Entries
- * marked BUG or LIMITATION document imperfect output; each BUG is pinned with
- * its root cause and desired behavior in known-bugs.test.ts. When a bug is
- * fixed, update the snapshot here and promote the pinned test there.
+ * marked BUG or LIMITATION document imperfect output; each open BUG is also
+ * pinned by a "KNOWN BUG" test with its root cause and desired behavior in
+ * the topical test file (parse.test.ts, filters.test.ts). When a bug is
+ * fixed, update the snapshot here and the pinned test there.
  */
 import { parse } from "./parse";
 import { Concept } from "./concept";

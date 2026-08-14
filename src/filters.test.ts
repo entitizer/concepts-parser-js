@@ -331,3 +331,20 @@ test("invalid prefixes: ru title + genitive country is stripped from the name", 
     ["Дорин Речан", "Киев"],
   );
 });
+
+// KNOWN BUG (open, needs a design decision): start_word misses sentences
+// opened by a dialog dash "–". DESIRED: no "Plecăm". Treating "–" as a
+// sentence boundary is not obviously safe — a mid-sentence dash before a
+// capitalized word ("a spus el – Moldova va decide") would wrongly drop a
+// real entity. This test PINS the current output and fails the moment the
+// behavior changes — update it to the desired list then.
+test("KNOWN BUG: word after a dialog dash is kept in collect mode", () => {
+  const concepts = parse(
+    { text: "– Plecăm imediat la Bălți, a spus Ion.", lang: "ro" },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Plecăm", "Bălți", "Ion"],
+  );
+});

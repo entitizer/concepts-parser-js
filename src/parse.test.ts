@@ -374,3 +374,21 @@ test("ru: 'имени' joins institution names", () => {
     ["Конференция", "Университете имени Баумана"],
   );
 });
+
+// KNOWN BUG (open, needs a design decision): Italian elision — "L'", "dell'",
+// "all'" glue the article to the word, so stopwords escape the invalid filter
+// ("L'incontro" becomes a concept) and entities keep junk prefixes
+// ("dell'Unione Europea"). DESIRED: ["Unione Europea", "Ucraina"]. Any naive
+// strip rule breaks real names: "d'Artagnan" -> "Artagnan", the city
+// "L'Aquila" -> "Aquila". This test PINS the current output and fails the
+// moment the behavior changes — update it to the desired list then.
+test("KNOWN BUG: it elided articles leak into concepts", () => {
+  const concepts = parse({
+    text: "L'incontro ha riguardato il bilancio dell'Unione Europea e il sostegno all'Ucraina.",
+    lang: "it",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["L'incontro", "dell'Unione Europea", "all'Ucraina"],
+  );
+});
