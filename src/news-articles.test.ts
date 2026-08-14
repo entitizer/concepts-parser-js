@@ -5,9 +5,9 @@
  * possessives, Latin abbreviations inside Cyrillic text).
  *
  * The expected lists snapshot CURRENT behavior, verified by hand. Entries
- * marked BUG or LIMITATION document imperfect output; the desired behavior for
- * each BUG lives as a `todo` test in known-bugs.test.ts. When a bug is fixed,
- * update the snapshot here and remove the todo there.
+ * marked BUG or LIMITATION document imperfect output; each BUG is pinned with
+ * its root cause and desired behavior in known-bugs.test.ts. When a bug is
+ * fixed, update the snapshot here and promote the pinned test there.
  */
 import { parse } from "./parse";
 import { Concept } from "./concept";

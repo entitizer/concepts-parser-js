@@ -1,10 +1,16 @@
 /**
- * Confirmed bugs, found 2026-08-14 by probing with realistic news text.
+ * Open bugs, found 2026-08-14 by probing with realistic news text.
  *
- * Every test here asserts the DESIRED behavior and is marked `todo`, so the
- * suite stays green while the bugs are open. When a bug is fixed its test
- * starts passing: remove the `todo` flag and update any snapshot in
- * news-articles.test.ts that documents the buggy output.
+ * Each test PINS the current (buggy) output, so `npm test` stays quiet while
+ * the bug is open. When someone fixes a bug its test FAILS — that failure is
+ * the signal to move the case into the regular suite asserting the desired
+ * behavior (stated in the DESIRED comment) and delete the entry here.
+ *
+ * Fixed so far and promoted to the regular suites: orphaned connect words
+ * after invalid_prefix, invalid_prefixes ordering (filters/data tests),
+ * Object.prototype key collisions, parse(ctx, {}), "S.U.A." final dot,
+ * language-code normalization, NBSP joining, "…" sentence boundary
+ * (parse/filters tests).
  */
 import { parse } from "./parse";
 import { Concept } from "./concept";
@@ -21,97 +27,75 @@ const vals = (concepts: Concept[]) => concepts.map((c) => c.value);
 // suffix.ts's concept.reset(...) + isValid() then DROPS the whole concept.
 // Mid-text (the normal case in news) the entity disappears from the output.
 
-test(
-  "ru: suffix extends a concept mid-text instead of deleting it",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "Магнитная гора видна издалека даже ночью.",
-      lang: "ru",
-    });
-    assert.deepEqual(vals(concepts), ["Магнитная гора"]);
-  },
-);
+test("KNOWN BUG: ru suffix mid-text deletes the concept", () => {
+  const concepts = parse({
+    text: "Магнитная гора видна издалека даже ночью.",
+    lang: "ru",
+  });
+  // DESIRED: ["Магнитная гора"]
+  assert.deepEqual(vals(concepts), []);
+});
 
-test(
-  "ru: suffix extends a concept at the end of the text",
-  { todo: true },
-  () => {
-    const concepts = parse({ text: "Мы посетили Магнитная гора", lang: "ru" });
-    assert.deepEqual(vals(concepts), ["Магнитная гора"]);
-  },
-);
+test("KNOWN BUG: ru suffix at end of text does not extend the concept", () => {
+  const concepts = parse({ text: "Мы посетили Магнитная гора", lang: "ru" });
+  // DESIRED: ["Магнитная гора"]
+  assert.deepEqual(vals(concepts), ["Магнитная"]);
+});
 
-test(
-  "bg: suffix extends a concept mid-text instead of deleting it",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "Гостите разгледаха Народния дворец в центъра на София.",
-      lang: "bg",
-    });
-    assert.ok(
-      vals(concepts).includes("Народния дворец"),
-      `got: ${vals(concepts).join(", ")}`,
-    );
-  },
-);
+test("KNOWN BUG: bg suffix mid-text deletes the concept", () => {
+  const concepts = parse({
+    text: "Гостите разгледаха Народния дворец в центъра на София.",
+    lang: "bg",
+  });
+  // DESIRED: includes "Народния дворец"
+  assert.deepEqual(vals(concepts), ["Гостите", "София"]);
+});
 
 // ---------------------------------------------------------------------------
 // 2. Filter order: `invalid` runs before `suffix` (src/filters/index.ts), so a
 // name whose head word is a stopword ("Большой") is dropped before the suffix
 // filter could complete it to a real entity ("Большой театр").
 
-test(
-  "ru: stopword-headed name survives when a suffix completes it",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "Делегация посетила Большой театр и вернулась в отель.",
-      lang: "ru",
-    });
-    assert.ok(
-      vals(concepts).includes("Большой театр"),
-      `got: ${vals(concepts).join(", ")}`,
-    );
-  },
-);
+test("KNOWN BUG: stopword-headed name is dropped before its suffix completes it", () => {
+  const concepts = parse({
+    text: "Делегация посетила Большой театр и вернулась в отель.",
+    lang: "ru",
+  });
+  // DESIRED: includes "Большой театр"
+  assert.deepEqual(vals(concepts), ["Делегация"]);
+});
 
 // ---------------------------------------------------------------------------
-// 3. invalid_prefix orphaned connect words: FIXED — the filter now keeps the
-// concept whole when stripping would leave a leading connect word ("of
-// Russia", "de Externe"); regression tests live in filters.test.ts. Still
-// open: the genitive remnant below, which only data can solve (the country
-// word is a capitalized regular word, not a connect word).
+// 3. invalid_prefix genitive remnant (ru). Stripping "Президент" leaves the
+// genitive country glued to the person's name. Only per-language data can
+// solve this: "России" is a capitalized ordinary word, not a connect word
+// (the connect-word case was fixed — the filter now declines such strips).
 
-test(
-  "ru: title + genitive country + name yields the person's name",
-  { todo: true },
-  () => {
-    const concepts = parse({
-      text: "Президент России Владимир Путин провёл переговоры в Кремле.",
-      lang: "ru",
-    });
-    assert.ok(
-      vals(concepts).includes("Владимир Путин"),
-      `got: ${vals(concepts).join(", ")}`,
-    );
-  },
-);
+test("KNOWN BUG: title + genitive country + name stays glued", () => {
+  const concepts = parse({
+    text: "Президент России Владимир Путин провёл переговоры в Кремле.",
+    lang: "ru",
+  });
+  // DESIRED: includes "Владимир Путин"
+  assert.deepEqual(vals(concepts), ["России Владимир Путин", "Кремле"]);
+});
 
 // ---------------------------------------------------------------------------
 // 4. Spanish connect words are missing bare "de" (data/es/connect_words.txt
 // has "de la" and "del" but not "de"), so the most common Spanish name
 // pattern fragments.
 
-test("es: names joined with bare 'de' stay whole", { todo: true }, () => {
+test("KNOWN BUG: es names joined with bare 'de' fragment", () => {
   const concepts = parse({
     text: "El escritor Miguel de Cervantes nació en Alcalá de Henares.",
     lang: "es",
   });
+  // DESIRED: ["Miguel de Cervantes", "Alcalá de Henares"]
   assert.deepEqual(vals(concepts), [
-    "Miguel de Cervantes",
-    "Alcalá de Henares",
+    "Miguel",
+    "Cervantes",
+    "Alcalá",
+    "Henares",
   ]);
 });
 
@@ -120,44 +104,44 @@ test("es: names joined with bare 'de' stay whole", { todo: true }, () => {
 // stopwords escape the invalid filter ("L'incontro" becomes a concept) and
 // entities keep junk prefixes ("dell'Unione Europea").
 
-test("it: elided articles do not leak into concepts", { todo: true }, () => {
+test("KNOWN BUG: it elided articles leak into concepts", () => {
   const concepts = parse({
     text: "L'incontro ha riguardato il bilancio dell'Unione Europea e il sostegno all'Ucraina.",
     lang: "it",
   });
-  assert.deepEqual(vals(concepts), ["Unione Europea", "Ucraina"]);
+  // DESIRED: ["Unione Europea", "Ucraina"]
+  assert.deepEqual(vals(concepts), [
+    "L'incontro",
+    "dell'Unione Europea",
+    "all'Ucraina",
+  ]);
 });
 
 // ---------------------------------------------------------------------------
 // 6. start_word (collect mode) misses sentences opened by a dialog dash "–".
-// Only the dash case remains open: treating "–" as a sentence boundary is NOT
-// obviously safe, because a mid-sentence dash before a capitalized word
-// ("a spus el – Moldova va decide") would wrongly drop a real entity.
-// The "…" half was fixed in utils.isSentenceStartingWord.
+// Treating "–" as a sentence boundary is NOT obviously safe: a mid-sentence
+// dash before a capitalized word ("a spus el – Moldova va decide") would
+// wrongly drop a real entity. The "…" half of this bug was fixed in
+// utils.isSentenceStartingWord.
 
-test(
-  "collect: word after a dialog dash is a sentence starter",
-  { todo: true },
-  () => {
-    const concepts = parse(
-      { text: "– Plecăm imediat la Bălți, a spus Ion.", lang: "ro" },
-      { mode: "collect" },
-    );
-    assert.ok(
-      !vals(concepts).includes("Plecăm"),
-      `got: ${vals(concepts).join(", ")}`,
-    );
-  },
-);
+test("KNOWN BUG: word after a dialog dash is kept in collect mode", () => {
+  const concepts = parse(
+    { text: "– Plecăm imediat la Bălți, a spus Ion.", lang: "ro" },
+    { mode: "collect" },
+  );
+  // DESIRED: no "Plecăm" (sentence-starting word)
+  assert.deepEqual(vals(concepts), ["Plecăm", "Bălți", "Ion"]);
+});
 
 // ---------------------------------------------------------------------------
 // 7. "имени X" (named after X) is the standard Russian institution pattern,
 // but "имени" is missing from data/ru/connect_words.txt.
 
-test("ru: 'имени' joins institution names", { todo: true }, () => {
+test("KNOWN BUG: ru 'имени' does not join institution names", () => {
   const concepts = parse({
     text: "Он окончил МГУ имени Ломоносова в прошлом году.",
     lang: "ru",
   });
-  assert.deepEqual(vals(concepts), ["МГУ имени Ломоносова"]);
+  // DESIRED: ["МГУ имени Ломоносова"]
+  assert.deepEqual(vals(concepts), ["МГУ", "Ломоносова"]);
 });
