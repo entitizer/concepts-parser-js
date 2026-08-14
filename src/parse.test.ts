@@ -354,3 +354,23 @@ test("es: names joined with bare 'de' stay whole", () => {
     ["Miguel de Cervantes", "Alcalá de Henares"],
   );
 });
+
+test("ru: 'имени' joins institution names", () => {
+  const mgu = parse({
+    text: "Он окончил МГУ имени Ломоносова в прошлом году.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    mgu.map((c) => c.value),
+    ["МГУ имени Ломоносова"],
+  );
+  const univ = parse({
+    text: "Конференция прошла в Университете имени Баумана вчера вечером.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    univ.map((c) => c.value),
+    // "Конференция" is a sentence-start word, kept by identify mode
+    ["Конференция", "Университете имени Баумана"],
+  );
+});

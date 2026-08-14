@@ -181,8 +181,7 @@ test("ru article: identify", () => {
     "Россия",
     "Пекином",
     "Большой театр", // suffix filter completes the stopword-headed name
-    "МГУ",
-    "Ломоносова", // LIMITATION: "имени" is not in ru connect_words
+    "МГУ имени Ломоносова",
     "Переговоры",
     "Пекине",
   ]);
@@ -206,8 +205,7 @@ test("ru article: collect", () => {
     "Россия",
     "Пекином",
     "Большой театр",
-    "МГУ",
-    "Ломоносова",
+    "МГУ имени Ломоносова",
     "Пекине",
   ]);
   assertInvariants(concepts, RU_TEXT, "ru");

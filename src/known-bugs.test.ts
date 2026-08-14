@@ -67,16 +67,3 @@ test("KNOWN BUG: word after a dialog dash is kept in collect mode", () => {
   // DESIRED: no "Plecăm" (sentence-starting word)
   assert.deepEqual(vals(concepts), ["Plecăm", "Bălți", "Ion"]);
 });
-
-// ---------------------------------------------------------------------------
-// 7. "имени X" (named after X) is the standard Russian institution pattern,
-// but "имени" is missing from data/ru/connect_words.txt.
-
-test("KNOWN BUG: ru 'имени' does not join institution names", () => {
-  const concepts = parse({
-    text: "Он окончил МГУ имени Ломоносова в прошлом году.",
-    lang: "ru",
-  });
-  // DESIRED: ["МГУ имени Ломоносова"]
-  assert.deepEqual(vals(concepts), ["МГУ", "Ломоносова"]);
-});
