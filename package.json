@@ -4,23 +4,34 @@
   "description": "Concepts Extracting from text",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "types",
+    "data"
+  ],
   "scripts": {
     "pretest": "npm run normalize-data",
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf lib types",
-    "clean-code": "rimraf --glob \"lib/**/*.test.js\" \"types/**/*.test.d.ts\" \"types/scripts\"",
     "normalize-data": "tsx src/scripts/normalize-data.ts",
     "build-invalid-concepts": "tsx src/scripts/build-invalid-concepts.ts",
     "build-firstnames": "tsx src/scripts/build-firstnames.ts",
     "build-connect-words": "tsx src/scripts/build-connect-words.ts",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
     "preversion": "npm run typecheck && npm test",
     "postversion": "git push --follow-tags",
-    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run clean-code"
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=22"
   },
   "repository": {
     "type": "git",
