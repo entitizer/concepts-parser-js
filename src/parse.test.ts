@@ -208,3 +208,47 @@ test("москва", () => {
   assert.equal(concepts.length, 1);
   assert.equal(concepts[0].value, "Москва");
 });
+
+test("word ending in connect char + letter at end of text is kept", () => {
+  const concepts = parse({ text: `I love McDonald's`, lang: "en" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "McDonald's");
+  assert.equal(concepts[0].index, 7);
+});
+
+test("uppercase right after a connect char makes a concept", () => {
+  const concepts = parse({
+    text: `He met d'Artagnan yesterday.`,
+    lang: "en",
+  });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "d'Artagnan");
+  assert.equal(concepts[0].index, 7);
+});
+
+test("uppercase right after a connect char makes a concept (ro)", () => {
+  const concepts = parse({ text: `A vizitat l'Aquila ieri.`, lang: "ro" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "l'Aquila");
+  assert.equal(concepts[0].index, 10);
+});
+
+test("dotted abbreviation at end of text keeps its dot", () => {
+  const concepts = parse({ text: `He works at U.S.`, lang: "en" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "U.S.");
+});
+
+test("connect char word mid-text is unaffected", () => {
+  const concepts = parse({ text: `I love McDonald's food`, lang: "en" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "McDonald's");
+  assert.equal(concepts[0].index, 7);
+});
+
+test("hyphenated name at end of text is unaffected", () => {
+  const concepts = parse({ text: `A venit Ana-Maria`, lang: "ro" });
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Ana-Maria");
+  assert.equal(concepts[0].index, 8);
+});

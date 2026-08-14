@@ -33,16 +33,11 @@ export class Parser extends BaseParser {
           start = i;
           p = P_WORD;
           isConcept = utils.isUpper(c) || utils.isDigit(c);
-          if (i === input.length - 1) {
-            addWord(i + 1);
-          }
         }
       } else if (p === P_WORD) {
         if (this.isValidWordChar(c)) {
           isConcept = isConcept || utils.isUpper(c);
-          if (i === input.length - 1) {
-            addWord(i + 1);
-          } else if (this.isInConnectChars(c)) {
+          if (this.isInConnectChars(c)) {
             p = P_PUNCT;
           }
         } else {
@@ -52,11 +47,16 @@ export class Parser extends BaseParser {
         if (this.isInConnectChars(c) || utils.isPunctuation(c)) {
           addWord(i - 1);
         } else if (utils.isLetterOrDigit(c)) {
+          isConcept = isConcept || utils.isUpper(c);
           p = P_WORD;
         } else {
           addWord(i);
         }
       }
+    }
+
+    if (p === P_WORD || p === P_PUNCT) {
+      addWord(input.length);
     }
 
     return words.concepts();
