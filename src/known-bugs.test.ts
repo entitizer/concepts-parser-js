@@ -6,11 +6,9 @@
  * the signal to move the case into the regular suite asserting the desired
  * behavior (stated in the DESIRED comment) and delete the entry here.
  *
- * Fixed so far and promoted to the regular suites: orphaned connect words
- * after invalid_prefix, invalid_prefixes ordering (filters/data tests),
- * Object.prototype key collisions, parse(ctx, {}), "S.U.A." final dot,
- * language-code normalization, NBSP joining, "…" sentence boundary
- * (parse/filters tests).
+ * Both remaining bugs need a design decision; everything mechanical from the
+ * 2026-08-14 hunt is fixed and guarded in the regular suites (parse.test.ts,
+ * filters.test.ts, data.test.ts, news-articles.test.ts).
  */
 import { parse } from "./parse";
 import { Concept } from "./concept";
@@ -20,7 +18,7 @@ import assert from "node:assert/strict";
 const vals = (concepts: Concept[]) => concepts.map((c) => c.value);
 
 // ---------------------------------------------------------------------------
-// 5. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
+// 1. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
 // stopwords escape the invalid filter ("L'incontro" becomes a concept) and
 // entities keep junk prefixes ("dell'Unione Europea").
 
@@ -38,7 +36,7 @@ test("KNOWN BUG: it elided articles leak into concepts", () => {
 });
 
 // ---------------------------------------------------------------------------
-// 6. start_word (collect mode) misses sentences opened by a dialog dash "–".
+// 2. start_word (collect mode) misses sentences opened by a dialog dash "–".
 // Treating "–" as a sentence boundary is NOT obviously safe: a mid-sentence
 // dash before a capitalized word ("a spus el – Moldova va decide") would
 // wrongly drop a real entity. The "…" half of this bug was fixed in

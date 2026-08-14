@@ -11,6 +11,11 @@
 - fix: the language code is normalized — `parse({ lang: "RO" })` crashed with "Invalid language"
 - fix: NBSP (U+00A0) joins words like a regular space (text pasted from Word fragmented concepts)
 - fix: a single-character ellipsis `…` ends a sentence for the `start_word` filter
+- fix: Cyrillic suffixes deleted concepts instead of extending them — JS `\b` is ASCII-only, so ru/bg news lost entities like `"Магнитная гора"` mid-text
+- fix: the `invalid` filter now runs after `prefix`/`suffix`, so a stopword-headed name can be completed first (`"Большой"` → `"Большой театр"`)
+- fix: ru title+country genitive combos are stripped as invalid prefixes (`"Президент России Владимир Путин"` → `"Владимир Путин"` instead of the mangled `"России Владимир Путин"`)
+- data: Spanish connect words gained bare `de` (`"Miguel de Cervantes"` no longer fragments)
+- data: Russian connect words gained `имени` (`"МГУ имени Ломоносова"` stays whole)
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
 - fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
 - fix: tests run on Node >= 23 (removed `util.isRegExp`)
