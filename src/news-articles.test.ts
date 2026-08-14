@@ -411,10 +411,12 @@ test("it article: identify", () => {
     "Roma",
     "Sergio Mattarella",
     "Quirinale",
-    "L'incontro", // BUG(elision): article "L'" hides a stopword from filters
-    "dell'Unione Europea", // BUG(elision): junk "dell'" prefix on the entity
+    // LIMITATION: a capitalized sentence-start elision is indistinguishable
+    // from a name like "L'Aquila", so it is kept
+    "L'incontro",
+    "Unione Europea", // lowercase elision "dell'" stripped by invalid_prefix
     "UE",
-    "all'Ucraina", // BUG(elision): junk "all'" prefix on the entity
+    "Ucraina", // lowercase elision "all'" stripped by invalid_prefix
     "Banca d'Italia", // apostrophe inside a real name works
     "Museo di Villa Borghese",
     // LIMITATION: connect word "e" merges two people
@@ -430,9 +432,9 @@ test("it article: collect", () => {
   assert.deepEqual(vals(concepts), [
     "Sergio Mattarella",
     "Quirinale",
-    "dell'Unione Europea",
+    "Unione Europea",
     "UE",
-    "all'Ucraina",
+    "Ucraina",
     "Banca d'Italia",
     "Museo di Villa Borghese",
     "Giorgia Meloni e Sergio Mattarella",

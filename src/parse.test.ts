@@ -375,20 +375,46 @@ test("ru: 'имени' joins institution names", () => {
   );
 });
 
-// KNOWN BUG (open, needs a design decision): Italian elision — "L'", "dell'",
-// "all'" glue the article to the word, so stopwords escape the invalid filter
-// ("L'incontro" becomes a concept) and entities keep junk prefixes
-// ("dell'Unione Europea"). DESIRED: ["Unione Europea", "Ucraina"]. Any naive
-// strip rule breaks real names: "d'Artagnan" -> "Artagnan", the city
-// "L'Aquila" -> "Aquila". This test PINS the current output and fails the
-// moment the behavior changes — update it to the desired list then.
-test("KNOWN BUG: it elided articles leak into concepts", () => {
+// Italian elision: lowercase elided articles (l', dell', all', nell', ...)
+// are stripped from the front of a concept. The rule is case-sensitive on
+// purpose: capitalized forms are indistinguishable from real names
+// ("L'Aquila", "Dell'Utri"), and "d'" is excluded entirely ("d'Artagnan").
+// A capitalized sentence-start elision like "L'incontro" therefore stays.
+test("it: lowercase elided articles are stripped from concepts", () => {
   const concepts = parse({
     text: "L'incontro ha riguardato il bilancio dell'Unione Europea e il sostegno all'Ucraina.",
     lang: "it",
   });
   assert.deepEqual(
     concepts.map((c) => c.value),
-    ["L'incontro", "dell'Unione Europea", "all'Ucraina"],
+    ["L'incontro", "Unione Europea", "Ucraina"],
   );
+
+  const italia = parse({
+    text: "Il premier ha visitato l'Italia del nord.",
+    lang: "it",
+  });
+  assert.deepEqual(
+    italia.map((c) => c.value),
+    ["Italia"],
+  );
+});
+
+test("it: capitalized elisions and the d' particle are preserved", () => {
+  const expected: [string, string[]][] = [
+    ["Il terremoto ha colpito L'Aquila nel 2009.", ["L'Aquila"]],
+    ["Marcello Dell'Utri è stato condannato ieri.", ["Marcello Dell'Utri"]],
+    [
+      "Le avventure di d'Artagnan sono famose in Francia.",
+      ["d'Artagnan", "Francia"],
+    ],
+    ["La Banca d'Italia ha alzato i tassi ieri.", ["La Banca d'Italia"]],
+  ];
+  for (const [text, values] of expected) {
+    assert.deepEqual(
+      parse({ text, lang: "it" }).map((c) => c.value),
+      values,
+      text,
+    );
+  }
 });

@@ -62,10 +62,22 @@ const builders: IBuilder = {
     return items.length > 0 ? [new RegExp(`^(${items.join("|")})$`, "i")] : [];
   },
   invalid_prefixes: function (items: string[]): RegExp[] {
+    // entries ending with an apostrophe are elided articles (it: l', dell'):
+    // they match without a following space and stay case-sensitive, because
+    // capitalized forms are names ("L'Aquila", "Dell'Utri")
+    const elisions = items.filter((item) => item.endsWith("'"));
     // longest first: the alternation takes the first match, so a multi-word
     // entry after its one-word prefix would never fire
-    items = sortByCountWordsDesc(items);
-    return items.length > 0 ? [new RegExp(`^(${items.join("|")}) `, "i")] : [];
+    items = sortByCountWordsDesc(items.filter((item) => !item.endsWith("'")));
+    const regs: RegExp[] = [];
+    if (items.length > 0) {
+      regs.push(new RegExp(`^(${items.join("|")}) `, "i"));
+    }
+    if (elisions.length > 0) {
+      const bodies = elisions.map((item) => item.slice(0, -1));
+      regs.push(new RegExp(`^(${bodies.join("|")})['’]`));
+    }
+    return regs;
   },
   known_concepts: function (items: string[]): RegExp[] {
     items = sortByCountWordsDesc(items);

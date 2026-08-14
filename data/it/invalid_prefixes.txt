@@ -1,6 +1,15 @@
+
+all'
+coll'
 dal( \d+)?
+dall'
+dell'
 deputato
 gli
 il
 in
+l'
+nell'
 per
+sull'
+un'
