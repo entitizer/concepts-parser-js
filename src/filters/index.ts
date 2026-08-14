@@ -1,7 +1,15 @@
-// const debug = require('debug')('concepts:filter');
-
 import { Concept } from "../concept";
 import { Context } from "../types";
+import * as invalid_prefix from "./invalid_prefix";
+import * as abbr from "./abbr";
+import * as invalid from "./invalid";
+import * as partial from "./partial";
+import * as prefix from "./prefix";
+import * as suffix from "./suffix";
+import * as start_word from "./start_word";
+import * as known from "./known";
+import * as quote from "./quote";
+import * as duplicate from "./duplicate";
 
 const MODE_COLLECT = "collect";
 const MODE_IDENTIFY = "identify";
@@ -34,11 +42,28 @@ const FILTERS_BY_MODE = {
 };
 
 interface IFilter {
-  filter(concepts: Concept[], context?: Context): Concept[];
+  filter(concepts: Concept[], context: Context): Concept[];
 }
 
+const FILTERS: { [name: string]: IFilter } = {
+  invalid_prefix,
+  abbr,
+  invalid,
+  partial,
+  prefix,
+  suffix,
+  start_word,
+  known,
+  quote,
+  duplicate
+};
+
 function getFilter(name: string): IFilter {
-  return require("./" + name);
+  const found = FILTERS[name];
+  if (!found) {
+    throw new Error("invalid filter name: " + name);
+  }
+  return found;
 }
 
 export type FilterOptions = {

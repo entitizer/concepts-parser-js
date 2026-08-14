@@ -154,3 +154,9 @@ test("known concept at text start is not truncated", () => {
   assert.equal(concepts[0].value, "Moldova are Talent");
   assert.equal(concepts[0].index, 0);
 });
+
+test("unknown filter name throws", () => {
+  assert.throws(() =>
+    parse({ text: `Some Text`, lang: "ro" }, { filters: ["no_such_filter"] })
+  );
+});
