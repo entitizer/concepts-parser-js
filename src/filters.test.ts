@@ -301,3 +301,14 @@ test("suffix: Cyrillic concepts are extended, not deleted (bg)", () => {
     ["Гостите", "Народния дворец", "София"],
   );
 });
+
+test("filter order: suffix completes a stopword-headed name before invalid drops it", () => {
+  const concepts = parse({
+    text: "Делегация посетила Большой театр и вернулась в отель.",
+    lang: "ru",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Делегация", "Большой театр"],
+  );
+});

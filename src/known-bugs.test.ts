@@ -20,20 +20,6 @@ import assert from "node:assert/strict";
 const vals = (concepts: Concept[]) => concepts.map((c) => c.value);
 
 // ---------------------------------------------------------------------------
-// 2. Filter order: `invalid` runs before `suffix` (src/filters/index.ts), so a
-// name whose head word is a stopword ("Большой") is dropped before the suffix
-// filter could complete it to a real entity ("Большой театр").
-
-test("KNOWN BUG: stopword-headed name is dropped before its suffix completes it", () => {
-  const concepts = parse({
-    text: "Делегация посетила Большой театр и вернулась в отель.",
-    lang: "ru",
-  });
-  // DESIRED: includes "Большой театр"
-  assert.deepEqual(vals(concepts), ["Делегация"]);
-});
-
-// ---------------------------------------------------------------------------
 // 3. invalid_prefix genitive remnant (ru). Stripping "Президент" leaves the
 // genitive country glued to the person's name. Only per-language data can
 // solve this: "России" is a capitalized ordinary word, not a connect word

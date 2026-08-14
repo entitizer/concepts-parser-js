@@ -180,9 +180,7 @@ test("ru article: identify", () => {
     "В. В. Путин",
     "Россия",
     "Пекином",
-    // BUG(filter-order + cyrillic-suffix): "Большой театр" is missing —
-    // `invalid` drops the stopword head "Большой" before `suffix` could
-    // extend it, and the suffix builder's \b never matches after Cyrillic
+    "Большой театр", // suffix filter completes the stopword-headed name
     "МГУ",
     "Ломоносова", // LIMITATION: "имени" is not in ru connect_words
     "Переговоры",
@@ -207,6 +205,7 @@ test("ru article: collect", () => {
     "В. В. Путин",
     "Россия",
     "Пекином",
+    "Большой театр",
     "МГУ",
     "Ломоносова",
     "Пекине",

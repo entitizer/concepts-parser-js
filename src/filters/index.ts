@@ -14,14 +14,17 @@ import * as duplicate from "./duplicate";
 const MODE_COLLECT = "collect";
 const MODE_IDENTIFY = "identify";
 
+// `invalid` runs after `prefix`/`suffix`: a stopword-headed name must first
+// get the chance to be completed to a real entity ("Большой" -> "Большой
+// театр") before being validated
 const FILTERS_BY_MODE = {
   collect: [
     "invalid_prefix",
     "abbr",
-    "invalid",
     "partial",
     "prefix",
     "suffix",
+    "invalid",
     "start_word",
     "known",
     "quote",
@@ -30,10 +33,10 @@ const FILTERS_BY_MODE = {
   identify: [
     "invalid_prefix",
     "abbr",
-    "invalid",
     //'partial',
     "prefix",
     "suffix",
+    "invalid",
     //'start_word',
     "known",
     "quote",
