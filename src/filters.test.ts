@@ -169,3 +169,35 @@ test("unknown filter name throws", () => {
     parse({ text: `Some Text`, lang: "ro" }, { filters: ["no_such_filter"] }),
   );
 });
+
+test("abbr: expanded concept keeps its index (ro)", () => {
+  const text = `Ieri Organizația Națiunilor Unite (ONU) a publicat un raport nou.`;
+  const concepts = parse({ text, lang: "ro" });
+  const expanded = concepts.find((c) => c.abbr === "ONU");
+  assert.ok(expanded, "expected a concept with abbr ONU");
+  assert.equal(expanded.value, "Organizația Națiunilor Unite");
+  assert.equal(expanded.index, 5);
+  assert.equal(
+    text.slice(expanded.index, expanded.index + expanded.value.length),
+    expanded.value,
+  );
+});
+
+test("abbr: expanded concept keeps its index (en)", () => {
+  const text = `The North Atlantic Treaty Organization (NATO) held a summit.`;
+  const concepts = parse({ text, lang: "en" });
+  const expanded = concepts.find((c) => c.abbr === "NATO");
+  assert.ok(expanded, "expected a concept with abbr NATO");
+  assert.equal(expanded.value, "North Atlantic Treaty Organization");
+  assert.equal(expanded.index, 4);
+});
+
+test("abbr: all concepts map back to the text (ru)", () => {
+  const text = `Крымские татары, согласно опросу, не хотят переезжать на Украину, заявил глава Федерального агентства по делам национальностей (ФАДН) Игорь Баринов в интервью «Известиям».`;
+  const concepts = parse({ text, lang: "ru" });
+  const expanded = concepts.find((c) => c.abbr === "ФАДН");
+  assert.ok(expanded, "expected a concept with abbr ФАДН");
+  for (const c of concepts) {
+    assert.equal(text.slice(c.index, c.index + c.value.length), c.value);
+  }
+});

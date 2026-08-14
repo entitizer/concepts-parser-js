@@ -30,7 +30,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
       if (isAbbrOf(concept.value, text)) {
         debug(`${concept.value} is abbr of ${text}`);
         prev.abbr = concept.value;
-        prev.reset(text, 0, context.lang);
+        prev.reset(text, prev.index, context.lang);
         // return false;
       }
     }
