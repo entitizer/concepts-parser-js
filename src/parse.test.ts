@@ -1,179 +1,180 @@
 import { parse } from "./parse";
-import test from "ava";
+import test from "node:test";
+import assert from "node:assert/strict";
 
-test("simple concepts", (t) => {
+test("simple concepts", () => {
   const concepts = parse({
     text: `Europa este un continent. R. Moldova este parte din Europa.`,
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(3, concepts.length);
-  t.is("Europa", concepts[0].value);
-  t.is("R. Moldova", concepts[1].value);
-  t.is("Europa", concepts[2].value);
+  assert.equal(3, concepts.length);
+  assert.equal("Europa", concepts[0].value);
+  assert.equal("R. Moldova", concepts[1].value);
+  assert.equal("Europa", concepts[2].value);
 });
 
-test("text end concept", (t) => {
+test("text end concept", () => {
   const concepts = parse({
     text: `R. Moldova este parte din UE`,
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(2, concepts.length);
-  t.is("R. Moldova", concepts[0].value);
-  t.is("UE", concepts[1].value);
+  assert.equal(2, concepts.length);
+  assert.equal("R. Moldova", concepts[0].value);
+  assert.equal("UE", concepts[1].value);
 });
 
-test("word spaces", (t) => {
+test("word spaces", () => {
   const concepts = parse({
     text: `sometimes called Bosnia  Herzegovina or Bosnia & Herzegovina`,
     lang: "en"
   });
   // console.log(concepts);
-  t.is(3, concepts.length);
-  t.is("Bosnia", concepts[0].value);
-  t.is("Herzegovina", concepts[1].value);
-  t.is("Bosnia & Herzegovina", concepts[2].value);
+  assert.equal(3, concepts.length);
+  assert.equal("Bosnia", concepts[0].value);
+  assert.equal("Herzegovina", concepts[1].value);
+  assert.equal("Bosnia & Herzegovina", concepts[2].value);
 });
 
-test("connect words: Bosnia and Herzegovina", (t) => {
+test("connect words: Bosnia and Herzegovina", () => {
   const concepts = parse({
     text: "sometimes called Bosnia-Herzegovina or Bosnia & Herzegovina, abbreviated BiH or B&H, and, in short, often known informally as Bosnia, is a country in Southeastern Europe located on the Balkan Peninsula",
     lang: "en"
   });
   // console.log(concepts);
-  t.is(7, concepts.length);
-  t.is("Bosnia-Herzegovina", concepts[0].value);
+  assert.equal(7, concepts.length);
+  assert.equal("Bosnia-Herzegovina", concepts[0].value);
 });
 
-test("connect with number: Eurovision 2016", (t) => {
+test("connect with number: Eurovision 2016", () => {
   const concepts = parse({
     text: "La Eurovision 2016 vor concura 10 participanti.",
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(1, concepts.length);
-  t.is("Eurovision 2016", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("Eurovision 2016", concepts[0].value);
 });
 
-test("invalid connect with 2 numbers: Eurovision 2016 18", (t) => {
+test("invalid connect with 2 numbers: Eurovision 2016 18", () => {
   const concepts = parse({
     text: "La Eurovision 2016 18 vor concura 10 participanti.",
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(1, concepts.length);
-  t.is("Eurovision 2016", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("Eurovision 2016", concepts[0].value);
 });
 
-test("invalid connect with numbers: 2016 Eurovision", (t) => {
+test("invalid connect with numbers: 2016 Eurovision", () => {
   const concepts = parse({
     text: "2016 Eurovision 2016 18 vor concura 10 participanti. 200 Eurovision",
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(2, concepts.length);
-  t.is("Eurovision 2016", concepts[0].value);
-  t.is("Eurovision", concepts[1].value);
+  assert.equal(2, concepts.length);
+  assert.equal("Eurovision 2016", concepts[0].value);
+  assert.equal("Eurovision", concepts[1].value);
 });
 
-test("invalid concepts without letters", (t) => {
+test("invalid concepts without letters", () => {
   const concepts = parse({
     text: "2016. Eurovision 2016 18 vor concura 10.2 participanti Eu 200. Eurovision",
     lang: "ro"
   });
   // console.log(concepts);
-  t.is(3, concepts.length);
-  t.is("Eurovision 2016", concepts[0].value);
-  t.is("Eu 200", concepts[1].value);
-  t.is("Eurovision", concepts[2].value);
+  assert.equal(3, concepts.length);
+  assert.equal("Eurovision 2016", concepts[0].value);
+  assert.equal("Eu 200", concepts[1].value);
+  assert.equal("Eurovision", concepts[2].value);
 });
 
-test("name abbr: B. Obama", (t) => {
+test("name abbr: B. Obama", () => {
   const concepts = parse({
     text: "V. Filat a fost retinut.",
     lang: "ro"
   });
-  t.is(1, concepts.length);
-  t.is("V. Filat", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("V. Filat", concepts[0].value);
 });
 
-test("name abbr: V. V. Putin", (t) => {
+test("name abbr: V. V. Putin", () => {
   const concepts = parse({
     text: "V. V. Putin este presedintele Rusiei.",
     lang: "ro"
   });
-  t.is(2, concepts.length);
-  t.is("V. V. Putin", concepts[0].value);
-  t.is("Rusiei", concepts[1].value);
+  assert.equal(2, concepts.length);
+  assert.equal("V. V. Putin", concepts[0].value);
+  assert.equal("Rusiei", concepts[1].value);
 });
 
-test("name abbr: VV Putin", (t) => {
+test("name abbr: VV Putin", () => {
   const concepts = parse({
     text: "VV Putin este presedintele Rusiei.",
     lang: "ro"
   });
-  t.is(2, concepts.length);
-  t.is("VV Putin", concepts[0].value);
+  assert.equal(2, concepts.length);
+  assert.equal("VV Putin", concepts[0].value);
 });
 
-test("name abbr: Putin V.", (t) => {
+test("name abbr: Putin V.", () => {
   const concepts = parse({
     text: "Putin V. este presedintele Rusiei.",
     lang: "ro"
   });
-  t.is(2, concepts.length);
-  t.is("Putin V.", concepts[0].value);
+  assert.equal(2, concepts.length);
+  assert.equal("Putin V.", concepts[0].value);
 });
 
-test("name abbr: World War II", (t) => {
+test("name abbr: World War II", () => {
   const concepts = parse({
     text: "World War II mistakes and Atom War I",
     lang: "en"
   });
-  t.is(2, concepts.length);
-  t.is("World War II", concepts[0].value);
-  t.is("Atom War I", concepts[1].value);
+  assert.equal(2, concepts.length);
+  assert.equal("World War II", concepts[0].value);
+  assert.equal("Atom War I", concepts[1].value);
 });
 
-test("quotes on word", (t) => {
+test("quotes on word", () => {
   const concepts = parse({
     text: 'I know "SomeoneNew"',
     lang: "en"
   });
-  t.is(1, concepts.length);
-  t.is("SomeoneNew", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("SomeoneNew", concepts[0].value);
 });
 
-test("quotes some words", (t) => {
+test("quotes some words", () => {
   const concepts = parse({
     text: 'I know "Someone Big"',
     lang: "en"
   });
-  t.is(1, concepts.length);
-  t.is("Someone Big", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("Someone Big", concepts[0].value);
 });
 
-test("first quotes some words", (t) => {
+test("first quotes some words", () => {
   const concepts = parse({
     text: 'I know "SomeoneNew big"',
     lang: "en"
   });
-  t.is(1, concepts.length);
-  t.is("SomeoneNew", concepts[0].value);
+  assert.equal(1, concepts.length);
+  assert.equal("SomeoneNew", concepts[0].value);
 });
 
-test("Russian quotes", (t) => {
+test("Russian quotes", () => {
   const concepts = parse({
     text: `«Сегодня в пункте пропуска «Новые Яриловичи» во время прохождения пограничного контроля попросил политического убежища гражданин России. Он обратился к пограничникам Черниговского отряда с заявлением о получении статуса беженца на территории Украины в связи с политическим преследованием в России», — сообщила Погранслужба Украины.`,
     lang: "ru"
   });
   // console.log(concepts);
-  t.is(6, concepts.length);
-  t.is("Новые Яриловичи", concepts[0].value);
+  assert.equal(6, concepts.length);
+  assert.equal("Новые Яриловичи", concepts[0].value);
 });
 
-test("parse 100 times", (t) => {
+test("parse 100 times", () => {
   const startTime = Date.now();
   for (let i = 0; i < 100; i++) {
     parse({
@@ -184,26 +185,26 @@ test("parse 100 times", (t) => {
   }
   const endTime = Date.now();
   const time = endTime - startTime;
-  t.log(`Parsed 100 texts in ${time}ms`);
-  t.true(time < 500);
+  console.log(`Parsed 100 texts in ${time}ms`);
+  assert.ok(time < 500);
 });
 
-test('Place "Person Name"', (t) => {
+test('Place "Person Name"', () => {
   const concepts = parse({
     text: "Azi la liceul Ion Creanga va...",
     lang: "ro",
     country: "md"
   });
-  t.is(concepts.length, 1);
-  t.is(concepts[0].value, "liceul Ion Creanga");
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "liceul Ion Creanga");
 });
 
-test("москва", (t) => {
+test("москва", () => {
   const concepts = parse({
     text: "Москва согласовали три митинга против пенсионной реформы",
     lang: "ru",
     country: "ru"
   });
-  t.is(concepts.length, 1);
-  t.is(concepts[0].value, "Москва");
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Москва");
 });

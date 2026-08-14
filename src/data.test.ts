@@ -1,18 +1,19 @@
 import * as data from "./data";
-import test from "ava";
+import test from "node:test";
+import assert from "node:assert/strict";
 
-test("suffix complex items", (t) => {
+test("suffix complex items", () => {
   const items = data.getValidSuffixes("ru");
 
-  t.true(items.length > 0);
+  assert.ok(items.length > 0);
 
-  t.true(items[0].prefix instanceof RegExp);
+  assert.ok(items[0].prefix instanceof RegExp);
 });
 
-test("prefixes", (t) => {
+test("prefixes", () => {
   const items = data.getValidPrefixes("ru");
 
-  t.true(items.length > 0);
+  assert.ok(items.length > 0);
 });
 
 const LANGUAGES = data.getLanguages();
@@ -32,9 +33,9 @@ const TEST_DATA: { [lang: string]: { [name: string]: string[] } } = {
 
 LANGUAGES.forEach(function (lang) {
   NAMES.forEach(function (name) {
-    test(`validate ${lang}: ${name}`, (t) => {
+    test(`validate ${lang}: ${name}`, () => {
       let result = getData(name, lang);
-      t.is(true, !!result);
+      assert.equal(true, !!result);
       if (result.length === 0) {
         console.log("No items for", name, lang);
         return;
@@ -46,7 +47,7 @@ LANGUAGES.forEach(function (lang) {
           for (let dataWord of result) {
             if (typeof dataWord === "string") {
               if (dataWord === testWord) {
-                t.is(dataWord, testWord);
+                assert.equal(dataWord, testWord);
                 foundWord = true;
               }
             } else {
@@ -55,7 +56,7 @@ LANGUAGES.forEach(function (lang) {
               }
             }
           }
-          t.is(foundWord, true, `NOT found word: ${testWord}`);
+          assert.equal(foundWord, true, `NOT found word: ${testWord}`);
         }
       }
     });

@@ -5,21 +5,19 @@
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
-    "pretest": "npm run clean && npm run tsc && npm run normalize-data",
-    "test": "ava --no-cache",
-    "posttest": "npm run clean-code",
-    "tsc": "tsc",
-    "tscw": "tsc -w",
-    "preversion": "npm run tsc",
-    "postversion": "git push --follow-tags",
-    "prepublishOnly": "npm run tsc && npm run clean-code",
+    "pretest": "npm run normalize-data",
+    "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
     "clean": "rimraf lib types",
     "clean-code": "rimraf --glob \"lib/**/*.test.js\" \"types/**/*.test.d.ts\" \"types/scripts\"",
-    "build-invalid-concepts": "node ./lib/scripts/build-invalid-concepts.js",
-    "build-firstnames": "node ./lib/scripts/build-firstnames.js",
-    "build-connect-words": "node ./lib/scripts/build-connect-words.js",
-    "normalize-data": "node ./lib/scripts/normalize-data.js",
-    "build": "tsc && npm run build-invalid-concepts && npm run build-firstnames && npm run build-connect-words"
+    "normalize-data": "tsx src/scripts/normalize-data.ts",
+    "build-invalid-concepts": "tsx src/scripts/build-invalid-concepts.ts",
+    "build-firstnames": "tsx src/scripts/build-firstnames.ts",
+    "build-connect-words": "tsx src/scripts/build-connect-words.ts",
+    "build": "npm run clean && tsc",
+    "preversion": "npm run typecheck && npm test",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run clean-code"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -53,11 +51,11 @@
     "@types/fs-extra": "^5.0.4",
     "@types/node": "^26.2.0",
     "@types/node-fetch": "^2.1.2",
-    "ava": "^3.0.0",
     "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
     "rimraf": "^6.1.3",
     "stopwords-json": "^1.2.0",
+    "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }
 }

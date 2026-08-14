@@ -1,9 +1,10 @@
-import test from "ava";
+import test from "node:test";
+import assert from "node:assert/strict";
 import { Concept } from "./concept";
 
-test("constructor", (t) => {
+test("constructor", () => {
   const concept = new Concept({ value: "Vlad Filat", index: 0, lang: "ro" });
-  t.is("Vlad Filat", concept.value);
-  t.is("ro", concept.lang);
-  t.is(0, concept.index);
+  assert.equal("Vlad Filat", concept.value);
+  assert.equal("ro", concept.lang);
+  assert.equal(0, concept.index);
 });
