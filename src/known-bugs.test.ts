@@ -35,25 +35,6 @@ test("KNOWN BUG: title + genitive country + name stays glued", () => {
 });
 
 // ---------------------------------------------------------------------------
-// 4. Spanish connect words are missing bare "de" (data/es/connect_words.txt
-// has "de la" and "del" but not "de"), so the most common Spanish name
-// pattern fragments.
-
-test("KNOWN BUG: es names joined with bare 'de' fragment", () => {
-  const concepts = parse({
-    text: "El escritor Miguel de Cervantes nació en Alcalá de Henares.",
-    lang: "es",
-  });
-  // DESIRED: ["Miguel de Cervantes", "Alcalá de Henares"]
-  assert.deepEqual(vals(concepts), [
-    "Miguel",
-    "Cervantes",
-    "Alcalá",
-    "Henares",
-  ]);
-});
-
-// ---------------------------------------------------------------------------
 // 5. Italian elision: "L'", "dell'", "all'" glue the article to the word, so
 // stopwords escape the invalid filter ("L'incontro" becomes a concept) and
 // entities keep junk prefixes ("dell'Unione Europea").

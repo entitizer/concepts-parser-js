@@ -1,9 +1,11 @@
+
 ##
 ## connect words
 &
 and
 ben
 bin
+de
 de la
 del
 der

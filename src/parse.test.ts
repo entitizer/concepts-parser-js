@@ -343,3 +343,14 @@ test("NBSP joins words like a regular space", () => {
     ["Ana Popescu"],
   );
 });
+
+test("es: names joined with bare 'de' stay whole", () => {
+  const concepts = parse({
+    text: "El escritor Miguel de Cervantes nació en Alcalá de Henares.",
+    lang: "es",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Miguel de Cervantes", "Alcalá de Henares"],
+  );
+});
