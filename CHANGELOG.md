@@ -1,5 +1,20 @@
 # Changelog
 
+### v2.0.0 - August 14, 2026
+
+- BREAKING: requires Node.js >= 22 (engines was >= 8)
+- fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`
+- fix: `known` filter truncated concepts matched at the start of the text (e.g. `"oldova are Talent"`)
+- fix: tests run on Node >= 23 (removed `util.isRegExp`)
+- fix: README documented mode `identity`; the accepted value is `identify`
+- TypeScript 6 (strict mode); code verified to also compile under the native TypeScript 7
+- native `node:test` runner via tsx (ava removed)
+- static filter registry (bundler-friendly, no dynamic `require`)
+- replaced node-fetch/fs-extra with Node built-ins; rimraf 6; npm lockfile
+- ESLint 10 + Prettier 3; added LICENSE; dead Travis config removed (no CI)
+- removed dead `default_parser`; `substr` → `slice`
+- packaging: `files` whitelist + `exports` map (`.npmignore` removed)
+
 ### v1.5.5 - May 28, 2023
 
 - Spanish support (`es`)
