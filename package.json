@@ -45,6 +45,7 @@
   "homepage": "https://github.com/entitizer/concepts-parser-js",
   "dependencies": {
     "atonic": "^1.x.x",
+    "debug": "^4.4.3",
     "is-abbr-of": "^0.1.2"
   },
   "devDependencies": {
@@ -52,7 +53,6 @@
     "@types/node": "10.12.6",
     "@types/node-fetch": "^2.1.2",
     "ava": "^3.0.0",
-    "debug": "^4.1.0",
     "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
     "rimraf": "^2.6.2",
