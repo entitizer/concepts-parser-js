@@ -114,3 +114,17 @@ test("remove lowercase words", () => {
   assert.equal(concepts[0].value, "Colegiul Ion Creanga");
   assert.equal(concepts[1].value, "Iasi");
 });
+
+test("split by 'имени' gives one clean cut, not simpleSplit noise", () => {
+  const concepts = parse({
+    text: "Спектакль идёт в Театре имени Михаила Чехова с осени.",
+    lang: "ru",
+  });
+  const theater = concepts.find(
+    (c) => c.value === "Театре имени Михаила Чехова",
+  );
+  assert.deepEqual(
+    theater?.split().map((c) => c.value),
+    ["Театре", "Михаила Чехова"],
+  );
+});
