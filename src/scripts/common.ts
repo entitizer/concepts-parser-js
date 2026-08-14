@@ -1,6 +1,6 @@
-import { join } from "path";
+import { join, dirname } from "path";
 import { writeFileSync, readFileSync } from "fs";
-import { outputFile } from "fs-extra";
+import { mkdir, writeFile } from "fs/promises";
 import { createHash } from "crypto";
 
 export function md5(value: string): string {
@@ -34,7 +34,8 @@ export async function saveDbTextFile(
   fileName: string
 ) {
   const file = join(__dirname, "..", "..", "db", "texts", lang, fileName);
-  await outputFile(file, data, "utf8");
+  await mkdir(dirname(file), { recursive: true });
+  await writeFile(file, data, "utf8");
 }
 
 export function getDbTextFiles(lang: string, count: number) {

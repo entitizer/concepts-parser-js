@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { Dictionary } from "../types";
 
 export type WikidataQueryResultItem = Dictionary<{
@@ -11,9 +10,9 @@ export async function queryWikidata(
 ): Promise<WikidataQueryResultItem[]> {
   const response = await fetch(
     "https://query.wikidata.org/sparql?format=json&query=" + query,
-    { timeout: 1000 * 60 }
+    { signal: AbortSignal.timeout(1000 * 60) }
   );
-  const json = await response.json();
+  const json = (await response.json()) as any;
   return (json.results && json.results.bindings) || [];
 }
 
@@ -59,9 +58,9 @@ export async function getWikiArticleText(lang: string, title: string) {
     `https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=true&titles=${encodeURIComponent(
       title
     )}&format=json`,
-    { timeout: 1000 * 60 }
+    { signal: AbortSignal.timeout(1000 * 60) }
   );
-  const json = await response.json();
+  const json = (await response.json()) as any;
   const id = Object.keys(json.query.pages)[0];
   const text = json.query.pages[id].extract as string;
   const parts = text
