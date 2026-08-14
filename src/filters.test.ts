@@ -144,3 +144,13 @@ test("conditional suffix: Министерство молодёжи и спор�
   assert.equal("Министерство молодёжи и спорта", concepts[0].value);
   assert.equal("Правительства Республики Молдова", concepts[1].value);
 });
+
+test("known concept at text start is not truncated", () => {
+  const concepts = parse(
+    { text: `Moldova are Talent e o emisiune populara`, lang: "ro" },
+    { filters: ["known"] }
+  );
+  assert.equal(concepts.length, 1);
+  assert.equal(concepts[0].value, "Moldova are Talent");
+  assert.equal(concepts[0].index, 0);
+});

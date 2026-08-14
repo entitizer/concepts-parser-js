@@ -14,12 +14,13 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
     let result: RegExpExecArray | null;
 
     while ((result = source.exec(context.text)) !== null) {
-      let match = result[0];
-      let value = context.text.substr(result.index + 1, match.length - 1);
+      const match = result[0];
+      const value = match.trim();
+      const index = result.index + (match.length - match.trimStart().length);
 
-      let concept = new Concept({
-        value: value,
-        index: result.index + 1,
+      const concept = new Concept({
+        value,
+        index,
         lang: context.lang
       });
 
