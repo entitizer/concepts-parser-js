@@ -37,7 +37,7 @@ export function isPunctuation(s: string): boolean {
 }
 
 export function isSentenceStartingWord(index: number, text: string) {
-  text = text.substr(0, index);
+  text = text.slice(0, index);
   if (text.length === 0 || /\n[ \t]*$/.test(text) || text.trim().length === 0) {
     return true;
   }

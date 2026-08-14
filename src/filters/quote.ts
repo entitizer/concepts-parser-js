@@ -81,7 +81,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
   // 		if (quoteReg.test(concept.value[concept.value.length - 1])) {
   // 			return true;
   // 		}
-  // 		concept.reset(concept.value.substr(1));
+  // 		concept.reset(concept.value.slice(1));
   // 		return concept.isValid();
   // 	}
   // 	return !quoteReg.test(concept.value[concept.value.length - 1]);

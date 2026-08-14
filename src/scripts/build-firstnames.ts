@@ -111,7 +111,7 @@ function getNames(name: string): string[] {
     .map((item) => item.trim())
     .map((item) => {
       if (item.indexOf("(") > 1) {
-        return item.substr(0, item.indexOf("(")).trim();
+        return item.slice(0, item.indexOf("(")).trim();
       }
       return item;
     });

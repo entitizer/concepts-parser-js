@@ -31,7 +31,7 @@ export async function queryWikidataInfo(
   const entities: Dictionary<WikiEntityInfo> = {};
 
   for (const entry of entries) {
-    const id = entry["item"].value.substr(
+    const id = entry["item"].value.slice(
       entry["item"].value.lastIndexOf("/") + 1
     );
     const label = entry["label"].value;

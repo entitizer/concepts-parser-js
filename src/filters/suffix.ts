@@ -15,14 +15,14 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
       nextIsInvalid = false;
       return false;
     }
-    let text = context.text.substr(concept.index + concept.value.length);
+    let text = context.text.slice(concept.index + concept.value.length);
 
     for (const source of sources) {
       let result = source.reg.exec(text);
 
       if (result) {
         let match = result[0];
-        let value = text.substr(0, match.length);
+        let value = text.slice(0, match.length);
 
         if (source.prefix) {
           // is not required prefix

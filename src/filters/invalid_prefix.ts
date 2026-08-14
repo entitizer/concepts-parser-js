@@ -16,7 +16,7 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
 
       if (result) {
         let match = result[0];
-        let value = concept.value.substr(match.length);
+        let value = concept.value.slice(match.length);
 
         concept.reset(value, concept.index + match.length, context.lang);
 

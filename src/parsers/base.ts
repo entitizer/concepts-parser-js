@@ -84,7 +84,7 @@ export abstract class BaseParser {
     i: number,
     start: number
   ): Concept {
-    let text: string = input.substr(start, i - start - 1);
+    let text: string = input.slice(start, i - 1);
 
     return new Concept({ value: text, index: start, lang: context.lang });
   }
@@ -105,7 +105,7 @@ export abstract class BaseParser {
   }
 
   isLowerStartUpperWord(text: string, index: number): boolean {
-    let t = text.substr(index).trim();
+    let t = text.slice(index).trim();
     for (let i = 0; i < t.length; i++) {
       let c = t[i];
       if (!this.isValidWordChar(c)) {

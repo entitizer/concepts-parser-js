@@ -56,14 +56,14 @@ function trimLowecaseWords(concept: Concept): Concept {
     const value = concept.value;
     if (endsWithLowercaseWord(value)) {
       concept.reset(
-        value.substr(0, value.lastIndexOf(" ")),
+        value.slice(0, value.lastIndexOf(" ")),
         concept.index,
         concept.lang
       );
       return trimLowecaseWords(concept);
     } else if (startsWithLowercaseWord(value)) {
       const index = value.indexOf(" ") + 1;
-      concept.reset(value.substr(index), concept.index + index, concept.lang);
+      concept.reset(value.slice(index), concept.index + index, concept.lang);
       return trimLowecaseWords(concept);
     }
   }
@@ -88,7 +88,7 @@ export function createConceptsFromConcept(
   let list: Concept[] = [];
 
   let c = createConcept(
-    concept.value.substr(0, index),
+    concept.value.slice(0, index),
     concept.index,
     concept.lang
   );
@@ -104,7 +104,7 @@ export function createConceptsFromConcept(
   }
   index += separator.length;
   c = createConcept(
-    concept.value.substr(index),
+    concept.value.slice(index),
     concept.index + index,
     concept.lang
   );

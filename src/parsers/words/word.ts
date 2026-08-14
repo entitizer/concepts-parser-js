@@ -28,7 +28,7 @@ export class Word {
       if (value[value.length - 1] === ".") {
         // is NOT abbreviation
         if (!(value === upperValue && ABBR_REG.test(value))) {
-          value = value.substr(0, value.length - 1);
+          value = value.slice(0, value.length - 1);
         }
       }
     }

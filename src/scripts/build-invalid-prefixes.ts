@@ -72,7 +72,7 @@ function buildInvalidPrefixes(texts: string[]) {
         if (i > 1) {
           let concept = words.slice(0, i).join(" ");
           if (endsWithPunctuation(concept)) {
-            concept = concept.substr(0, concept.length - 1);
+            concept = concept.slice(0, concept.length - 1);
           }
           const textValue = words[0];
           const value = atonic(textValue.toLowerCase());
