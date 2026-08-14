@@ -129,17 +129,6 @@ test("it: elided articles do not leak into concepts", { todo: true }, () => {
 });
 
 // ---------------------------------------------------------------------------
-// 10. Non-breaking space (U+00A0, common in text pasted from Word or CMS
-// output) is not treated as a joining space between words.
-
-test("en: NBSP joins words like a regular space", { todo: true }, () => {
-  const text = "He visited the Republic of\u00A0Moldova in June.";
-  const concepts = parse({ text, lang: "en" });
-  const normalized = vals(concepts).map((v) => v.replace(/\u00A0/g, " "));
-  assert.deepEqual(normalized, ["Republic of Moldova"]);
-});
-
-// ---------------------------------------------------------------------------
 // 11. start_word (collect mode) misses sentence boundaries that end with a
 // single-character ellipsis "…" or start with a dialog dash "–", because
 // utils.isSentenceStartingWord only checks /^[!.?;-]$/.

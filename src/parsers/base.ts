@@ -37,8 +37,9 @@ export abstract class BaseParser {
       acceptConceptWordsRegex: new RegExp(
         "^(" + resolved.acceptConceptWords.join("|") + ") ",
       ),
+      // NBSP counts as a separating space between words
       acceptConceptWordsRegex2: new RegExp(
-        "^[ ](" + resolved.acceptConceptWords.join("|") + ")[ ]$",
+        "^[ \u00A0](" + resolved.acceptConceptWords.join("|") + ")[ \u00A0]$",
       ),
     };
   }

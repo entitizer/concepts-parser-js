@@ -330,3 +330,16 @@ test("language code is normalized (uppercase, padding)", () => {
     ["Moldova", "Europa"],
   );
 });
+
+test("NBSP joins words like a regular space", () => {
+  const text = "He visited the Republic of Moldova in June.";
+  const concepts = parse({ text, lang: "en" });
+  const normalized = concepts.map((c) => c.value.replace(/ /g, " "));
+  assert.deepEqual(normalized, ["Republic of Moldova"]);
+
+  const direct = parse({ text: "Ieri Ana Popescu a venit.", lang: "ro" });
+  assert.deepEqual(
+    direct.map((c) => c.value.replace(/ /g, " ")),
+    ["Ana Popescu"],
+  );
+});

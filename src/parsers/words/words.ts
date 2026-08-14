@@ -72,7 +72,7 @@ export class Words {
       }
       const connectingWords =
         word.rightText &&
-        (/^[ ]$/.test(word.rightText) ||
+        (/^[ \u00A0]$/.test(word.rightText) ||
           this.options.acceptConceptWordsRegex2.test(word.rightText));
 
       if (connectingWords) {
