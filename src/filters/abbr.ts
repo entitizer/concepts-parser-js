@@ -26,7 +26,11 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
       prev.endIndex < concept.index &&
       isInParentheses(concept, context)
     ) {
-      const text = context.text.substring(prev.index, concept.index - 2);
+      // slice up to the "(" and trim: more than one space before the
+      // parenthesis must not leak into the expanded value
+      const text = context.text
+        .substring(prev.index, concept.index - 1)
+        .trimEnd();
       if (isAbbrOf(concept.value, text)) {
         debug(`${concept.value} is abbr of ${text}`);
         prev.abbr = concept.value;

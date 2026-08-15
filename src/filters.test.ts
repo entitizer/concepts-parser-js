@@ -367,3 +367,202 @@ test("start_word: a mid-sentence dash does not drop the entity after it", () => 
     ["Moldova"],
   );
 });
+
+test("abbr: extra spaces before (ABBR) never leave an untrimmed value", () => {
+  const text = "Uniunea Europeană  (UE) a decis.";
+  const concepts = parse({ text, lang: "ro" });
+  const expanded = concepts.find((c) => c.abbr === "UE");
+  assert.ok(expanded);
+  assert.equal(expanded.value, "Uniunea Europeană");
+  assert.equal(
+    text.slice(expanded.index, expanded.index + expanded.value.length),
+    expanded.value,
+  );
+});
+
+test("abbr: no space before (ABBR) does not truncate the expanded value", () => {
+  const concepts = parse({
+    text: "Uniunea Europeană(UE) a decis.",
+    lang: "ro",
+  });
+  const expanded = concepts.find((c) => c.abbr === "UE");
+  assert.equal(expanded?.value, "Uniunea Europeană");
+});
+
+// BUG(abbr-nonadjacent): the abbr filter expands onto the PREVIOUS concept no
+// matter how far away it is — everything between prev and "(" becomes the new
+// value, lowercase words included, as long as is-abbr-of happens to match.
+test("BUG: abbr expansion swallows lowercase words between name and (ABBR)", () => {
+  const concepts = parse({
+    text: "Microsoft builds software for the enterprise (MS) market.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Microsoft builds software for the enterprise", "MS"],
+  );
+  assert.equal(concepts[0].abbr, "MS");
+});
+
+test("abbr: a non-matching abbreviation does not expand the previous concept", () => {
+  const concepts = parse({ text: "George Bush (USA) spoke.", lang: "en" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["George Bush", "USA"],
+  );
+  assert.equal(concepts[0].abbr, undefined);
+});
+
+test("invalid: en month names are dropped, real entities stay", () => {
+  const concepts = parse({
+    text: "They arrived in September and left in Berlin.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Berlin"],
+  );
+});
+
+test("known: matching is case-insensitive, even on all-lowercase text", () => {
+  const lower = parse({
+    text: "Emisiunea moldova are talent revine la TV.",
+    lang: "ro",
+  });
+  const known = lower.find((c) => c.get("isKnown"));
+  assert.equal(known?.value, "moldova are talent");
+
+  const caps = parse({ text: "MOLDOVA ARE TALENT revine la TV.", lang: "ro" });
+  assert.equal(caps[0].value, "MOLDOVA ARE TALENT");
+  assert.equal(caps[0].get("isKnown"), true);
+});
+
+test("quote: merges when the quoted name ends the text", () => {
+  const text = 'Azi mergem la Teatrul Național "Mihai Eminescu"';
+  const concepts = parse({ text, lang: "ro" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ['Teatrul Național "Mihai Eminescu"'],
+  );
+  assert.equal(concepts[0].index, 14);
+});
+
+test("quote: mismatched quotation marks still merge", () => {
+  // „ opens, " closes — start/end mark classes are checked independently
+  const concepts = parse({
+    text: 'Teatrul Național „Mihai Eminescu" e mare.',
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ['Teatrul Național „Mihai Eminescu"'],
+  );
+});
+
+test("quote: only the first quoted name merges in a chain", () => {
+  const text = 'Teatrul Național "Mihai Eminescu" "Alt Nume" e mare.';
+  const concepts = parse({ text, lang: "ro" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ['Teatrul Național "Mihai Eminescu"', "Alt Nume"],
+  );
+});
+
+test("quote: a quoted name at text start has nothing to merge with", () => {
+  const concepts = parse({
+    text: '"Mihai Eminescu" este un liceu.',
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Mihai Eminescu"],
+  );
+  assert.equal(concepts[0].index, 1);
+});
+
+test("quote: NBSP between name and quoted part merges like a space", () => {
+  const text = 'Teatrul Național\u00A0"Mihai Eminescu" e mare.';
+  const concepts = parse({ text, lang: "ro" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ['Teatrul Național\u00A0"Mihai Eminescu"'],
+  );
+  assert.equal(concepts[0].index, 0);
+});
+
+test("invalid prefixes strip once: a second title is not re-stripped", () => {
+  // "the " is stripped; the remaining "Prime Minister ..." is not re-checked
+  const midText = parse({
+    text: "The Prime Minister Rishi Sunak arrived.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    midText.map((c) => c.value),
+    ["Prime Minister Rishi Sunak"],
+  );
+  // without "The", the multi-word entry matches directly
+  const atStart = parse({
+    text: "Prime Minister Rishi Sunak arrived.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    atStart.map((c) => c.value),
+    ["Rishi Sunak"],
+  );
+});
+
+test("suffix: simple en suffixes extend concepts, also at text end", () => {
+  const atEnd = parse({ text: "He lives in Columbia district", lang: "en" });
+  assert.deepEqual(
+    atEnd.map((c) => c.value),
+    ["Columbia district"],
+  );
+  const afterNumber = parse({
+    text: "Euro 2016 district was closed.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    afterNumber.map((c) => c.value),
+    ["Euro 2016 district"],
+  );
+});
+
+test("duplicate: dedup is diacritic-insensitive and keeps the first", () => {
+  const concepts = parse(
+    {
+      text: "Am vizitat Chișinău vara. Ne place orasul Chisinau mult.",
+      lang: "ro",
+    },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Chișinău"],
+  );
+  assert.equal(concepts[0].index, 11);
+});
+
+test("duplicate: dedup is case-insensitive", () => {
+  const concepts = parse(
+    { text: "They met Petrov and later PETROV again.", lang: "en" },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Petrov"],
+  );
+});
+
+// LIMITATION: an opening quotation mark is not a sentence ender, so a name
+// opening a quoted sentence right after a dot is NOT treated as a sentence
+// starter and survives collect mode.
+test("start_word: a name opening a quoted sentence is kept", () => {
+  const concepts = parse(
+    { text: "El a spus. „România rămâne partener”, a zis.", lang: "ro" },
+    { mode: "collect" },
+  );
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["România"],
+  );
+});

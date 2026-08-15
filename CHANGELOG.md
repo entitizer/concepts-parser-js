@@ -16,6 +16,9 @@
 - fix: ru title+country genitive combos are stripped as invalid prefixes (`"Президент России Владимир Путин"` → `"Владимир Путин"` instead of the mangled `"России Владимир Путин"`)
 - fix: lowercase Italian elided articles are stripped from concepts (`"dell'Unione Europea"` → `"Unione Europea"`, `"l'Italia"` → `"Italia"`); case-sensitive on purpose, so names like `"L'Aquila"`, `"Dell'Utri"` and the `d'` particle (`"d'Artagnan"`) are untouched
 - fix: a dialog dash opening a line (`"– Plecăm..."`) counts as a sentence start for the `start_word` filter; mid-sentence dashes are unaffected
+- fix: the `abbr` filter assumed exactly one space before `(ABBR)` — a double space leaked a trailing space into the expanded value, the only known break of the trimmed-value invariant
+- fix: the `quote` filter merges `Name "Quoted Part"` across an NBSP, which counts as a word separator everywhere else
+- fix: `Concept` no longer keeps a negative `index` passed to the constructor (it fell through `reset()`'s guard because the field was already stored); it falls back to 0
 - data: Spanish connect words gained bare `de` (`"Miguel de Cervantes"` no longer fragments)
 - data: Russian connect words gained `имени` (`"МГУ имени Ломоносова"` stays whole; also mirrored in split_words for clean `concept.split()`)
 - fix: `debug` was a devDependency but required at runtime — fresh installs of 1.5.6 crash with `Cannot find module 'debug'`

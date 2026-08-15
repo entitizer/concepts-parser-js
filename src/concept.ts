@@ -45,7 +45,10 @@ export class Concept extends Model implements IConcept {
     if (typeof index === "number" && index > -1) {
       this.set("index", index);
     } else {
-      this.set("index", this.index || 0);
+      // the Model constructor stores fields before reset() runs, so a
+      // negative index may already sit in `this.index` — never keep it
+      const prev = this.index;
+      this.set("index", typeof prev === "number" && prev > -1 ? prev : 0);
     }
 
     const words = value.split(/[ ]+/g);

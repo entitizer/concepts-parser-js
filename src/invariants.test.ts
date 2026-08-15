@@ -38,6 +38,40 @@ const CASES: Array<{ lang: string; text: string }> = [
     text: `Министерство внутренних дел Республики Молдова является одним из девяти министерств Правительства Республики Молдова.`,
   },
   { lang: "bg", text: `България и Европейският съюз подписаха споразумение.` },
+  // number-glue output must still satisfy the invariants
+  { lang: "en", text: `In 2016 Obama announced his plan.` },
+  { lang: "en", text: `He moved to the U.S. Yesterday he came back.` },
+  { lang: "en", text: `The new iPhone 15 was presented by Apple.` },
+  { lang: "en", text: `Windows 11 and Office 365 were updated.` },
+  { lang: "en", text: `Rock 'n' Roll is dead, said Elvis.` },
+  { lang: "en", text: "Barack\r\nObama spoke.\r\nSo did Michelle." },
+  { lang: "ru", text: `Изучение COVID-19 продолжается в Москве.` },
+  { lang: "ru", text: `Он посетил «Лужники» и стадион «Динамо» в Москве.` },
+  { lang: "ro", text: `A plecat in S.U.A.. Apoi a revenit.` },
+  // double space before (ABBR) once produced an untrimmed expanded value
+  { lang: "ro", text: `Uniunea Europeană  (UE) a decis.` },
+  { lang: "ro", text: 'Teatrul Național\u00A0"Mihai Eminescu" e mare.' },
+  { lang: "ro", text: `Traseul Chișinău – Sibiu trece prin Cluj-Napoca.` },
+  {
+    lang: "hu",
+    text: `Orbán Viktor találkozott Emmanuel Macron elnökkel Budapesten.`,
+  },
+  {
+    lang: "cs",
+    text: `Prezident Petr Pavel navštívil Prahu a setkal se s Karlem.`,
+  },
+  {
+    lang: "pl",
+    text: `Prezydent Andrzej Duda spotkał się z Donaldem Tuskiem w Warszawie.`,
+  },
+  {
+    lang: "it",
+    text: `Il presidente Sergio Mattarella ha visitato Roma e Milano.`,
+  },
+  {
+    lang: "es",
+    text: `El escritor Miguel de Cervantes nació en Alcalá de Henares.`,
+  },
 ];
 
 for (const { lang, text } of CASES) {

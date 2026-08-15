@@ -54,7 +54,8 @@ export function filter(concepts: Concept[], context: Context): Concept[] {
         );
         if (concept.index - 2 === prevConceptEndIndex) {
           debug(`text beetwen= '${text[concept.index - 2]}'`);
-          if (text[concept.index - 2] === " ") {
+          // NBSP separates words like a regular space everywhere else
+          if (/^[ \u00A0]$/.test(text[concept.index - 2])) {
             const newConcept = new Concept({
               value: text.substring(prevConcept.index, conceptEndIndex + 1),
               index: prevConcept.index,
