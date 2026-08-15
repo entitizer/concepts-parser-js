@@ -115,6 +115,74 @@ test("remove lowercase words", () => {
   assert.equal(concepts[1].value, "Iasi");
 });
 
+test("split concepts map back into the original text", () => {
+  const text = "Doar Nicolae Petru Timofti a comentat situația.";
+  const concept = parse({ text, lang: "ro" })[0];
+  assert.equal(concept.value, "Doar Nicolae Petru Timofti");
+
+  const parts = concept.split();
+  assert.ok(parts.length > 0);
+  for (const part of parts) {
+    assert.equal(
+      text.slice(part.index, part.index + part.value.length),
+      part.value,
+      `"${part.value}"@${part.index} does not map back to the text`,
+    );
+  }
+});
+
+test("known concepts are never split", () => {
+  const concept = parse({ text: "Moldova are Talent revine.", lang: "ro" })[0];
+  assert.equal(concept.value, "Moldova are Talent");
+  assert.equal(concept.get("isKnown"), true);
+  assert.deepEqual(concept.split(), []);
+});
+
+test("a concept with an early space cannot split: R. Moldova", () => {
+  // canSplit requires the first space after index 2 — "R. Moldova" has it at 2
+  const concept = parse({ text: "R. Moldova este stat.", lang: "ro" })[0];
+  assert.equal(concept.value, "R. Moldova");
+  assert.deepEqual(concept.split(), []);
+});
+
+test("en-dash split word cuts a route concept cleanly (en)", () => {
+  const text = "The Moscow – Berlin route is closed.";
+  const concept = parse({ text, lang: "en" })[0];
+  assert.equal(concept.value, "Moscow – Berlin");
+
+  const parts = concept.split();
+  assert.deepEqual(
+    parts.map((c) => c.value),
+    ["Moscow", "Berlin"],
+  );
+  assert.equal(parts[0].index, 4);
+  assert.equal(parts[1].index, 13);
+  for (const part of parts) {
+    assert.equal(
+      text.slice(part.index, part.index + part.value.length),
+      part.value,
+    );
+  }
+});
+
+// LIMITATION: a quote-merged concept splits like any other text, so
+// simpleSplit produces parts with quotation marks glued to the words
+// ('Eminescu"', '"Mihai Eminescu"'). The parts still map back to the text.
+test("splitting a quote-merged concept keeps quote chars in the parts", () => {
+  const text = 'Azi mergem la Teatrul Național "Mihai Eminescu" din centru.';
+  const concept = parse({ text, lang: "ro" })[0];
+  assert.equal(concept.value, 'Teatrul Național "Mihai Eminescu"');
+
+  const parts = concept.split();
+  assert.ok(parts.some((c) => /["„”«»]/.test(c.value)));
+  for (const part of parts) {
+    assert.equal(
+      text.slice(part.index, part.index + part.value.length),
+      part.value,
+    );
+  }
+});
+
 test("split by 'имени' gives one clean cut, not simpleSplit noise", () => {
   const concepts = parse({
     text: "Спектакль идёт в Театре имени Михаила Чехова с осени.",

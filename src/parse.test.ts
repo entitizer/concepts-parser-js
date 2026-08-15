@@ -1,4 +1,5 @@
 import { parse } from "./parse";
+import * as api from "./index";
 import test from "node:test";
 import assert from "node:assert/strict";
 
@@ -397,6 +398,289 @@ test("it: lowercase elided articles are stripped from concepts", () => {
   assert.deepEqual(
     italia.map((c) => c.value),
     ["Italia"],
+  );
+});
+
+test("empty and letterless texts produce no concepts", () => {
+  assert.deepEqual(parse({ text: "", lang: "ro" }), []);
+  assert.deepEqual(parse({ text: "   \n\t  ", lang: "ro" }), []);
+  assert.deepEqual(parse({ text: "A", lang: "ro" }), []);
+  assert.deepEqual(parse({ text: "12 34 !?", lang: "ro" }), []);
+  assert.deepEqual(parse({ text: "It happened in 1999.", lang: "en" }), []);
+});
+
+test("unsupported language throws", () => {
+  assert.throws(
+    () => parse({ text: "Moldova", lang: "xx" }),
+    /Invalid language: xx/,
+  );
+});
+
+test("emoji separate words like punctuation", () => {
+  const concepts = parse({ text: "Ana😀Maria came to 😀 Paris", lang: "en" });
+  assert.deepEqual(
+    concepts.map((c) => [c.value, c.index]),
+    [
+      ["Ana", 0],
+      ["Maria", 5],
+      // each emoji is a surrogate pair: two code units
+      ["Paris", 22],
+    ],
+  );
+});
+
+test("inner uppercase makes a lowercase-led word a concept: iPhone", () => {
+  const concepts = parse({
+    text: "The new iPhone 15 was presented by Apple.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["iPhone 15", "Apple"],
+  );
+});
+
+test("hyphen + digits inside an abbreviation: COVID-19", () => {
+  const concepts = parse({
+    text: "The COVID-19 pandemic hit Europe.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["COVID-19", "Europe"],
+  );
+  assert.equal(concepts[0].isAbbr, true);
+
+  const ru = parse({ text: "Договор СНВ-3 подписан в Праге.", lang: "ru" });
+  assert.deepEqual(
+    ru.map((c) => c.value),
+    ["Договор СНВ-3", "Праге"],
+  );
+});
+
+// BUG(number-glue): a number word only checks that the PREVIOUS word in the
+// candidate list is not a number — not that it is adjacent in the text — and
+// then joins the FOLLOWING capitalized word across a single space. A year
+// after a preposition swallows the next name into a number-led "concept".
+test("BUG: a year glues onto the following name", () => {
+  const en = parse({ text: "In 2016 Obama announced his plan.", lang: "en" });
+  assert.deepEqual(
+    en.map((c) => c.value),
+    ["2016 Obama"],
+  );
+
+  const far = parse({ text: "Anna met 2016 Bob.", lang: "en" });
+  assert.deepEqual(
+    far.map((c) => c.value),
+    ["Anna", "2016 Bob"],
+  );
+
+  const ro = parse({
+    text: "Concertul din 2019 Amsterdam a fost anulat.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    ro.map((c) => c.value),
+    ["Concertul din 2019 Amsterdam"],
+  );
+});
+
+// LIMITATION: "U.S." keeps its dot, and the capitalized sentence starter
+// after it is one space away — indistinguishable from "V. Putin"-style
+// abbreviated names, so the two merge across the sentence boundary.
+test("dotted abbreviation before a sentence start merges across it", () => {
+  const concepts = parse({
+    text: "He moved to the U.S. Yesterday he came back.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["U.S. Yesterday"],
+  );
+});
+
+test("doubled dot after a dotted abbreviation drops the final dot", () => {
+  const concepts = parse({
+    text: "A plecat in S.U.A.. Apoi a revenit.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    // "S.U.A.." parses as word "S.U.A" — the abbreviation survives minus its
+    // last dot, and still maps back into the text
+    ["S.U.A", "Apoi"],
+  );
+  assert.equal(concepts[0].index, 12);
+});
+
+test("'St.' is not ALL-CAPS dotted, so it loses its dot", () => {
+  const concepts = parse({
+    text: "O'Brien met McDonald's owner at St. Mary's Church.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["O'Brien", "McDonald's", "St", "Mary's Church"],
+  );
+});
+
+test("connect word 'and' can chain two product names into one concept", () => {
+  const concepts = parse({
+    text: "Windows 11 and Office 365 were updated.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Windows 11 and Office 365"],
+  );
+});
+
+test("ampersand joins names directly and across spaces", () => {
+  const concepts = parse({ text: "Ana & Bob run A&B Company.", lang: "en" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Ana & Bob", "A&B Company"],
+  );
+});
+
+test("a word may mix several connect chars", () => {
+  const concepts = parse({ text: "The name X&Y-Z'W is odd.", lang: "en" });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["X&Y-Z'W"],
+  );
+});
+
+test("doubled connect chars split the word", () => {
+  const concepts = parse({ text: "A venit Ana--Maria ieri.", lang: "ro" });
+  assert.deepEqual(
+    concepts.map((c) => [c.value, c.index]),
+    [
+      ["Ana", 8],
+      ["Maria", 13],
+    ],
+  );
+});
+
+test("concepts longer than 100 chars are dropped, 100 exactly is kept", () => {
+  const kept = "A" + "b".repeat(99);
+  assert.deepEqual(
+    parse({ text: `${kept} arrived.`, lang: "en" }).map((c) => c.value),
+    [kept],
+  );
+
+  const chain =
+    "The Very Extremely Unbelievably Long Institution Name Of Continuous " +
+    "Capital Words That Keeps Going And Going And Going Forever announced something.";
+  assert.deepEqual(parse({ text: chain, lang: "en" }), []);
+});
+
+test("en-dash connect word joins route endpoints", () => {
+  const concepts = parse({
+    text: "The Moscow – Berlin route is closed.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Moscow – Berlin"],
+  );
+});
+
+test("tab and CRLF are word separators, never joiners", () => {
+  const tab = parse({ text: "Barack\tObama spoke.", lang: "en" });
+  assert.deepEqual(
+    tab.map((c) => c.value),
+    ["Barack", "Obama"],
+  );
+  const crlf = parse({ text: "Barack\r\nObama spoke.", lang: "en" });
+  assert.deepEqual(
+    crlf.map((c) => [c.value, c.index]),
+    [
+      ["Barack", 0],
+      ["Obama", 8],
+    ],
+  );
+});
+
+test("a leading apostrophe stays outside the concept", () => {
+  const concepts = parse({ text: "'Twas Ana who came.", lang: "en" });
+  assert.deepEqual(
+    concepts.map((c) => [c.value, c.index]),
+    [["Twas Ana", 1]],
+  );
+});
+
+test("public API surface re-exports work", () => {
+  const concepts = api.parse({ text: "Moldova este stat.", lang: "ro" });
+  assert.equal(concepts[0].value, "Moldova");
+  assert.ok(concepts[0] instanceof api.Concept);
+  assert.equal(typeof api.Parser, "function");
+  assert.equal(typeof api.splitter.split, "function");
+});
+
+test("bg: Cyrillic names and places", () => {
+  const concepts = parse({
+    text: "Президентът Румен Радев посети София и се срещна с Бойко Борисов.",
+    lang: "bg",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Румен Радев", "София", "Бойко Борисов"],
+  );
+});
+
+test("hu: names with diacritics", () => {
+  const concepts = parse({
+    text: "Orbán Viktor találkozott Emmanuel Macron elnökkel Budapesten.",
+    lang: "hu",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Orbán Viktor", "Emmanuel Macron", "Budapesten"],
+  );
+});
+
+test("cs: title prefix is stripped", () => {
+  const concepts = parse({
+    text: "Prezident Petr Pavel navštívil Prahu a setkal se s Karlem.",
+    lang: "cs",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Petr Pavel", "Prahu", "Karlem"],
+  );
+});
+
+test("pl: connect word 'w' joins a place phrase", () => {
+  const concepts = parse({
+    text: "Prezydent Andrzej Duda spotkał się z Donaldem Tuskiem w Warszawie.",
+    lang: "pl",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Andrzej Duda", "Donaldem Tuskiem w Warszawie"],
+  );
+});
+
+test("it: connect word 'e' joins coordinated places", () => {
+  const concepts = parse({
+    text: "Il presidente Sergio Mattarella ha visitato Roma e Milano.",
+    lang: "it",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Sergio Mattarella", "Roma e Milano"],
+  );
+});
+
+test("es: 'y' is not a connect word, places stay separate", () => {
+  const concepts = parse({
+    text: "El presidente Pedro Sánchez visitó Madrid y Barcelona.",
+    lang: "es",
+  });
+  assert.deepEqual(
+    concepts.map((c) => c.value),
+    ["Pedro Sánchez", "Madrid", "Barcelona"],
   );
 });
 
