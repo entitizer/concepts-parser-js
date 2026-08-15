@@ -21,7 +21,7 @@ TypeScript:
 ```ts
 import { parse } from "concepts-parser";
 
-const concepts = parse({ text: "Some text", lang: "ru", country: "ru " });
+const concepts = parse({ text: "Some text", lang: "ru", country: "ru" });
 ```
 
 ## API

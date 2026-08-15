@@ -9,3 +9,4 @@ node_modules
 *.tgz
 lib
 types
+.superpowers
