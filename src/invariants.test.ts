@@ -38,8 +38,9 @@ const CASES: Array<{ lang: string; text: string }> = [
     text: `Министерство внутренних дел Республики Молдова является одним из девяти министерств Правительства Республики Молдова.`,
   },
   { lang: "bg", text: `България и Европейският съюз подписаха споразумение.` },
-  // number-glue output must still satisfy the invariants
+  // recall-first year+name joins must still satisfy the invariants
   { lang: "en", text: `In 2016 Obama announced his plan.` },
+  { lang: "en", text: `The contract was signed on 12 May 2026 in Brussels.` },
   { lang: "en", text: `He moved to the U.S. Yesterday he came back.` },
   { lang: "en", text: `The new iPhone 15 was presented by Apple.` },
   { lang: "en", text: `Windows 11 and Office 365 were updated.` },

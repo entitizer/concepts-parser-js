@@ -458,11 +458,13 @@ test("hyphen + digits inside an abbreviation: COVID-19", () => {
   );
 });
 
-// BUG(number-glue): a number word only checks that the PREVIOUS word in the
-// candidate list is not a number — not that it is adjacent in the text — and
-// then joins the FOLLOWING capitalized word across a single space. A year
-// after a preposition swallows the next name into a number-led "concept".
-test("BUG: a year glues onto the following name", () => {
+// By design (recall-first): a number word needs only SOME earlier candidate
+// word, then joins the following capitalized word across a single space.
+// There is no syntactic line between "12 May" and "2016 Bob" — restricting
+// numbers here would lose year-qualified entities (see the next test), so
+// concepts stay generous and precision belongs to the data lists downstream.
+// Decision record: docs/superpowers/plans/2026-08-15-number-glue-fix.md
+test("recall-first: a year may glue onto the following name", () => {
   const en = parse({ text: "In 2016 Obama announced his plan.", lang: "en" });
   assert.deepEqual(
     en.map((c) => c.value),
@@ -482,6 +484,37 @@ test("BUG: a year glues onto the following name", () => {
   assert.deepEqual(
     ro.map((c) => c.value),
     ["Concertul din 2019 Amsterdam"],
+  );
+});
+
+// The recall the previous test's noise pays for: year-qualified events and
+// day-led dates are real entities and must keep being extracted whole.
+test("recall-first: year-qualified events and dates stay whole", () => {
+  const olympics = parse({
+    text: "She competed at the 2016 Summer Olympics in Rio.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    olympics.map((c) => c.value),
+    ["2016 Summer Olympics", "Rio"],
+  );
+
+  const date = parse({
+    text: "The contract was signed on 12 May 2026 in Brussels.",
+    lang: "en",
+  });
+  assert.deepEqual(
+    date.map((c) => c.value),
+    ["12 May 2026", "Brussels"],
+  );
+
+  const tour = parse({
+    text: "Turul Frantei din 2019 a fost spectaculos.",
+    lang: "ro",
+  });
+  assert.deepEqual(
+    tour.map((c) => c.value),
+    ["Turul Frantei din 2019"],
   );
 });
 
